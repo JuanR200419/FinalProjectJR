@@ -14,9 +14,9 @@ public class User {
     String username;
     String password;
     String countDetails;
-    String typeUser;
+    int typeUser;
 
-    public User(int id, String name, String username, String password, String countDetails, String typeUser) {
+    public User(int id, String name, String username, String password, String countDetails, int typeUser) {
         this.id = id;
         this.name = name;
         this.username = username;
@@ -65,12 +65,16 @@ public class User {
         this.countDetails = countDetails;
     }
 
-    public String getTypeUser() {
+    public int getTypeUser() {
         return typeUser;
     }
 
-    public void setTypeUser(String typeUser) {
+    public void setTypeUser(int typeUser) {
         this.typeUser = typeUser;
     }
+    
+   
+
+   
     
 }
