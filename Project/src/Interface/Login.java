@@ -37,9 +37,10 @@ public class Login extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        txtcorreo2 = new javax.swing.JTextField();
-        txtpassword = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        txtEmail = new javax.swing.JTextField();
+        txtPassword = new javax.swing.JPasswordField();
+        btnRegister = new javax.swing.JButton();
+        btnLogin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -106,31 +107,43 @@ public class Login extends javax.swing.JFrame {
         jSeparator2.setForeground(new java.awt.Color(0, 153, 255));
         jPanel5.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 320, 310, 10));
 
-        txtcorreo2.setBackground(new java.awt.Color(0, 0, 102));
-        txtcorreo2.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
-        txtcorreo2.setForeground(new java.awt.Color(73, 181, 172));
-        txtcorreo2.setBorder(null);
-        txtcorreo2.setCaretColor(new java.awt.Color(73, 181, 172));
-        jPanel5.add(txtcorreo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 270, 40));
+        txtEmail.setBackground(new java.awt.Color(0, 0, 102));
+        txtEmail.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtEmail.setForeground(new java.awt.Color(73, 181, 172));
+        txtEmail.setBorder(null);
+        txtEmail.setCaretColor(new java.awt.Color(73, 181, 172));
+        jPanel5.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 270, 40));
 
-        txtpassword.setBackground(new java.awt.Color(0, 0, 102));
-        txtpassword.setFont(txtpassword.getFont().deriveFont(txtpassword.getFont().getSize()+7f));
-        txtpassword.setForeground(new java.awt.Color(73, 181, 172));
-        txtpassword.setBorder(null);
-        txtpassword.setCaretColor(new java.awt.Color(73, 181, 172));
-        jPanel5.add(txtpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 270, 36));
+        txtPassword.setBackground(new java.awt.Color(0, 0, 102));
+        txtPassword.setFont(txtPassword.getFont().deriveFont(txtPassword.getFont().getSize()+7f));
+        txtPassword.setForeground(new java.awt.Color(73, 181, 172));
+        txtPassword.setBorder(null);
+        txtPassword.setCaretColor(new java.awt.Color(73, 181, 172));
+        jPanel5.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 270, 36));
 
-        jButton1.setBackground(new java.awt.Color(0, 153, 255));
-        jButton1.setFont(new java.awt.Font("Chilanka", 0, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("INGRESAR");
-        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnRegister.setBackground(new java.awt.Color(0, 153, 255));
+        btnRegister.setFont(new java.awt.Font("Chilanka", 0, 18)); // NOI18N
+        btnRegister.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegister.setText("Registrarse");
+        btnRegister.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnRegister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnRegisterActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 390, 130, 40));
+        jPanel5.add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 450, 130, 40));
+
+        btnLogin.setBackground(new java.awt.Color(0, 153, 255));
+        btnLogin.setFont(new java.awt.Font("Chilanka", 0, 18)); // NOI18N
+        btnLogin.setForeground(new java.awt.Color(255, 255, 255));
+        btnLogin.setText("INGRESAR");
+        btnLogin.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
+        jPanel5.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 390, 130, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -150,9 +163,13 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnRegisterActionPerformed
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -190,7 +207,8 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnLogin;
+    private javax.swing.JButton btnRegister;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -202,7 +220,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField txtcorreo2;
-    private javax.swing.JPasswordField txtpassword;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JPasswordField txtPassword;
     // End of variables declaration//GEN-END:variables
 }
