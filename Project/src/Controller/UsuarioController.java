@@ -18,18 +18,21 @@ public class UsuarioController {
         this.conexion = new ConexionMySQL();
     }
 
-    public void insert(String nombre, int edad, String correo) {
+    public void insert(String name, String username, String password, String email, String countDetails, int typeUser, String adress) {
         // Establecemos la conexión con la base de datos
         try (Connection conn = conexion.conectarMySQL()) {
             // Verificamos si la conexión fue exitosa
             if (conn != null) {
                 // Preparamos la consulta SQL para insertar datos
-                String insertSQL = "INSERT INTO Usuarios (nombre, edad, correo) VALUES (?, ?,  ?)";
+                String insertSQL = "INSERT INTO Usuarios (name,username, password, email, countDetails,  typeUser, adress) VALUES (?,?,?,?,?,?,?)";
                 try (PreparedStatement pstmt = conn.prepareStatement(insertSQL)) {
-                    pstmt.setString(1, nombre);
-                    pstmt.setInt(2, edad);
-                    pstmt.setString(3, correo);
-
+                    pstmt.setString(1, name);
+                    pstmt.setString(2, username);
+                    pstmt.setString(4, email);
+                    pstmt.setString(5, countDetails);
+                    pstmt.setInt(6, typeUser);
+                    pstmt.setString(7, adress);
+                    
                     // Ejecutamos la consulta
                     int rowsAffected = pstmt.executeUpdate();
 
@@ -103,7 +106,7 @@ public class UsuarioController {
                 // Preparamos la consulta SQL para seleccionar datos
                 String updateSQL = "UPDATE Usuarios SET nombre = ?,correo = ?,edad=?  WHERE id = ?";
                 try (PreparedStatement pstmt = conn.prepareStatement(updateSQL)) {
-                    pstmt.setString(4, Integer.toString(id));
+                    pstmt.setInt(4, id);
                     pstmt.setString(1, nombre);
                     pstmt.setString(2, correo);
                     pstmt.setString(3, Integer.toString(edad));
