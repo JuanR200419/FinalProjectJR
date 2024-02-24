@@ -9,12 +9,13 @@ package Models;
  * @author juan
  */
 public class Hotel {
-    int id;
-    String nameHotel;
-    String adress;
-    String classification;
-    String modCons;
-    String pictures;
+    private int id;
+    private String nameHotel;
+    private String adress;
+    private String classification;
+    //comodidades del hotel ejem. sala de juegos jacuzzi etc
+    private String modCons;
+    private String pictures;
 
     public Hotel(int id, String nameHotel, String adress, String classification, String modCons, String pictures) {
         this.id = id;

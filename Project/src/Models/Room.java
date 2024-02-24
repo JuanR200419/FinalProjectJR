@@ -9,12 +9,13 @@ package Models;
  * @author juan
  */
 public class Room {
-    int id;
-    int numberRoom;
-    String typeRoom;
-    double priceNigth;
-    boolean availability;
-    String amenitiesDetails;
+    private int id;
+    private int numberRoom;
+    // (individual, doble, suite, etc.)
+    private String typeRoom;
+    private double priceNigth;
+    private boolean availability;
+    private String amenitiesDetails;
 
     public Room(int id, int numberRoom, String typeRoom, double priceNigth, boolean availability, String amenitiesDetails) {
         this.id = id;

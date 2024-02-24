@@ -9,20 +9,24 @@ package Models;
  * @author juan
  */
 public class User {
-    int id;
-    String name;
-    String username;
-    String password;
-    String countDetails;
-    int typeUser;
+    private int id;
+    private String name;
+    private String username;
+    private String password;
+    private String email;
+    private String countDetails;
+    private int typeUser;
+    private String adress;
 
-    public User(int id, String name, String username, String password, String countDetails, int typeUser) {
+    public User(int id, String name, String username, String password, String email, String countDetails, int typeUser, String adress) {
         this.id = id;
         this.name = name;
         this.username = username;
         this.password = password;
+        this.email = email;
         this.countDetails = countDetails;
         this.typeUser = typeUser;
+        this.adress = adress;
     }
 
     public int getId() {
@@ -57,6 +61,14 @@ public class User {
         this.password = password;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getCountDetails() {
         return countDetails;
     }
@@ -72,9 +84,13 @@ public class User {
     public void setTypeUser(int typeUser) {
         this.typeUser = typeUser;
     }
-    
-   
 
-   
+    public String getAdress() {
+        return adress;
+    }
+
+    public void setAdress(String adress) {
+        this.adress = adress;
+    }
     
 }

@@ -9,14 +9,16 @@ package Models;
  * @author juan
  */
 public class Booking {
-    int id;
-    User user;
-    Hotel hotel;
-    Room room;
-    String entryDate;
-    String exitDate;
-    String state;
-    double totalPrice;
+    private int id;
+    private User user;
+    private Hotel hotel;
+    //habitación de hotel
+    private Room room;
+    private String entryDate;
+    private String exitDate;
+    //tiene 3 estados (confirmada, cancelada, pendiente)
+    private String state;
+    private double totalPrice;
 
     public Booking(int id, User user, Hotel hotel, Room room, String entryDate, String exitDate, String state, double totalPrice) {
         this.id = id;
