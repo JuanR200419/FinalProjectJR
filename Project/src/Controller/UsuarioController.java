@@ -1,6 +1,7 @@
 package Controller;
 
 import Connection.ConexionMySQL;
+import Models.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,20 +19,22 @@ public class UsuarioController {
         this.conexion = new ConexionMySQL();
     }
 
-    public void insert(String name, String username, String password, String email, String countDetails, int typeUser, String adress) {
+    public void insert(User user) {
         // Establecemos la conexión con la base de datos
         try (Connection conn = conexion.conectarMySQL()) {
             // Verificamos si la conexión fue exitosa
             if (conn != null) {
                 // Preparamos la consulta SQL para insertar datos
-                String insertSQL = "INSERT INTO Usuarios (name,username, password, email, countDetails,  typeUser, adress) VALUES (?,?,?,?,?,?,?)";
+                String insertSQL = "INSERT INTO Usuarios (name ,username, password, email, countDetails,  typeUser, adress) VALUES (?,?,?,?,?,?,?)";
                 try (PreparedStatement pstmt = conn.prepareStatement(insertSQL)) {
-                    pstmt.setString(1, name);
-                    pstmt.setString(2, username);
-                    pstmt.setString(4, email);
-                    pstmt.setString(5, countDetails);
-                    pstmt.setInt(6, typeUser);
-                    pstmt.setString(7, adress);
+                    pstmt.setString(1, user.getName());
+                    pstmt.setString(2, user.getUsername());
+                    pstmt.setString(4, user.getEmail());
+                    pstmt.setString(5, user.getCountDetails());
+                    pstmt.setInt(6, user.getTypeUser());
+                    pstmt.setString(7, user.getAdress());
+            
+                    
                     
                     // Ejecutamos la consulta
                     int rowsAffected = pstmt.executeUpdate();
