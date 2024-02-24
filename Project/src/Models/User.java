@@ -11,6 +11,7 @@ package Models;
 public class User {
     private int id;
     private String name;
+    private int age;
     private String username;
     private String password;
     private String email;
