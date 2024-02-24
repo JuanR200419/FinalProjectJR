@@ -121,7 +121,7 @@ public class UserAdmin extends javax.swing.JFrame {
         btnRegister2.setBackground(new java.awt.Color(0, 0, 204));
         btnRegister2.setFont(new java.awt.Font("Chilanka", 0, 18)); // NOI18N
         btnRegister2.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegister2.setText("Borrar");
+        btnRegister2.setText("traer");
         btnRegister2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnRegister2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,9 +136,9 @@ public class UserAdmin extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(103, 103, 103)
                 .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(38, 38, 38)
                 .addComponent(btnRegister2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58)
+                .addGap(38, 38, 38)
                 .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
                 .addComponent(btnRegister1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)

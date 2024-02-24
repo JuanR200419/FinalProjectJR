@@ -133,9 +133,9 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
                       <Component id="btnLogin" min="-2" pref="130" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                       <Component id="btnRegister2" min="-2" pref="130" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                       <Component id="btnRegister" min="-2" pref="130" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                       <Component id="btnRegister1" min="-2" pref="130" max="-2" attributes="0"/>
@@ -236,7 +236,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Borrar"/>
+                <Property name="text" type="java.lang.String" value="traer"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
                     <BevelBorder/>
