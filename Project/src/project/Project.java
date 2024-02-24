@@ -14,7 +14,9 @@ public class Project {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("prueba de ssh");
+            System.out.println("prueba de ssh");
+            System.out.println("prueba de 2");
+        
     }
     
 }
