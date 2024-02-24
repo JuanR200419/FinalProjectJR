@@ -6,7 +6,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import java.security.interfaces.RSAKey;
 import javax.swing.JOptionPane;
 
@@ -80,15 +79,15 @@ public class UsuarioController {
         }
     }
 
-    public void delete(int id) {
+    public void delete(String correo) {
         // Establecemos la conexión con la base de datos
         try (Connection conn = conexion.conectarMySQL()) {
             // Verificamos si la conexión fue exitosa
             if (conn != null) {
                 // Preparamos la consulta SQL para seleccionar datos
-                String deleteSQL = "DELETE FROM Usuarios WHERE id = ?";
+                String deleteSQL = "DELETE FROM Usuarios WHERE correo = ?";
                 try (PreparedStatement pstmt = conn.prepareStatement(deleteSQL)) {
-                    pstmt.setString(1, Integer.toString(id));
+                    pstmt.setString(1, correo);
                     pstmt.executeUpdate();
                     JOptionPane.showMessageDialog(null, "Se ha eliminado");
                 }
@@ -101,18 +100,20 @@ public class UsuarioController {
         }
     }
 
-    public void update(String nombre, int id, String correo, int edad) {
+    public void update(User user) {
         // Establecemos la conexión con la base de datos
         try (Connection conn = conexion.conectarMySQL()) {
             // Verificamos si la conexión fue exitosa
             if (conn != null) {
                 // Preparamos la consulta SQL para seleccionar datos
-                String updateSQL = "UPDATE Usuarios SET nombre = ?,correo = ?,edad=?  WHERE id = ?";
+                String updateSQL = "UPDATE Usuarios (name ,username, password, email, countDetails,  typeUser, adress) VALUES (?,?,?,?,?,?,?)";
                 try (PreparedStatement pstmt = conn.prepareStatement(updateSQL)) {
-                    pstmt.setInt(4, id);
-                    pstmt.setString(1, nombre);
-                    pstmt.setString(2, correo);
-                    pstmt.setString(3, Integer.toString(edad));
+                  pstmt.setString(1, user.getName());
+                    pstmt.setString(2, user.getUsername());
+                    pstmt.setString(4, user.getEmail());
+                    pstmt.setString(5, user.getCountDetails());
+                    pstmt.setInt(6, user.getTypeUser());
+                    pstmt.setString(7, user.getAdress());
                     pstmt.executeUpdate();
                     JOptionPane.showMessageDialog(null, "Su perfil se ha actualizado  ");
                 }
