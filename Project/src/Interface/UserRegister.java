@@ -4,17 +4,21 @@
  */
 package Interface;
 
+import Controller.UsuarioController;
+import Models.User;
+
 /**
  *
  * @author juan
  */
 public class UserRegister extends javax.swing.JFrame {
-
+    UsuarioController control;
     /**
      * Creates new form RegisterUser
      */
     public UserRegister() {
         initComponents();
+        control = new UsuarioController();
     }
 
     /**
@@ -26,6 +30,7 @@ public class UserRegister extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jSeparator8 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -52,7 +57,7 @@ public class UserRegister extends javax.swing.JFrame {
         jSeparator7 = new javax.swing.JSeparator();
         lblEmail1 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
-        bntFinish = new javax.swing.JButton();
+        btnRegister = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -122,6 +127,11 @@ public class UserRegister extends javax.swing.JFrame {
         txtEdad.setForeground(new java.awt.Color(73, 181, 172));
         txtEdad.setBorder(null);
         txtEdad.setCaretColor(new java.awt.Color(73, 181, 172));
+        txtEdad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtEdadKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 270, 40));
 
         lblEdad.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
@@ -199,8 +209,8 @@ public class UserRegister extends javax.swing.JFrame {
 
         lblEmail1.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
         lblEmail1.setForeground(new java.awt.Color(255, 255, 255));
-        lblEmail1.setText("CORREO ELECTRONICO");
-        jPanel1.add(lblEmail1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 270, -1, -1));
+        lblEmail1.setText("CONTRASEÑA");
+        jPanel1.add(lblEmail1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 270, 120, -1));
 
         btnBack.setBackground(new java.awt.Color(0, 153, 153));
         btnBack.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
@@ -214,17 +224,17 @@ public class UserRegister extends javax.swing.JFrame {
         });
         jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, 130, 40));
 
-        bntFinish.setBackground(new java.awt.Color(0, 153, 255));
-        bntFinish.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
-        bntFinish.setForeground(new java.awt.Color(255, 255, 255));
-        bntFinish.setText("REGISTRARSE");
-        bntFinish.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        bntFinish.addActionListener(new java.awt.event.ActionListener() {
+        btnRegister.setBackground(new java.awt.Color(0, 153, 255));
+        btnRegister.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        btnRegister.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegister.setText("REGISTRARSE");
+        btnRegister.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnRegister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bntFinishActionPerformed(evt);
+                btnRegisterActionPerformed(evt);
             }
         });
-        jPanel1.add(bntFinish, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 450, 130, 40));
+        jPanel1.add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 470, 130, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -250,9 +260,26 @@ public class UserRegister extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBackActionPerformed
 
-    private void bntFinishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntFinishActionPerformed
+    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
+        String nombre = txtName.getText();
+        String usuario = txtUsername.getText();
+        int edad = Integer.parseInt(txtEdad.getText());
+        String correo = txtEmail.getText();
+        String contrasena = new String(txtPassword.getPassword());
+        String direccion = txtAddress.getText();
+        String telefono = txtPhoneNumber.getText();
+        User user = new User(nombre, edad,usuario, contrasena, correo, telefono, 2, direccion);
+        control.insert(user);
+        Login ven = new Login();
+        ven.setVisible(true);
+        ven.setLocationRelativeTo(this);
+        this.dispose();
         // TODO add your handling code here:
-    }//GEN-LAST:event_bntFinishActionPerformed
+    }//GEN-LAST:event_btnRegisterActionPerformed
+
+    private void txtEdadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEdadKeyTyped
+               // TODO add your handling code here:
+    }//GEN-LAST:event_txtEdadKeyTyped
 
     /**
      * @param args the command line arguments
@@ -291,8 +318,8 @@ public class UserRegister extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bntFinish;
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnRegister;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -304,6 +331,7 @@ public class UserRegister extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblEdad;
     private javax.swing.JLabel lblEmail;
