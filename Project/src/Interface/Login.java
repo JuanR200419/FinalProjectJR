@@ -4,17 +4,20 @@
  */
 package Interface;
 
+import Controller.UsuarioController;
+
 /**
  *
  * @author juan
  */
 public class Login extends javax.swing.JFrame {
-
+UsuarioController control;
     /**
      * Creates new form Login
      */
     public Login() {
         initComponents();
+        control = new UsuarioController();
     }
 
     /**
@@ -76,40 +79,40 @@ public class Login extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Lohit Devanagari", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("CORREO ELECTRÓNICO");
-        jPanel5.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, -1, -1));
+        jPanel5.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
 
         jSeparator1.setBackground(new java.awt.Color(0, 153, 255));
         jSeparator1.setForeground(new java.awt.Color(0, 153, 255));
-        jPanel5.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 310, 10));
+        jPanel5.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 310, 10));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/aro.png"))); // NOI18N
-        jPanel5.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 48, 36));
+        jPanel5.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 48, 36));
 
         jLabel5.setFont(new java.awt.Font("Lohit Devanagari", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("CONTRASEÑA");
-        jPanel5.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, -1, -1));
+        jPanel5.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, -1));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/bloqueado.png"))); // NOI18N
-        jPanel5.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 48, 42));
+        jPanel5.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 48, 42));
 
         jSeparator2.setBackground(new java.awt.Color(0, 153, 255));
         jSeparator2.setForeground(new java.awt.Color(0, 153, 255));
-        jPanel5.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 320, 310, 10));
+        jPanel5.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 310, 10));
 
         txtEmail.setBackground(new java.awt.Color(0, 0, 102));
         txtEmail.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
         txtEmail.setForeground(new java.awt.Color(73, 181, 172));
         txtEmail.setBorder(null);
         txtEmail.setCaretColor(new java.awt.Color(73, 181, 172));
-        jPanel5.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 270, 40));
+        jPanel5.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 270, 40));
 
         txtPassword.setBackground(new java.awt.Color(0, 0, 102));
         txtPassword.setFont(txtPassword.getFont().deriveFont(txtPassword.getFont().getSize()+7f));
         txtPassword.setForeground(new java.awt.Color(73, 181, 172));
         txtPassword.setBorder(null);
         txtPassword.setCaretColor(new java.awt.Color(73, 181, 172));
-        jPanel5.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 270, 36));
+        jPanel5.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 270, 36));
 
         btnRegister.setBackground(new java.awt.Color(0, 153, 153));
         btnRegister.setFont(new java.awt.Font("Lohit Devanagari", 0, 18)); // NOI18N
@@ -121,7 +124,7 @@ public class Login extends javax.swing.JFrame {
                 btnRegisterActionPerformed(evt);
             }
         });
-        jPanel5.add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 450, 130, 40));
+        jPanel5.add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 450, 130, 40));
 
         btnLogin.setBackground(new java.awt.Color(0, 153, 255));
         btnLogin.setFont(new java.awt.Font("Lohit Devanagari", 0, 18)); // NOI18N
@@ -133,16 +136,19 @@ public class Login extends javax.swing.JFrame {
                 btnLoginActionPerformed(evt);
             }
         });
-        jPanel5.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 390, 130, 40));
+        jPanel5.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, 130, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(343, 343, 343)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(409, 409, 409)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,11 +160,18 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
-        // TODO add your handling code here:
+       UserRegister ven = new UserRegister();
+       ven.setVisible(true);
+       ven.setLocationRelativeTo(this);
+       this.dispose();
+       
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-
+        String email = txtEmail.getText();
+        String contrasena = new String(txtPassword.getPassword());
+        control.selectLogin(email, contrasena);
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLoginActionPerformed
 

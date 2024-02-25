@@ -127,6 +127,11 @@ public class UserRegister extends javax.swing.JFrame {
         txtEdad.setForeground(new java.awt.Color(73, 181, 172));
         txtEdad.setBorder(null);
         txtEdad.setCaretColor(new java.awt.Color(73, 181, 172));
+        txtEdad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtEdadKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 270, 40));
 
         lblEdad.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
@@ -263,11 +268,18 @@ public class UserRegister extends javax.swing.JFrame {
         String contrasena = new String(txtPassword.getPassword());
         String direccion = txtAddress.getText();
         String telefono = txtPhoneNumber.getText();
-        User user = new User(nombre, edad, usuario, telefono, usuario, contrasena, 2, correo);
+        User user = new User(nombre, edad,usuario, contrasena, correo, telefono, 2, direccion);
         control.insert(user);
-        
+        Login ven = new Login();
+        ven.setVisible(true);
+        ven.setLocationRelativeTo(this);
+        this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRegisterActionPerformed
+
+    private void txtEdadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEdadKeyTyped
+               // TODO add your handling code here:
+    }//GEN-LAST:event_txtEdadKeyTyped
 
     /**
      * @param args the command line arguments

@@ -55,20 +55,30 @@ public class UsuarioController {
         }
     }
 
-    public void selectLogin() {
+    public void selectLogin(String email,String password) {
         // Establecemos la conexión con la base de datos
         try (Connection conn = conexion.conectarMySQL()) {
             // Verificamos si la conexión fue exitosa
             if (conn != null) {
                 // Preparamos la consulta SQL para seleccionar datos
-                String selectSQL = "SELECT * FROM Usuarios Where";
+                String selectSQL = "SELECT * FROM Usuarios Where email=? AND password=?";
                 try (PreparedStatement pstmt = conn.prepareStatement(selectSQL)) {
+                    pstmt.setString(2, password);
+                    pstmt.setString(1, email);
+                     
                     // Ejecutamos la consulta
                     ResultSet rs = pstmt.executeQuery();
-
+                   
                     // Iteramos sobre los resultados
+                        
+//                    if( rs.next() ){
+//                        System.out.println("inicio sesion");
+//                        
+//                    }
+                    
+                    
                     while (rs.next()) {
-                        System.out.println("Name: " + rs.getString("nombre") + ", Email: " + rs.getString("correo") + ", Edad: " + rs.getInt("edad"));
+                        System.out.println("Name: " + rs.getString("name") + ", Email: " + rs.getString("email") + ", Edad: " + rs.getInt("age"));
                     }
                 }
             } else {
@@ -78,6 +88,7 @@ public class UsuarioController {
             System.out.println("Ocurrió un error al realizar la selección en la base de datos");
             e.printStackTrace();
         }
+       
     }
 
     public void delete(String correo) {
