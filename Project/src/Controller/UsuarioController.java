@@ -55,13 +55,13 @@ public class UsuarioController {
         }
     }
 
-    public void select() {
+    public void selectLogin() {
         // Establecemos la conexión con la base de datos
         try (Connection conn = conexion.conectarMySQL()) {
             // Verificamos si la conexión fue exitosa
             if (conn != null) {
                 // Preparamos la consulta SQL para seleccionar datos
-                String selectSQL = "SELECT * FROM Usuarios";
+                String selectSQL = "SELECT * FROM Usuarios Where";
                 try (PreparedStatement pstmt = conn.prepareStatement(selectSQL)) {
                     // Ejecutamos la consulta
                     ResultSet rs = pstmt.executeQuery();
