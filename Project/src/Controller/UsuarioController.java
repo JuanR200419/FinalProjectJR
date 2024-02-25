@@ -24,23 +24,24 @@ public class UsuarioController {
             // Verificamos si la conexión fue exitosa
             if (conn != null) {
                 // Preparamos la consulta SQL para insertar datos
-                String insertSQL = "INSERT INTO Usuarios (name ,username, password, email, countDetails,  typeUser, adress) VALUES (?,?,?,?,?,?,?)";
+                String insertSQL = "INSERT INTO Usuarios (name,age ,username, password, email, countDetails,  typeUser, adress) VALUES (?,?,?,?,?,?,?,?)";
                 try (PreparedStatement pstmt = conn.prepareStatement(insertSQL)) {
                     pstmt.setString(1, user.getName());
-                    pstmt.setString(2, user.getUsername());
-                    pstmt.setString(4, user.getEmail());
-                    pstmt.setString(5, user.getCountDetails());
-                    pstmt.setInt(6, user.getTypeUser());
-                    pstmt.setString(7, user.getAdress());
-            
-                    
-                    
+                    pstmt.setInt(2, user.getAge());
+                    pstmt.setString(3, user.getUsername());
+                    pstmt.setString(4, user.getPassword());
+                    pstmt.setString(5, user.getEmail());
+                    pstmt.setString(6, user.getCountDetails());
+                    pstmt.setInt(7, user.getTypeUser());
+                    pstmt.setString(8, user.getAdress());
+
                     // Ejecutamos la consulta
                     int rowsAffected = pstmt.executeUpdate();
 
                     // Verificamos si la inserción fue exitosa
                     if (rowsAffected > 0) {
                         System.out.println("Inserción exitosa");
+                        JOptionPane.showMessageDialog(null, "Se ha registrado con exito ");
                     } else {
                         System.out.println("No se pudo insertar los datos");
                     }
@@ -108,7 +109,7 @@ public class UsuarioController {
                 // Preparamos la consulta SQL para seleccionar datos
                 String updateSQL = "UPDATE Usuarios (name ,username, password, email, countDetails,  typeUser, adress) VALUES (?,?,?,?,?,?,?)";
                 try (PreparedStatement pstmt = conn.prepareStatement(updateSQL)) {
-                  pstmt.setString(1, user.getName());
+                    pstmt.setString(1, user.getName());
                     pstmt.setString(2, user.getUsername());
                     pstmt.setString(4, user.getEmail());
                     pstmt.setString(5, user.getCountDetails());

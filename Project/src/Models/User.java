@@ -19,8 +19,8 @@ public class User {
     private int typeUser;
     private String adress;
 
-    public User(int id, String name, int age, String username, String password, String email, String countDetails, int typeUser, String adress) {
-        this.id = id;
+    public User( String name, int age, String username, String password, String email, String countDetails, int typeUser, String adress) {
+
         this.name = name;
         this.age = age;
         this.username = username;
