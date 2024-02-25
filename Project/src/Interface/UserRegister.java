@@ -27,18 +27,203 @@ public class UserRegister extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        lblName = new javax.swing.JLabel();
+        txtName = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        txtPassword = new javax.swing.JPasswordField();
+        jSeparator2 = new javax.swing.JSeparator();
+        txtEdad = new javax.swing.JTextField();
+        lblEdad = new javax.swing.JLabel();
+        txtAddress = new javax.swing.JTextField();
+        jSeparator3 = new javax.swing.JSeparator();
+        lblAddress = new javax.swing.JLabel();
+        jSeparator4 = new javax.swing.JSeparator();
+        txtPhoneNumber = new javax.swing.JTextField();
+        lblPhoneNumber = new javax.swing.JLabel();
+        txtUsername = new javax.swing.JTextField();
+        jSeparator5 = new javax.swing.JSeparator();
+        lblUsername = new javax.swing.JLabel();
+        jSeparator6 = new javax.swing.JSeparator();
+        txtEmail = new javax.swing.JTextField();
+        lblEmail = new javax.swing.JLabel();
+        jSeparator7 = new javax.swing.JSeparator();
+        lblEmail1 = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
+        bntFinish = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(0, 0, 102));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logo_mid.jpg"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 80));
+        jPanel2.setBackground(new java.awt.Color(4, 27, 43));
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logo_mid.jpg"))); // NOI18N
+
+        jLabel2.setFont(new java.awt.Font("Lohit Devanagari", 1, 40)); // NOI18N
         jLabel2.setText("Registro");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, -2, 680, 80));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(125, 125, 125)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(140, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 90));
+
+        lblName.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        lblName.setForeground(new java.awt.Color(255, 255, 255));
+        lblName.setText("NOMBRE");
+        jPanel1.add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
+
+        txtName.setBackground(new java.awt.Color(0, 0, 102));
+        txtName.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtName.setForeground(new java.awt.Color(73, 181, 172));
+        txtName.setBorder(null);
+        txtName.setCaretColor(new java.awt.Color(73, 181, 172));
+        jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 270, 40));
+
+        jSeparator1.setBackground(new java.awt.Color(0, 153, 255));
+        jSeparator1.setForeground(new java.awt.Color(0, 153, 255));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 270, 10));
+
+        txtPassword.setBackground(new java.awt.Color(0, 0, 102));
+        txtPassword.setFont(txtPassword.getFont().deriveFont(txtPassword.getFont().getSize()+7f));
+        txtPassword.setForeground(new java.awt.Color(73, 181, 172));
+        txtPassword.setBorder(null);
+        txtPassword.setCaretColor(new java.awt.Color(73, 181, 172));
+        jPanel1.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 300, 270, 40));
+
+        jSeparator2.setBackground(new java.awt.Color(0, 153, 255));
+        jSeparator2.setForeground(new java.awt.Color(0, 153, 255));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 270, 10));
+
+        txtEdad.setBackground(new java.awt.Color(0, 0, 102));
+        txtEdad.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtEdad.setForeground(new java.awt.Color(73, 181, 172));
+        txtEdad.setBorder(null);
+        txtEdad.setCaretColor(new java.awt.Color(73, 181, 172));
+        jPanel1.add(txtEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 270, 40));
+
+        lblEdad.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        lblEdad.setForeground(new java.awt.Color(255, 255, 255));
+        lblEdad.setText("EDAD");
+        jPanel1.add(lblEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
+
+        txtAddress.setBackground(new java.awt.Color(0, 0, 102));
+        txtAddress.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtAddress.setForeground(new java.awt.Color(73, 181, 172));
+        txtAddress.setBorder(null);
+        txtAddress.setCaretColor(new java.awt.Color(73, 181, 172));
+        jPanel1.add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 270, 40));
+
+        jSeparator3.setBackground(new java.awt.Color(0, 153, 255));
+        jSeparator3.setForeground(new java.awt.Color(0, 153, 255));
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 270, 10));
+
+        lblAddress.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        lblAddress.setForeground(new java.awt.Color(255, 255, 255));
+        lblAddress.setText("DIRECCIÓN");
+        jPanel1.add(lblAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
+
+        jSeparator4.setBackground(new java.awt.Color(0, 153, 255));
+        jSeparator4.setForeground(new java.awt.Color(0, 153, 255));
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 270, 10));
+
+        txtPhoneNumber.setBackground(new java.awt.Color(0, 0, 102));
+        txtPhoneNumber.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtPhoneNumber.setForeground(new java.awt.Color(73, 181, 172));
+        txtPhoneNumber.setBorder(null);
+        txtPhoneNumber.setCaretColor(new java.awt.Color(73, 181, 172));
+        jPanel1.add(txtPhoneNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 270, 40));
+
+        lblPhoneNumber.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        lblPhoneNumber.setForeground(new java.awt.Color(255, 255, 255));
+        lblPhoneNumber.setText("TELEFONO");
+        jPanel1.add(lblPhoneNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, -1, -1));
+
+        txtUsername.setBackground(new java.awt.Color(0, 0, 102));
+        txtUsername.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtUsername.setForeground(new java.awt.Color(73, 181, 172));
+        txtUsername.setBorder(null);
+        txtUsername.setCaretColor(new java.awt.Color(73, 181, 172));
+        jPanel1.add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, 270, 40));
+
+        jSeparator5.setBackground(new java.awt.Color(0, 153, 255));
+        jSeparator5.setForeground(new java.awt.Color(0, 153, 255));
+        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 180, 270, 10));
+
+        lblUsername.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        lblUsername.setForeground(new java.awt.Color(255, 255, 255));
+        lblUsername.setText("NOMBRE DE USUARIO");
+        jPanel1.add(lblUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, -1, -1));
+
+        jSeparator6.setBackground(new java.awt.Color(0, 153, 255));
+        jSeparator6.setForeground(new java.awt.Color(0, 153, 255));
+        jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 260, 270, 10));
+
+        txtEmail.setBackground(new java.awt.Color(0, 0, 102));
+        txtEmail.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtEmail.setForeground(new java.awt.Color(73, 181, 172));
+        txtEmail.setBorder(null);
+        txtEmail.setCaretColor(new java.awt.Color(73, 181, 172));
+        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, 270, 40));
+
+        lblEmail.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        lblEmail.setForeground(new java.awt.Color(255, 255, 255));
+        lblEmail.setText("CORREO ELECTRONICO");
+        jPanel1.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, -1, -1));
+
+        jSeparator7.setBackground(new java.awt.Color(0, 153, 255));
+        jSeparator7.setForeground(new java.awt.Color(0, 153, 255));
+        jPanel1.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 340, 270, 10));
+
+        lblEmail1.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        lblEmail1.setForeground(new java.awt.Color(255, 255, 255));
+        lblEmail1.setText("CORREO ELECTRONICO");
+        jPanel1.add(lblEmail1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 270, -1, -1));
+
+        btnBack.setBackground(new java.awt.Color(0, 153, 153));
+        btnBack.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(255, 255, 255));
+        btnBack.setText("ATRAS");
+        btnBack.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, 130, 40));
+
+        bntFinish.setBackground(new java.awt.Color(0, 153, 255));
+        bntFinish.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        bntFinish.setForeground(new java.awt.Color(255, 255, 255));
+        bntFinish.setText("FINALIZAR");
+        bntFinish.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        bntFinish.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntFinishActionPerformed(evt);
+            }
+        });
+        jPanel1.add(bntFinish, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 470, 130, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -53,12 +238,20 @@ public class UserRegister extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void bntFinishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntFinishActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bntFinishActionPerformed
 
     /**
      * @param args the command line arguments
@@ -97,8 +290,56 @@ public class UserRegister extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bntFinish;
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnLogin;
+    private javax.swing.JButton btnLogin1;
+    private javax.swing.JButton btnRegister;
+    private javax.swing.JButton btnRegister1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator10;
+    private javax.swing.JSeparator jSeparator11;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
+    private javax.swing.JSeparator jSeparator9;
+    private javax.swing.JLabel lblAddress;
+    private javax.swing.JLabel lblEdad;
+    private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblEmail1;
+    private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblPhoneNumber;
+    private javax.swing.JLabel lblUsername;
+    private javax.swing.JTextField txtAddress;
+    private javax.swing.JTextField txtEdad;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtEmail1;
+    private javax.swing.JTextField txtEmail2;
+    private javax.swing.JTextField txtName;
+    private javax.swing.JPasswordField txtPassword;
+    private javax.swing.JPasswordField txtPassword1;
+    private javax.swing.JPasswordField txtPassword2;
+    private javax.swing.JTextField txtPhoneNumber;
+    private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }
