@@ -55,7 +55,7 @@ public class UsuarioController {
         }
     }
 
-    public void selectLogin(String email,String password) {
+    public boolean selectLogin(String email,String password) {
         // Establecemos la conexión con la base de datos
         try (Connection conn = conexion.conectarMySQL()) {
             // Verificamos si la conexión fue exitosa
@@ -79,6 +79,7 @@ public class UsuarioController {
                     
                     while (rs.next()) {
                         System.out.println("Name: " + rs.getString("name") + ", Email: " + rs.getString("email") + ", Edad: " + rs.getInt("age"));
+                        return true;
                     }
                 }
             } else {
@@ -88,7 +89,7 @@ public class UsuarioController {
             System.out.println("Ocurrió un error al realizar la selección en la base de datos");
             e.printStackTrace();
         }
-       
+       return false;
     }
 
     public void delete(String correo) {
