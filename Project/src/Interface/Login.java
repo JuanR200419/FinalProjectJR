@@ -172,10 +172,6 @@ UsuarioController control;
         String contrasena = new String(txtPassword.getPassword());
        boolean entrada = control.selectLogin(email, contrasena);
         if(email.equals("admin") && contrasena.equals("admin")){
-            UserAdmin vent = new UserAdmin();
-            vent.setVisible(true);
-            vent.setLocationRelativeTo(this);
-            this.dispose();
         }else if(entrada ==true){
         
         
