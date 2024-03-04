@@ -1,0 +1,8 @@
+CREATE TABLE rooms (
+id INT AUTO_INCREMENT PRIMARY KEY UNIQUE,
+numberRoom INT NOT NULL,
+typeRoom VARCHAR (120) NOT NULL,
+priceNigth DOUBLE NOT NULL,
+avalability BOOLEAN NOT NULL,
+amenitiesDetails VARCHAR (120) NOT NULL
+)
