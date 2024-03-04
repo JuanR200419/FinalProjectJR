@@ -17,9 +17,9 @@ public class User {
     private String email;
     private String countDetails;
     private int typeUser;
-    private String adress;
+    private String address;
 
-    public User( String name, int age, String username, String password, String email, String countDetails, int typeUser, String adress) {
+    public User(String name, int age, String username, String password, String email, String countDetails, int typeUser, String address) {
 
         this.name = name;
         this.age = age;
@@ -28,7 +28,7 @@ public class User {
         this.email = email;
         this.countDetails = countDetails;
         this.typeUser = typeUser;
-        this.adress = adress;
+        this.address = address;
     }
 
     public int getId() {
@@ -95,12 +95,12 @@ public class User {
         this.typeUser = typeUser;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String adress) {
+        this.address = adress;
     }
     
 }

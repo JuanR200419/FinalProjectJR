@@ -170,8 +170,15 @@ UsuarioController control;
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         String email = txtEmail.getText();
         String contrasena = new String(txtPassword.getPassword());
-        control.selectLogin(email, contrasena);
-        
+       int entrada = control.selectLogin(email, contrasena);
+        if(entrada ==1){
+            Administration admin = new Administration();
+            admin.setVisible(true);
+            admin.setLocationRelativeTo(this);
+            this.dispose();
+        }else if(entrada ==2){
+            
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLoginActionPerformed
 
