@@ -4,17 +4,23 @@
  */
 package Interface;
 
+import Controller.UsuarioController;
+import Models.User;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author juan
  */
 public class Administration extends javax.swing.JFrame {
 
+    UsuarioController control;
     /**
      * Creates new form Administration
      */
     public Administration() {
         initComponents();
+        control = new UsuarioController();
     }
 
     /**
@@ -26,77 +32,480 @@ public class Administration extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        PanelPrincipal = new javax.swing.JTabbedPane();
+        PanelGestionarUsuario = new javax.swing.JPanel();
+        PanelDentroGestion1 = new javax.swing.JPanel();
+        btnBorrar = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        btnRegister5 = new javax.swing.JButton();
+        btnBuscar = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
+        PanelDentroGestion = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        lblName = new javax.swing.JLabel();
+        txtName = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        txtEdad = new javax.swing.JTextField();
+        lblEdad = new javax.swing.JLabel();
+        txtAddress = new javax.swing.JTextField();
+        jSeparator3 = new javax.swing.JSeparator();
+        lblAddress = new javax.swing.JLabel();
+        txtPhoneNumber = new javax.swing.JTextField();
+        lblPhoneNumber = new javax.swing.JLabel();
+        txtUsername = new javax.swing.JTextField();
+        jSeparator5 = new javax.swing.JSeparator();
+        lblUsername = new javax.swing.JLabel();
+        jSeparator6 = new javax.swing.JSeparator();
+        txtEmail = new javax.swing.JTextField();
+        lblEmail = new javax.swing.JLabel();
+        jSeparator7 = new javax.swing.JSeparator();
+        lblEmail1 = new javax.swing.JLabel();
+        txtID = new javax.swing.JTextField();
+        lblName1 = new javax.swing.JLabel();
+        jSeparator4 = new javax.swing.JSeparator();
+        txtPassword = new javax.swing.JTextField();
+        PanelAdminHotel = new javax.swing.JPanel();
+        PanelAdminHabita = new javax.swing.JPanel();
+
+        jLabel1.setText("jLabel1");
+
+        jPasswordField1.setText("jPasswordField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTabbedPane1.setBorder(javax.swing.BorderFactory.createTitledBorder("Paneles"));
+        PanelPrincipal.setBackground(new java.awt.Color(4, 27, 43));
+        PanelPrincipal.setForeground(new java.awt.Color(255, 255, 255));
+        PanelPrincipal.setFont(new java.awt.Font("Lohit Devanagari", 1, 15)); // NOI18N
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 755, Short.MAX_VALUE)
+        PanelDentroGestion1.setBackground(new java.awt.Color(0, 0, 102));
+        PanelDentroGestion1.setPreferredSize(new java.awt.Dimension(400, 500));
+
+        btnBorrar.setBackground(new java.awt.Color(0, 153, 255));
+        btnBorrar.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        btnBorrar.setForeground(new java.awt.Color(255, 255, 255));
+        btnBorrar.setText("BORRAR");
+        btnBorrar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrarActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Lohit Devanagari", 1, 40)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Gestion De Admin");
+
+        btnRegister5.setBackground(new java.awt.Color(0, 153, 255));
+        btnRegister5.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        btnRegister5.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegister5.setText(" REGISTRAR USUARIO");
+        btnRegister5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnRegister5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegister5ActionPerformed(evt);
+            }
+        });
+
+        btnBuscar.setBackground(new java.awt.Color(0, 153, 255));
+        btnBuscar.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscar.setText("BUSCAR");
+        btnBuscar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
+        btnActualizar.setBackground(new java.awt.Color(0, 153, 255));
+        btnActualizar.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        btnActualizar.setForeground(new java.awt.Color(255, 255, 255));
+        btnActualizar.setText("ACTUALIZAR");
+        btnActualizar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout PanelDentroGestion1Layout = new javax.swing.GroupLayout(PanelDentroGestion1);
+        PanelDentroGestion1.setLayout(PanelDentroGestion1Layout);
+        PanelDentroGestion1Layout.setHorizontalGroup(
+            PanelDentroGestion1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelDentroGestion1Layout.createSequentialGroup()
+                .addGroup(PanelDentroGestion1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelDentroGestion1Layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PanelDentroGestion1Layout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addGroup(PanelDentroGestion1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnRegister5, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                            .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnBorrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(30, 30, 30))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 332, Short.MAX_VALUE)
+        PanelDentroGestion1Layout.setVerticalGroup(
+            PanelDentroGestion1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelDentroGestion1Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(btnRegister5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jTabbedPane1.addTab("Registrar Administrador", jPanel1);
+        PanelDentroGestion.setBackground(new java.awt.Color(4, 27, 43));
+        PanelDentroGestion.setPreferredSize(new java.awt.Dimension(400, 500));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 755, Short.MAX_VALUE)
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logo_mid.jpg"))); // NOI18N
+
+        lblName.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        lblName.setForeground(new java.awt.Color(255, 255, 255));
+        lblName.setText("NOMBRE");
+
+        txtName.setBackground(new java.awt.Color(0, 0, 102));
+        txtName.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtName.setForeground(new java.awt.Color(73, 181, 172));
+        txtName.setBorder(null);
+        txtName.setCaretColor(new java.awt.Color(73, 181, 172));
+
+        jSeparator1.setBackground(new java.awt.Color(0, 153, 255));
+        jSeparator1.setForeground(new java.awt.Color(0, 153, 255));
+
+        jSeparator2.setBackground(new java.awt.Color(0, 153, 255));
+        jSeparator2.setForeground(new java.awt.Color(0, 153, 255));
+
+        txtEdad.setBackground(new java.awt.Color(0, 0, 102));
+        txtEdad.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtEdad.setForeground(new java.awt.Color(73, 181, 172));
+        txtEdad.setBorder(null);
+        txtEdad.setCaretColor(new java.awt.Color(73, 181, 172));
+        txtEdad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtEdadKeyTyped(evt);
+            }
+        });
+
+        lblEdad.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        lblEdad.setForeground(new java.awt.Color(255, 255, 255));
+        lblEdad.setText("EDAD");
+
+        txtAddress.setBackground(new java.awt.Color(0, 0, 102));
+        txtAddress.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtAddress.setForeground(new java.awt.Color(73, 181, 172));
+        txtAddress.setBorder(null);
+        txtAddress.setCaretColor(new java.awt.Color(73, 181, 172));
+
+        jSeparator3.setBackground(new java.awt.Color(0, 153, 255));
+        jSeparator3.setForeground(new java.awt.Color(0, 153, 255));
+
+        lblAddress.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        lblAddress.setForeground(new java.awt.Color(255, 255, 255));
+        lblAddress.setText("DIRECCIÓN");
+
+        txtPhoneNumber.setBackground(new java.awt.Color(0, 0, 102));
+        txtPhoneNumber.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtPhoneNumber.setForeground(new java.awt.Color(73, 181, 172));
+        txtPhoneNumber.setBorder(null);
+        txtPhoneNumber.setCaretColor(new java.awt.Color(73, 181, 172));
+
+        lblPhoneNumber.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        lblPhoneNumber.setForeground(new java.awt.Color(255, 255, 255));
+        lblPhoneNumber.setText("TELEFONO");
+
+        txtUsername.setBackground(new java.awt.Color(0, 0, 102));
+        txtUsername.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtUsername.setForeground(new java.awt.Color(73, 181, 172));
+        txtUsername.setBorder(null);
+        txtUsername.setCaretColor(new java.awt.Color(73, 181, 172));
+
+        jSeparator5.setBackground(new java.awt.Color(0, 153, 255));
+        jSeparator5.setForeground(new java.awt.Color(0, 153, 255));
+
+        lblUsername.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        lblUsername.setForeground(new java.awt.Color(255, 255, 255));
+        lblUsername.setText("NOMBRE DE USUARIO");
+
+        jSeparator6.setBackground(new java.awt.Color(0, 153, 255));
+        jSeparator6.setForeground(new java.awt.Color(0, 153, 255));
+
+        txtEmail.setBackground(new java.awt.Color(0, 0, 102));
+        txtEmail.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtEmail.setForeground(new java.awt.Color(73, 181, 172));
+        txtEmail.setBorder(null);
+        txtEmail.setCaretColor(new java.awt.Color(73, 181, 172));
+
+        lblEmail.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        lblEmail.setForeground(new java.awt.Color(255, 255, 255));
+        lblEmail.setText("CORREO ELECTRONICO");
+
+        jSeparator7.setBackground(new java.awt.Color(0, 153, 255));
+        jSeparator7.setForeground(new java.awt.Color(0, 153, 255));
+
+        lblEmail1.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        lblEmail1.setForeground(new java.awt.Color(255, 255, 255));
+        lblEmail1.setText("CONTRASEÑA");
+
+        txtID.setBackground(new java.awt.Color(0, 0, 102));
+        txtID.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtID.setForeground(new java.awt.Color(73, 181, 172));
+        txtID.setBorder(null);
+        txtID.setCaretColor(new java.awt.Color(73, 181, 172));
+
+        lblName1.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        lblName1.setForeground(new java.awt.Color(255, 255, 255));
+        lblName1.setText("ID");
+
+        jSeparator4.setBackground(new java.awt.Color(0, 153, 255));
+        jSeparator4.setForeground(new java.awt.Color(0, 153, 255));
+
+        txtPassword.setBackground(new java.awt.Color(0, 0, 102));
+        txtPassword.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtPassword.setForeground(new java.awt.Color(73, 181, 172));
+        txtPassword.setBorder(null);
+        txtPassword.setCaretColor(new java.awt.Color(73, 181, 172));
+
+        javax.swing.GroupLayout PanelDentroGestionLayout = new javax.swing.GroupLayout(PanelDentroGestion);
+        PanelDentroGestion.setLayout(PanelDentroGestionLayout);
+        PanelDentroGestionLayout.setHorizontalGroup(
+            PanelDentroGestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelDentroGestionLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(PanelDentroGestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelDentroGestionLayout.createSequentialGroup()
+                        .addGroup(PanelDentroGestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblName1)
+                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblName))
+                        .addGap(40, 40, 40)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblEdad)
+                    .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAddress)
+                    .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPhoneNumber)
+                    .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblUsername)
+                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblEmail)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(PanelDentroGestionLayout.createSequentialGroup()
+                        .addComponent(lblEmail1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 332, Short.MAX_VALUE)
+        PanelDentroGestionLayout.setVerticalGroup(
+            PanelDentroGestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelDentroGestionLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(PanelDentroGestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelDentroGestionLayout.createSequentialGroup()
+                        .addComponent(lblName1)
+                        .addGap(5, 5, 5)
+                        .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addComponent(lblName))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
+                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(lblEdad)
+                .addGap(5, 5, 5)
+                .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(lblAddress)
+                .addGap(5, 5, 5)
+                .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(lblPhoneNumber)
+                .addGap(5, 5, 5)
+                .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(lblUsername)
+                .addGap(5, 5, 5)
+                .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(lblEmail)
+                .addGap(5, 5, 5)
+                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(PanelDentroGestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(PanelDentroGestionLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblEmail1)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jTabbedPane1.addTab("Administrar Hoteles", jPanel2);
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 755, Short.MAX_VALUE)
+        javax.swing.GroupLayout PanelGestionarUsuarioLayout = new javax.swing.GroupLayout(PanelGestionarUsuario);
+        PanelGestionarUsuario.setLayout(PanelGestionarUsuarioLayout);
+        PanelGestionarUsuarioLayout.setHorizontalGroup(
+            PanelGestionarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelGestionarUsuarioLayout.createSequentialGroup()
+                .addGroup(PanelGestionarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelGestionarUsuarioLayout.createSequentialGroup()
+                        .addGap(485, 485, 485)
+                        .addComponent(PanelDentroGestion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PanelGestionarUsuarioLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(PanelDentroGestion, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 332, Short.MAX_VALUE)
+        PanelGestionarUsuarioLayout.setVerticalGroup(
+            PanelGestionarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelGestionarUsuarioLayout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(PanelDentroGestion1, javax.swing.GroupLayout.PREFERRED_SIZE, 690, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(PanelDentroGestion, javax.swing.GroupLayout.PREFERRED_SIZE, 690, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        jTabbedPane1.addTab("Administrar Habitaciones", jPanel3);
+        PanelPrincipal.addTab("Gestionar Usuarios", PanelGestionarUsuario);
+
+        javax.swing.GroupLayout PanelAdminHotelLayout = new javax.swing.GroupLayout(PanelAdminHotel);
+        PanelAdminHotel.setLayout(PanelAdminHotelLayout);
+        PanelAdminHotelLayout.setHorizontalGroup(
+            PanelAdminHotelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 885, Short.MAX_VALUE)
+        );
+        PanelAdminHotelLayout.setVerticalGroup(
+            PanelAdminHotelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 688, Short.MAX_VALUE)
+        );
+
+        PanelPrincipal.addTab("Administrar Hoteles", PanelAdminHotel);
+
+        javax.swing.GroupLayout PanelAdminHabitaLayout = new javax.swing.GroupLayout(PanelAdminHabita);
+        PanelAdminHabita.setLayout(PanelAdminHabitaLayout);
+        PanelAdminHabitaLayout.setHorizontalGroup(
+            PanelAdminHabitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 885, Short.MAX_VALUE)
+        );
+        PanelAdminHabitaLayout.setVerticalGroup(
+            PanelAdminHabitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 688, Short.MAX_VALUE)
+        );
+
+        PanelPrincipal.addTab("Administrar Habitaciones", PanelAdminHabita);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 777, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 765, Short.MAX_VALUE)
-                    .addContainerGap()))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(PanelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 404, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
-                    .addContainerGap()))
+            .addComponent(PanelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 723, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtEdadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEdadKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEdadKeyTyped
+
+    private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
+        int id =Integer.parseInt(txtID.getText());
+        control.delete(id);
+        limpiar();
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBorrarActionPerformed
+
+    private void btnRegister5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegister5ActionPerformed
+        
+        String nombre = txtName.getText();
+        String usuario = txtUsername.getText();
+        int edad = Integer.parseInt(txtEdad.getText());
+        String correo = txtEmail.getText();
+        String contrasena = (txtPassword.getText());
+        String direccion = txtAddress.getText();
+        String telefono = txtPhoneNumber.getText();
+        User user = new User(nombre, edad,usuario, contrasena, correo, telefono, 2, direccion);
+        control.insert(user);
+        limpiar();
+        JOptionPane.showMessageDialog(null, "Ha creado el usuar de: "+nombre);
+    }//GEN-LAST:event_btnRegister5ActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        int id =Integer.parseInt(txtID.getText());
+        User user=control.buscarAdmin(id);
+        if(user !=null){
+        txtName.setText(user.getName());
+        txtEdad.setText(Integer.toString(user.getAge()));
+        txtUsername.setText(user.getUsername());
+        txtPassword.setText(user.getPassword());
+        txtEmail.setText(user.getEmail());
+        txtPhoneNumber.setText(user.getCountDetails());
+        txtAddress.setText(user.getAddress());
+        }else{
+        JOptionPane.showMessageDialog(null, "No se ha encontrado al usuario con esa id ");
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarActionPerformed
+    
+    private void limpiar(){
+        txtID.setText(" ");
+     txtName.setText("");
+        txtEdad.setText("");
+        txtUsername.setText("");
+        txtPassword.setText("");
+        txtEmail.setText("");
+        txtPhoneNumber.setText("");
+        txtAddress.setText("");
+    
+    }
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+          String nombre = txtName.getText();
+        String usuario = txtUsername.getText();
+        int edad = Integer.parseInt(txtEdad.getText());
+        String correo = txtEmail.getText();
+        String contrasena = (txtPassword.getText());
+        String direccion = txtAddress.getText();
+        String telefono = txtPhoneNumber.getText();
+        User user = new User(nombre, edad,usuario, contrasena, correo, telefono, 2, direccion);
+        control.update(user);
+        limpiar();
+
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnActualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -134,9 +543,42 @@ public class Administration extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JPanel PanelAdminHabita;
+    private javax.swing.JPanel PanelAdminHotel;
+    private javax.swing.JPanel PanelDentroGestion;
+    private javax.swing.JPanel PanelDentroGestion1;
+    private javax.swing.JPanel PanelGestionarUsuario;
+    private javax.swing.JTabbedPane PanelPrincipal;
+    private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnBorrar;
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnRegister5;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JLabel lblAddress;
+    private javax.swing.JLabel lblEdad;
+    private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblEmail1;
+    private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblName1;
+    private javax.swing.JLabel lblPhoneNumber;
+    private javax.swing.JLabel lblUsername;
+    private javax.swing.JTextField txtAddress;
+    private javax.swing.JTextField txtEdad;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtID;
+    private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtPassword;
+    private javax.swing.JTextField txtPhoneNumber;
+    private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }
