@@ -13,7 +13,7 @@ public class Hotel {
     private String nameHotel;
     private String adress;
     private String classification;
-    //comodidades del hotel ejem. sala de juegos jacuzzi etc
+    //hotel amenities, example: games room, jacuzzi etc.
     private String modCons;
     private String pictures;
 
@@ -73,6 +73,5 @@ public class Hotel {
     public void setPictures(String pictures) {
         this.pictures = pictures;
     }
-    
-    
+
 }

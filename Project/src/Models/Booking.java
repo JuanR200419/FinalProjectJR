@@ -12,11 +12,11 @@ public class Booking {
     private int id;
     private User user;
     private Hotel hotel;
-    //habitación de hotel
+    //hotelroom
     private Room room;
     private String entryDate;
     private String exitDate;
-    //tiene 3 estados (confirmada, cancelada, pendiente)
+    //It have 3 states (confirm,ed canceled, pending)
     private String state;
     private double totalPrice;
 

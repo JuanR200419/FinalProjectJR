@@ -4,7 +4,7 @@
  */
 package Interface;
 
-import Controller.UsuarioController;
+import Controller.UserController;
 import Models.User;
 
 /**
@@ -12,13 +12,13 @@ import Models.User;
  * @author juan
  */
 public class UserRegister extends javax.swing.JFrame {
-    UsuarioController control;
+    UserController control;
     /**
      * Creates new form RegisterUser
      */
     public UserRegister() {
         initComponents();
-        control = new UsuarioController();
+        control = new UserController();
     }
 
     /**

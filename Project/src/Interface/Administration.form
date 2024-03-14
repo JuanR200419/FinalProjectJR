@@ -44,7 +44,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="PanelPrincipal" alignment="0" pref="723" max="32767" attributes="0"/>
+          <Component id="PanelPrincipal" min="-2" pref="782" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -64,6 +64,28 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
+        <Container class="javax.swing.JPanel" name="PanelAdminHabita">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Administrar Habitaciones">
+                <Property name="tabTitle" type="java.lang.String" value="Administrar Habitaciones"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="885" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="747" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+        </Container>
         <Container class="javax.swing.JPanel" name="PanelGestionarUsuario">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
@@ -93,11 +115,14 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
-                      <Component id="PanelDentroGestion1" min="-2" pref="690" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="PanelDentroGestion1" alignment="1" pref="732" max="32767" attributes="0"/>
+                          <Component id="PanelDentroGestion" alignment="1" min="-2" pref="732" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="PanelDentroGestion" min="-2" pref="690" max="-2" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -124,10 +149,10 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="90" pref="90" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="btnRegister5" pref="190" max="32767" attributes="0"/>
-                                      <Component id="btnBuscar" max="32767" attributes="0"/>
-                                      <Component id="btnActualizar" max="32767" attributes="0"/>
-                                      <Component id="btnBorrar" max="32767" attributes="0"/>
+                                      <Component id="btnRegister" pref="190" max="32767" attributes="0"/>
+                                      <Component id="btnSearch" max="32767" attributes="0"/>
+                                      <Component id="btnUpdate" max="32767" attributes="0"/>
+                                      <Component id="btnDelete" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -141,19 +166,20 @@
                           <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
                           <Component id="jLabel3" min="-2" pref="53" max="-2" attributes="0"/>
                           <EmptySpace min="27" pref="27" max="-2" attributes="0"/>
-                          <Component id="btnRegister5" min="-2" pref="50" max="-2" attributes="0"/>
+                          <Component id="btnRegister" min="-2" pref="50" max="-2" attributes="0"/>
                           <EmptySpace min="40" pref="40" max="-2" attributes="0"/>
-                          <Component id="btnBuscar" min="-2" pref="50" max="-2" attributes="0"/>
+                          <Component id="btnSearch" min="-2" pref="50" max="-2" attributes="0"/>
                           <EmptySpace min="40" pref="40" max="-2" attributes="0"/>
-                          <Component id="btnActualizar" min="-2" pref="50" max="-2" attributes="0"/>
+                          <Component id="btnUpdate" min="-2" pref="50" max="-2" attributes="0"/>
                           <EmptySpace min="50" pref="50" max="-2" attributes="0"/>
-                          <Component id="btnBorrar" min="-2" pref="50" max="-2" attributes="0"/>
+                          <Component id="btnDelete" min="-2" pref="50" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JButton" name="btnBorrar">
+                <Component class="javax.swing.JButton" name="btnDelete">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="99" red="0" type="rgb"/>
@@ -172,7 +198,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBorrarActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel3">
@@ -186,7 +212,7 @@
                     <Property name="text" type="java.lang.String" value="Gestion De Admin"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnRegister5">
+                <Component class="javax.swing.JButton" name="btnRegister">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="99" red="0" type="rgb"/>
@@ -205,10 +231,10 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegister5ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegisterActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnBuscar">
+                <Component class="javax.swing.JButton" name="btnSearch">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="99" red="0" type="rgb"/>
@@ -227,10 +253,10 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSearchActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnActualizar">
+                <Component class="javax.swing.JButton" name="btnUpdate">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="99" red="0" type="rgb"/>
@@ -249,7 +275,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnActualizarActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUpdateActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -267,9 +293,20 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblUsername" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblEmail1" min="-2" pref="120" max="-2" attributes="0"/>
+                              <Component id="jSeparator8" min="-2" pref="270" max="-2" attributes="0"/>
+                              <Component id="jSeparator6" min="-2" pref="270" max="-2" attributes="0"/>
+                              <Component id="txtPassword" min="-2" pref="270" max="-2" attributes="0"/>
+                              <Component id="txtPhoneNumber" min="-2" pref="270" max="-2" attributes="0"/>
+                              <Component id="jSeparator9" min="-2" pref="270" max="-2" attributes="0"/>
+                              <Component id="txtUsername" min="-2" pref="270" max="-2" attributes="0"/>
+                              <Component id="jSeparator5" min="-2" pref="270" max="-2" attributes="0"/>
+                              <Component id="lblEmail" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtEmail" min="-2" pref="270" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="lblName1" min="-2" max="-2" attributes="0"/>
@@ -283,25 +320,12 @@
                               <Component id="txtName" min="-2" pref="270" max="-2" attributes="0"/>
                               <Component id="jSeparator1" min="-2" pref="270" max="-2" attributes="0"/>
                               <Component id="lblEdad" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtEdad" min="-2" pref="270" max="-2" attributes="0"/>
+                              <Component id="txtAge" min="-2" pref="270" max="-2" attributes="0"/>
                               <Component id="jSeparator2" min="-2" pref="270" max="-2" attributes="0"/>
                               <Component id="lblAddress" min="-2" max="-2" attributes="0"/>
                               <Component id="txtAddress" min="-2" pref="270" max="-2" attributes="0"/>
                               <Component id="jSeparator3" min="-2" pref="270" max="-2" attributes="0"/>
                               <Component id="lblPhoneNumber" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtPhoneNumber" min="-2" pref="270" max="-2" attributes="0"/>
-                              <Component id="lblUsername" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtUsername" min="-2" pref="270" max="-2" attributes="0"/>
-                              <Component id="jSeparator5" min="-2" pref="270" max="-2" attributes="0"/>
-                              <Component id="lblEmail" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtEmail" min="-2" pref="270" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Component id="lblEmail1" min="-2" pref="120" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jSeparator6" min="-2" pref="270" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="txtPassword" min="-2" pref="270" max="-2" attributes="0"/>
-                              <Component id="jSeparator7" min="-2" pref="270" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="21" max="32767" attributes="0"/>
                       </Group>
@@ -330,7 +354,7 @@
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           <Component id="lblEdad" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
-                          <Component id="txtEdad" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="txtAge" min="-2" pref="40" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
@@ -339,13 +363,15 @@
                           <Component id="txtAddress" min="-2" pref="40" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           <Component id="jSeparator3" min="-2" pref="10" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="lblPhoneNumber" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                           <Component id="txtPhoneNumber" min="-2" pref="40" max="-2" attributes="0"/>
-                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jSeparator9" min="-2" pref="10" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="lblUsername" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="txtUsername" min="-2" pref="40" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           <Component id="jSeparator5" min="-2" pref="10" max="-2" attributes="0"/>
@@ -353,17 +379,14 @@
                           <Component id="lblEmail" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
                           <Component id="txtEmail" min="-2" pref="40" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jSeparator6" min="-2" pref="10" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="lblEmail1" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                          <Component id="jSeparator6" min="-2" pref="10" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="lblEmail1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="txtPassword" min="-2" pref="40" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jSeparator7" min="-2" pref="10" max="-2" attributes="0"/>
+                          <Component id="jSeparator8" min="-2" pref="10" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -426,7 +449,7 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtEdad">
+                <Component class="javax.swing.JTextField" name="txtAge">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="66" green="0" red="0" type="rgb"/>
@@ -445,7 +468,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtEdadKeyTyped"/>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtAgeKeyTyped"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblEdad">
@@ -609,16 +632,6 @@
                     <Property name="text" type="java.lang.String" value="CORREO ELECTRONICO"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JSeparator" name="jSeparator7">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="99" red="0" type="rgb"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="99" red="0" type="rgb"/>
-                    </Property>
-                  </Properties>
-                </Component>
                 <Component class="javax.swing.JLabel" name="lblEmail1">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -689,6 +702,26 @@
                     </Property>
                   </Properties>
                 </Component>
+                <Component class="javax.swing.JSeparator" name="jSeparator8">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="99" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="99" red="0" type="rgb"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JSeparator" name="jSeparator9">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="99" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="99" red="0" type="rgb"/>
+                    </Property>
+                  </Properties>
+                </Component>
               </SubComponents>
             </Container>
           </SubComponents>
@@ -710,29 +743,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="688" max="32767" attributes="0"/>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-        </Container>
-        <Container class="javax.swing.JPanel" name="PanelAdminHabita">
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Administrar Habitaciones">
-                <Property name="tabTitle" type="java.lang.String" value="Administrar Habitaciones"/>
-              </JTabbedPaneConstraints>
-            </Constraint>
-          </Constraints>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="885" max="32767" attributes="0"/>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="688" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="747" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>

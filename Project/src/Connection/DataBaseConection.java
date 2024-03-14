@@ -21,26 +21,26 @@ public class DataBaseConection {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        // Creamos un objeto de la clase ConexionMySQL
+        // We create an object of the ConexionMySQL class
         ConexionMySQL conexion = new ConexionMySQL();
 
-        // Establecemos la conexión con la base de datos
+        //We stablish the connection with database
         Connection conn = conexion.conectarMySQL();
 
-        // Creamos la consulta SQL
+        // We create the consultation SQL
         String consulta = "SELECT * FROM users";
 
         try {
-            // Creamos un objeto Statement para enviar consultas SQL a la base de datos
+            // We create a Statement object to send SQL queries to the database
             Statement stmt = conn.createStatement();
 
-            // Ejecutamos la consulta y obtenemos el conjunto de resultados
+            // We execute the query and obtain the result set
             ResultSet rs = stmt.executeQuery(consulta);
 
-            // Procesamos el conjunto de resultados
+            // We process the result set
             while (rs.next()) {
-                // Aquí puedes procesar cada fila del resultado de tu consulta
-                // Por ejemplo, puedes imprimir cada columna de la fila
+                // Here you can process each row of your query result
+                // For example, you can print each column in the row
                 System.out.println(rs.getString("email"));
                 System.out.println(rs.getString("name"));
                 System.out.println(rs.getString("age"));
@@ -49,7 +49,7 @@ public class DataBaseConection {
             }
             
 
-            // Cerramos los recursos
+            // We close the resources
             rs.close();
             stmt.close();
             conn.close();

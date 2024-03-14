@@ -5,41 +5,41 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConexionMySQL {
-    // Librería de MySQL
+    // Library de MySQL
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
 
-    // Nombre de la base de datos
+    // name database
     private static final String DATABASE = "dataBase";
 
     // Host
     private static final String HOSTNAME = "localhost";
 
-    // Puerto
+    // Port
     private static final String PORT = "3306";
 
-    // Ruta de nuestra base de datos (desactivamos el uso de SSL con "?useSSL=false")
+    // Rute of our datebase (we desactive the use of SSL with "?useSSL=false")
     private static final String URL = "jdbc:mysql://" + HOSTNAME + ":" + PORT + "/" + DATABASE + "?useSSL=false";
 
-    // Nombre de usuario
+    // username
     private static final String USERNAME = "root";
 
-    // Clave de usuario
+    // password user
     private static final String PASSWORD = "123";
 
     /**
-     * Este método se encarga de establecer la conexión con la base de datos.
+     * This method is responsible for establishing the connection with the database
      * @return Connection a la base de datos.
      */
     public static Connection conectarMySQL() {
         Connection conn = null;
 
         try {
-            // Cargamos el driver de MySQL
+            // We load the MySQL driver
             Class.forName(DRIVER);
-            // Establecemos la conexión con la base de datos
+            //We stablish the connection with database
             conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
         } catch (ClassNotFoundException | SQLException e) {
-            // Imprimimos el error en caso de no poder establecer la conexión
+            // We print the error if the connection cannot be established
             e.printStackTrace();
         }
 

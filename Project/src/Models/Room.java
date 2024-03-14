@@ -11,7 +11,7 @@ package Models;
 public class Room {
     private int id;
     private int numberRoom;
-    // (individual, doble, suite, etc.)
+    // (individual, double, suite, etc.)
     private String typeRoom;
     private double priceNigth;
     private boolean availability;

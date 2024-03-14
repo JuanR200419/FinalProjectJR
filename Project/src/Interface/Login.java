@@ -4,20 +4,20 @@
  */
 package Interface;
 
-import Controller.UsuarioController;
+import Controller.UserController;
 
 /**
  *
  * @author juan
  */
 public class Login extends javax.swing.JFrame {
-UsuarioController control;
+UserController control;
     /**
      * Creates new form Login
      */
     public Login() {
         initComponents();
-        control = new UsuarioController();
+        control = new UserController();
     }
 
     /**
@@ -169,14 +169,14 @@ UsuarioController control;
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         String email = txtEmail.getText();
-        String contrasena = new String(txtPassword.getPassword());
-       int entrada = control.selectLogin(email, contrasena);
-        if(entrada ==1){
+        String password = new String(txtPassword.getPassword());
+        int login = control.selectLogin(email, password);
+        if(login == 1){
             Administration admin = new Administration();
             admin.setVisible(true);
             admin.setLocationRelativeTo(this);
             this.dispose();
-        }else if(entrada ==2){
+        }else if(login == 2){
             
         }
         // TODO add your handling code here:

@@ -9,22 +9,22 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-public class UsuarioController {
+public class UserController {
 
-    // Creamos un objeto de la clase ConexionMySQL
+    //We create an object of the class ConexionMySQL
     ConexionMySQL conexion;
 
-    public UsuarioController() {
+    public UserController() {
         this.conexion = new ConexionMySQL();
     }
 
     public void insert(User user) {
-        // Establecemos la conexión con la base de datos
+        //We stablish the connection with database
         try (Connection conn = conexion.conectarMySQL()) {
-            // Verificamos si la conexión fue exitosa
+            // We check if the connection was successful
             if (conn != null) {
-                // Preparamos la consulta SQL para insertar datos
-                String insertSQL = "INSERT INTO Usuarios (name,age ,username, password, email, countDetails,  typeUser, address) VALUES (?,?,?,?,?,?,?,?)";
+                // We prepare the consultation SQL for insert data
+                String insertSQL = "INSERT INTO Usuarios (name, age, username, password, email, countDetails, typeUser, address) VALUES (?,?,?,?,?,?,?,?)";
                 try (PreparedStatement pstmt = conn.prepareStatement(insertSQL)) {
                     pstmt.setString(1, user.getName());
                     pstmt.setInt(2, user.getAge());
@@ -35,10 +35,10 @@ public class UsuarioController {
                     pstmt.setInt(7, user.getTypeUser());
                     pstmt.setString(8, user.getAddress());
 
-                    // Ejecutamos la consulta
+                    //We execute the query
                     int rowsAffected = pstmt.executeUpdate();
 
-                    // Verificamos si la inserción fue exitosa
+                    // We check if the insert was successful
                     if (rowsAffected > 0) {
                         System.out.println("Inserción exitosa");
                         JOptionPane.showMessageDialog(null, "Se ha registrado con exito ");
@@ -57,9 +57,9 @@ public class UsuarioController {
 
     public int selectLogin(String email,String password) {
         int resultado=0;
-        // Establecemos la conexión con la base de datos
+        // We stablish the connection with database
         try (Connection conn = conexion.conectarMySQL()) {
-            // Verificamos si la conexión fue exitosa
+            // We check if the connection was successful
             if (conn != null) {
                 // Preparamos la consulta SQL para seleccionar datos
                 String selectSQL = "SELECT * FROM Usuarios Where email=? AND password=?";
@@ -67,21 +67,15 @@ public class UsuarioController {
                     pstmt.setString(2, password);
                     pstmt.setString(1, email);
                      
-                    // Ejecutamos la consulta
+                    //We execute the query
                     ResultSet rs = pstmt.executeQuery();
                    
-                    // Iteramos sobre los resultados
+                    // We iterate all the results
                         
                     if( rs.next() ){
                     return resultado= rs.getInt("typeUser");
                         
                     }
-                    
-                    
-//                    while (rs.next()) {
-//                        System.out.println("Name: " + rs.getString("name") + ", Email: " + rs.getString("email") + ", Edad: " + rs.getInt("age"));
-//                        return true;
-//                    }
                 }
             } else {
                 System.out.println("No se pudo establecer la conexión con la base de datos");
@@ -92,30 +86,24 @@ public class UsuarioController {
         }
        return -1;
     }
-   public User buscarAdmin(int id ) {
-        // Establecemos la conexión con la base de datos
+   public User searchAdmin(int id ) {
+        // We stablish the connection with database
         try (Connection conn = conexion.conectarMySQL()) {
-            // Verificamos si la conexión fue exitosa
+            /// We check if the connection was successful
             if (conn != null) {
-                // Preparamos la consulta SQL para seleccionar datos
+                // We prepare the consultation SQL for select data
                 String selectSQL = "SELECT * FROM Usuarios Where id=?";
                 try (PreparedStatement pstmt = conn.prepareStatement(selectSQL)) {
                     pstmt.setInt(1, id);                  
-                    // Ejecutamos la consulta
+                    //We execute the query
                     ResultSet rs = pstmt.executeQuery();
                    
-                    // Iteramos sobre los resultados
+                    // We iterate all the results
                         
                     if( rs.next() ){
                         User user = new User(rs.getString("name"),rs.getInt("age"), rs.getString("username"), rs.getString("password"), rs.getString("email"), rs.getString("countDetails"), rs.getInt("typeUser"), rs.getString("address"));
                       return user;
                     }
-                    
-                    
-//                    while (rs.next()) {
-//                        System.out.println("Name: " + rs.getString("name") + ", Email: " + rs.getString("email") + ", Edad: " + rs.getInt("age"));
-//                        return true;
-//                    }
                 }
             } else {
                 System.out.println("No se pudo establecer la conexión con la base de datos");
@@ -127,11 +115,11 @@ public class UsuarioController {
         return null;
     }
     public void delete(int id) {
-        // Establecemos la conexión con la base de datos
+        // We stablish the connection with database
         try (Connection conn = conexion.conectarMySQL()) {
-            // Verificamos si la conexión fue exitosa
+            // We check if the connection was successful
             if (conn != null) {
-                // Preparamos la consulta SQL para seleccionar datos
+                // We prepare the consultation SQL for select data
                 String deleteSQL = "DELETE FROM Usuarios WHERE id = ?";
                 try (PreparedStatement pstmt = conn.prepareStatement(deleteSQL)) {
                     pstmt.setInt(1, id);
@@ -151,11 +139,11 @@ public class UsuarioController {
     }
 
    public void update(User user) {
-    // Establecemos la conexión con la base de datos
+    // We stablish the connection with database
     try (Connection conn = conexion.conectarMySQL()) {
-        // Verificamos si la conexión fue exitosa
+        // We check if the connection was successful
         if (conn != null) {
-            // Preparamos la consulta SQL para actualizar datos
+            // We prepare the consultation SQL for select data
             String updateSQL = "UPDATE Usuarios SET name=?, age=?, username=?, password=?, email=?, countDetails=?, typeUser=?, address=? WHERE id=?";
             try (PreparedStatement pstmt = conn.prepareStatement(updateSQL)) {
                 pstmt.setString(1, user.getName());
@@ -166,7 +154,7 @@ public class UsuarioController {
                 pstmt.setString(6, user.getCountDetails());
                 pstmt.setInt(7, user.getTypeUser());
                 pstmt.setString(8, user.getAddress());
-                pstmt.setInt(9, user.getId()); // Suponiendo que tienes un método getId() en la clase User para obtener el id del usuario
+                pstmt.setInt(9, user.getId());
                 pstmt.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Su perfil se ha actualizado  ");
             }
