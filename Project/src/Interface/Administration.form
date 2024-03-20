@@ -297,7 +297,7 @@
                           <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lblUsername" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblEmail1" min="-2" pref="120" max="-2" attributes="0"/>
+                              <Component id="lblPassword" min="-2" pref="120" max="-2" attributes="0"/>
                               <Component id="jSeparator8" min="-2" pref="270" max="-2" attributes="0"/>
                               <Component id="jSeparator6" min="-2" pref="270" max="-2" attributes="0"/>
                               <Component id="txtPassword" min="-2" pref="270" max="-2" attributes="0"/>
@@ -379,9 +379,10 @@
                           <Component id="lblEmail" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
                           <Component id="txtEmail" min="-2" pref="40" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           <Component id="jSeparator6" min="-2" pref="10" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="lblEmail1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblPassword" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="txtPassword" min="-2" pref="40" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -632,7 +633,7 @@
                     <Property name="text" type="java.lang.String" value="CORREO ELECTRONICO"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="lblEmail1">
+                <Component class="javax.swing.JLabel" name="lblPassword">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Lohit Devanagari" size="18" style="1"/>

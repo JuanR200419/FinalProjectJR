@@ -1,24 +1,30 @@
-package Controller;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package Dao;
 
 import Connection.ConexionMySQL;
 import Models.User;
-import com.sun.source.tree.BreakTree;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-public class UserController {
-
-    //We create an object of the class ConexionMySQL
+/**
+ *
+ * @author jilssa
+ */
+public class Dao {
+    
     ConexionMySQL conexion;
-
-    public UserController() {
+    
+    public Dao() {
         this.conexion = new ConexionMySQL();
     }
-
-    public void insert(User user) {
+    
+        public void insert(User user) {
         //We stablish the connection with database
         try (Connection conn = conexion.conectarMySQL()) {
             // We check if the connection was successful
@@ -86,6 +92,7 @@ public class UserController {
         }
        return -1;
     }
+    
     public User searchAdmin(int id ) {
         // We stablish the connection with database
         try (Connection conn = conexion.conectarMySQL()) {
@@ -114,6 +121,7 @@ public class UserController {
         }
         return null;
     }
+    
     public void delete(int id) {
         // We stablish the connection with database
         try (Connection conn = conexion.conectarMySQL()) {
@@ -135,7 +143,6 @@ public class UserController {
             e.printStackTrace();
         }
          JOptionPane.showMessageDialog(null, "No se borro el usuario ");
-      
     }
 
     public void update(User user) {
@@ -166,4 +173,5 @@ public class UserController {
             e.printStackTrace();
         }
     }
+    
 }

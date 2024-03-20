@@ -62,7 +62,7 @@ public class Administration extends javax.swing.JFrame {
         jSeparator6 = new javax.swing.JSeparator();
         txtEmail = new javax.swing.JTextField();
         lblEmail = new javax.swing.JLabel();
-        lblEmail1 = new javax.swing.JLabel();
+        lblPassword = new javax.swing.JLabel();
         txtID = new javax.swing.JTextField();
         lblName1 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
@@ -264,9 +264,9 @@ public class Administration extends javax.swing.JFrame {
         lblEmail.setForeground(new java.awt.Color(255, 255, 255));
         lblEmail.setText("CORREO ELECTRONICO");
 
-        lblEmail1.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
-        lblEmail1.setForeground(new java.awt.Color(255, 255, 255));
-        lblEmail1.setText("CONTRASEÑA");
+        lblPassword.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        lblPassword.setForeground(new java.awt.Color(255, 255, 255));
+        lblPassword.setText("CONTRASEÑA");
 
         txtID.setBackground(new java.awt.Color(0, 0, 102));
         txtID.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
@@ -301,7 +301,7 @@ public class Administration extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(PanelDentroGestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblUsername)
-                    .addComponent(lblEmail1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -376,9 +376,10 @@ public class Administration extends javax.swing.JFrame {
                 .addComponent(lblEmail)
                 .addGap(5, 5, 5)
                 .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblEmail1)
+                .addComponent(lblPassword)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -574,9 +575,9 @@ public class Administration extends javax.swing.JFrame {
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblEdad;
     private javax.swing.JLabel lblEmail;
-    private javax.swing.JLabel lblEmail1;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblName1;
+    private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblPhoneNumber;
     private javax.swing.JLabel lblUsername;
     private javax.swing.JTextField txtAddress;
