@@ -5,6 +5,7 @@
 package Dao;
 
 import Connection.ConexionMySQL;
+import Interface.InterfaceUser;
 import Models.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,7 +17,7 @@ import javax.swing.JOptionPane;
  *
  * @author jilssa
  */
-public class Dao {
+public class Dao implements InterfaceUser{
     
     ConexionMySQL conexion;
     
