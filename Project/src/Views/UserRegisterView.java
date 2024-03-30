@@ -11,12 +11,12 @@ import Models.User;
  *
  * @author juan
  */
-public class UserRegister extends javax.swing.JFrame {
+public class UserRegisterView extends javax.swing.JFrame {
     UserController control;
     /**
      * Creates new form RegisterUser
      */
-    public UserRegister() {
+    public UserRegisterView() {
         initComponents();
         control = new UserController();
     }
@@ -270,7 +270,7 @@ public class UserRegister extends javax.swing.JFrame {
         String telefono = txtPhoneNumber.getText();
         User user = new User(nombre, edad,usuario, contrasena, correo, telefono, 2, direccion);
         control.insert(user);
-        Login ven = new Login();
+        LoginView ven = new LoginView();
         ven.setVisible(true);
         ven.setLocationRelativeTo(this);
         this.dispose();
@@ -298,21 +298,23 @@ public class UserRegister extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UserRegister.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserRegisterView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UserRegister.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserRegisterView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UserRegister.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserRegisterView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UserRegister.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UserRegisterView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UserRegister().setVisible(true);
+                new UserRegisterView().setVisible(true);
             }
         });
     }
