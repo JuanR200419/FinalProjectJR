@@ -28,7 +28,7 @@ public class UserController {
     }
 
     public void insert(User user) {
-        dao.insert(user);
+        dao.insertUser(user);
     }
 
     public int selectLogin(String email, String password) {
@@ -36,15 +36,15 @@ public class UserController {
     }
 
     public User searchAdmin(int id) {
-        return dao.searchAdmin(id);
+        return dao.searchUser(id);
     }
 
     public void delete(int id) {
-        dao.delete(id);
+        dao.deleteUser(id);
     }
 
     public void update(User user) {
-        dao.update(user);
+        dao.updateUser(user);
     }
     
       public Map<String, Object> selectUsers() {
