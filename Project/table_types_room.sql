@@ -1,0 +1,4 @@
+CREATE TABLE types_room (
+id_type_room INT AUTO_INCREMENT PRIMARY KEY UNIQUE,
+type_room VARCHAR (20) NOT NULL
+)

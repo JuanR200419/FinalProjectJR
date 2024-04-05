@@ -1,8 +1,9 @@
 CREATE TABLE rooms (
-id INT AUTO_INCREMENT PRIMARY KEY UNIQUE,
-numberRoom INT NOT NULL,
-typeRoom VARCHAR (120) NOT NULL,
-priceNigth DOUBLE NOT NULL,
-avalability BOOLEAN NOT NULL,
-amenitiesDetails VARCHAR (120) NOT NULL
+id_rooom INT AUTO_INCREMENT PRIMARY KEY UNIQUE,
+id_stade_room INT FOREIGN KEY,
+id_type_room INT FOREIGN KEY,
+id_hotel INT FOREIGN KEY,
+number_rooom INT NOT NULL,
+price_nigth FLOAT NOT NULL,
+room_amenities VARCHAR (120) NOT NULL
 )

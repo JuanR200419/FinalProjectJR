@@ -1,0 +1,4 @@
+CREATE TABLE stades_room (
+id_stade_room INT AUTO_INCREMENT PRIMARY KEY UNIQUE,
+type_stade VARCHAR (20) NOT NULL
+)
