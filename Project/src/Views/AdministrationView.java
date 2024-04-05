@@ -6,7 +6,10 @@ package Views;
 
 import Controller.UserController;
 import Models.User;
+import java.util.List;
+import java.util.Map;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -70,6 +73,14 @@ public class AdministrationView extends javax.swing.JFrame {
         jSeparator8 = new javax.swing.JSeparator();
         jSeparator9 = new javax.swing.JSeparator();
         PanelAdminHotel = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        PanelDentroGestion2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblUsuarios = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblHoteles = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblHabitaciones = new javax.swing.JTable();
 
         jLabel1.setText("jLabel1");
 
@@ -85,11 +96,11 @@ public class AdministrationView extends javax.swing.JFrame {
         PanelAdminHabita.setLayout(PanelAdminHabitaLayout);
         PanelAdminHabitaLayout.setHorizontalGroup(
             PanelAdminHabitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 885, Short.MAX_VALUE)
+            .addGap(0, 1119, Short.MAX_VALUE)
         );
         PanelAdminHabitaLayout.setVerticalGroup(
             PanelAdminHabitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 747, Short.MAX_VALUE)
+            .addGap(0, 864, Short.MAX_VALUE)
         );
 
         PanelPrincipal.addTab("Administrar Habitaciones", PanelAdminHabita);
@@ -391,14 +402,13 @@ public class AdministrationView extends javax.swing.JFrame {
         PanelGestionarUsuarioLayout.setHorizontalGroup(
             PanelGestionarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelGestionarUsuarioLayout.createSequentialGroup()
-                .addGroup(PanelGestionarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelGestionarUsuarioLayout.createSequentialGroup()
-                        .addGap(485, 485, 485)
-                        .addComponent(PanelDentroGestion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PanelGestionarUsuarioLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(PanelDentroGestion, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(PanelDentroGestion, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 612, Short.MAX_VALUE))
+            .addGroup(PanelGestionarUsuarioLayout.createSequentialGroup()
+                .addGap(485, 485, 485)
+                .addComponent(PanelDentroGestion1, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
+                .addContainerGap())
         );
         PanelGestionarUsuarioLayout.setVerticalGroup(
             PanelGestionarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -416,14 +426,101 @@ public class AdministrationView extends javax.swing.JFrame {
         PanelAdminHotel.setLayout(PanelAdminHotelLayout);
         PanelAdminHotelLayout.setHorizontalGroup(
             PanelAdminHotelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 885, Short.MAX_VALUE)
+            .addGap(0, 1119, Short.MAX_VALUE)
         );
         PanelAdminHotelLayout.setVerticalGroup(
             PanelAdminHotelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 747, Short.MAX_VALUE)
+            .addGap(0, 864, Short.MAX_VALUE)
         );
 
         PanelPrincipal.addTab("Administrar Hoteles", PanelAdminHotel);
+
+        PanelDentroGestion2.setBackground(new java.awt.Color(4, 27, 43));
+        PanelDentroGestion2.setPreferredSize(new java.awt.Dimension(400, 500));
+
+        tblUsuarios.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tblUsuarios);
+
+        tblHoteles.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(tblHoteles);
+
+        tblHabitaciones.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(tblHabitaciones);
+
+        javax.swing.GroupLayout PanelDentroGestion2Layout = new javax.swing.GroupLayout(PanelDentroGestion2);
+        PanelDentroGestion2.setLayout(PanelDentroGestion2Layout);
+        PanelDentroGestion2Layout.setHorizontalGroup(
+            PanelDentroGestion2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelDentroGestion2Layout.createSequentialGroup()
+                .addGroup(PanelDentroGestion2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelDentroGestion2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(67, 67, 67)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PanelDentroGestion2Layout.createSequentialGroup()
+                        .addGap(268, 268, 268)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(95, Short.MAX_VALUE))
+        );
+        PanelDentroGestion2Layout.setVerticalGroup(
+            PanelDentroGestion2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelDentroGestion2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PanelDentroGestion2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(PanelDentroGestion2, javax.swing.GroupLayout.PREFERRED_SIZE, 1074, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(PanelDentroGestion2, javax.swing.GroupLayout.PREFERRED_SIZE, 864, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        PanelPrincipal.addTab("Tablas ", jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -436,7 +533,9 @@ public class AdministrationView extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 782, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(PanelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 782, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(82, Short.MAX_VALUE))
         );
 
         pack();
@@ -467,7 +566,95 @@ public class AdministrationView extends javax.swing.JFrame {
         clean();
         JOptionPane.showMessageDialog(null, "Ha creado el usuar de: "+name);
     }//GEN-LAST:event_btnRegisterActionPerformed
+    
+        public void fillTableUsers() {
+        // Llamamos al método select del controlador de usuario. Este método devuelve un mapa con los nombres de las columnas, el número de columnas y los datos de la tabla.
+        Map<String, Object> result = control.selectUsers();
 
+        // Obtenemos los nombres de las columnas del mapa de resultados. Los nombres de las columnas se devuelven como una lista de cadenas.
+        List<String> columnNames = (List<String>) result.get("columnNames");
+
+        // Obtenemos los datos de la tabla del mapa de resultados. Los datos de la tabla se devuelven como una lista de listas de objetos. Cada lista interna representa una fila de la tabla y contiene los datos de esa fila.
+        List<List<Object>> tableData = (List<List<Object>>) result.get("tableData");
+
+        // Creamos un nuevo modelo de tabla. Un modelo de tabla es un objeto que gestiona los datos de una tabla.
+        DefaultTableModel model = new DefaultTableModel();
+
+        // Recorremos la lista de nombres de columnas
+        for (String columnName : columnNames) {
+            // Agregamos cada nombre de columna al modelo de la tabla. Esto crea las columnas en la tabla.
+            model.addColumn(columnName);
+        }
+
+        // Recorremos la lista de datos de la tabla
+        for (List<Object> rowData : tableData) {
+            // Agregamos cada fila de datos al modelo de la tabla. Esto agrega los datos a las columnas correspondientes en la tabla.
+            model.addRow(rowData.toArray());
+        }
+
+        // Establecemos el modelo en la tabla. Esto actualiza la tabla para mostrar los datos del modelo.
+        tblUsuarios.setModel(model);
+    }
+    
+            public void fillTableHotels() {
+        // Llamamos al método select del controlador de usuario. Este método devuelve un mapa con los nombres de las columnas, el número de columnas y los datos de la tabla.
+        Map<String, Object> result = control.selectHotels();
+
+        // Obtenemos los nombres de las columnas del mapa de resultados. Los nombres de las columnas se devuelven como una lista de cadenas.
+        List<String> columnNames = (List<String>) result.get("columnNames");
+
+        // Obtenemos los datos de la tabla del mapa de resultados. Los datos de la tabla se devuelven como una lista de listas de objetos. Cada lista interna representa una fila de la tabla y contiene los datos de esa fila.
+        List<List<Object>> tableData = (List<List<Object>>) result.get("tableData");
+
+        // Creamos un nuevo modelo de tabla. Un modelo de tabla es un objeto que gestiona los datos de una tabla.
+        DefaultTableModel model = new DefaultTableModel();
+
+        // Recorremos la lista de nombres de columnas
+        for (String columnName : columnNames) {
+            // Agregamos cada nombre de columna al modelo de la tabla. Esto crea las columnas en la tabla.
+            model.addColumn(columnName);
+        }
+
+        // Recorremos la lista de datos de la tabla
+        for (List<Object> rowData : tableData) {
+            // Agregamos cada fila de datos al modelo de la tabla. Esto agrega los datos a las columnas correspondientes en la tabla.
+            model.addRow(rowData.toArray());
+        }
+
+        // Establecemos el modelo en la tabla. Esto actualiza la tabla para mostrar los datos del modelo.
+        tblHoteles.setModel(model);
+    }
+        
+                public void fillTableRooms() {
+        // Llamamos al método select del controlador de usuario. Este método devuelve un mapa con los nombres de las columnas, el número de columnas y los datos de la tabla.
+        Map<String, Object> result = control.selectRooms();
+
+        // Obtenemos los nombres de las columnas del mapa de resultados. Los nombres de las columnas se devuelven como una lista de cadenas.
+        List<String> columnNames = (List<String>) result.get("columnNames");
+
+        // Obtenemos los datos de la tabla del mapa de resultados. Los datos de la tabla se devuelven como una lista de listas de objetos. Cada lista interna representa una fila de la tabla y contiene los datos de esa fila.
+        List<List<Object>> tableData = (List<List<Object>>) result.get("tableData");
+
+        // Creamos un nuevo modelo de tabla. Un modelo de tabla es un objeto que gestiona los datos de una tabla.
+        DefaultTableModel model = new DefaultTableModel();
+
+        // Recorremos la lista de nombres de columnas
+        for (String columnName : columnNames) {
+            // Agregamos cada nombre de columna al modelo de la tabla. Esto crea las columnas en la tabla.
+            model.addColumn(columnName);
+        }
+
+        // Recorremos la lista de datos de la tabla
+        for (List<Object> rowData : tableData) {
+            // Agregamos cada fila de datos al modelo de la tabla. Esto agrega los datos a las columnas correspondientes en la tabla.
+            model.addRow(rowData.toArray());
+        }
+
+        // Establecemos el modelo en la tabla. Esto actualiza la tabla para mostrar los datos del modelo.
+        tblHoteles.setModel(model);
+    }    
+        
+        
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         int id =Integer.parseInt(txtID.getText());
         User user=control.searchAdmin(id);
@@ -554,6 +741,7 @@ public class AdministrationView extends javax.swing.JFrame {
     private javax.swing.JPanel PanelAdminHotel;
     private javax.swing.JPanel PanelDentroGestion;
     private javax.swing.JPanel PanelDentroGestion1;
+    private javax.swing.JPanel PanelDentroGestion2;
     private javax.swing.JPanel PanelGestionarUsuario;
     private javax.swing.JTabbedPane PanelPrincipal;
     private javax.swing.JButton btnDelete;
@@ -563,7 +751,11 @@ public class AdministrationView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -580,6 +772,9 @@ public class AdministrationView extends javax.swing.JFrame {
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblPhoneNumber;
     private javax.swing.JLabel lblUsername;
+    private javax.swing.JTable tblHabitaciones;
+    private javax.swing.JTable tblHoteles;
+    private javax.swing.JTable tblUsuarios;
     private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtEmail;
