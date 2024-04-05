@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Models;
 
 /**
@@ -13,7 +9,7 @@ public class Hotel {
     private String nameHotel;
     private String adress;
     private String classification;
-    //hotel amenities, example: games room, jacuzzi etc.
+    //hotel ame  example: games room, jacuzzi etc.
     private String modCons;
     private String pictures;
 
