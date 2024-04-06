@@ -1,4 +1,4 @@
-package Controller;
+package Services;
 
 import Connection.ConexionMySQL;
 import Models.User;
@@ -47,16 +47,15 @@ public class UserController {
         dao.updateUser(user);
     }
     
-      public Map<String, Object> selectUsers() {
-      return dao.selectUsers();
-      }
-    
-     public Map<String, Object> selectHotels() {
-      return dao.selectHotels();
-      }
-     
-     
-     public Map<String, Object> selectRooms() {
-      return dao.selectRooms();
-      }
+    public Map<String, Object> selectUsers() {
+        return dao.selectUsers();
+    }
+
+    public Map<String, Object> selectHotels() {
+        return dao.selectHotels();
+    }
+
+    public Map<String, Object> selectRooms() {
+        return dao.selectRooms();
+    }
 }

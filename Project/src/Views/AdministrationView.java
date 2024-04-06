@@ -4,7 +4,7 @@
  */
 package Views;
 
-import Controller.UserController;
+import Services.UserController;
 import Models.User;
 import java.util.List;
 import java.util.Map;
