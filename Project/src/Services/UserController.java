@@ -14,6 +14,8 @@ import java.util.List;
 import java.util.Map;
 import javax.swing.JOptionPane;
 import Dao.Dao;
+import Models.Hotel;
+import Models.Room;
 
 public class UserController {
 
@@ -26,6 +28,7 @@ public class UserController {
         this.dao = new Dao();
 
     }
+// Metodos del Usuario
 
     public void insert(User user) {
         dao.insertUser(user);
@@ -46,7 +49,43 @@ public class UserController {
     public void update(User user) {
         dao.updateUser(user);
     }
-    
+// Metodos del Hotel
+
+    public Hotel searchHotel(int id) {
+        return dao.searchHotel(id);
+    }
+
+    public void insertHotel(Hotel hotel) {
+        dao.insertHotel(hotel);
+    }
+
+    public void deleteHotel(int id) {
+        dao.deleteHotel(id);
+    }
+
+    public void updateHotel(Hotel hotel) {
+        dao.updateHotel(hotel);
+    }
+
+    //Metodos De la Habitacion 
+    public Room searchRoom(int id) {
+        return dao.searchRoom(id);
+    }
+
+    public void insertRoom(Room room) {
+        dao.insertRoom(room);
+    }
+
+    public void deleteRoom(int id) {
+        dao.deleteRoom(id);
+    }
+
+    public void updateRoom(Room room) {
+        dao.updateRoom(room);
+    }
+
+// llenar tablas 
+
     public Map<String, Object> selectUsers() {
         return dao.selectUsers();
     }

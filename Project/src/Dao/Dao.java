@@ -5,8 +5,11 @@
 package Dao;
 
 import Connection.ConexionMySQL;
+import Interface.InterfaceHotel;
+import Interface.InterfaceRoom;
 import Interface.InterfaceUser;
 import Models.Hotel;
+import Models.Room;
 import Models.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,7 +26,7 @@ import javax.swing.JOptionPane;
  *
  * @author jilssa
  */
-public class Dao implements InterfaceUser{
+public class Dao implements InterfaceUser , InterfaceHotel,InterfaceRoom{
     
     ConexionMySQL conexion;
     
@@ -32,7 +35,7 @@ public class Dao implements InterfaceUser{
     }
     
      
-
+// Funtion for login
     public int selectLogin(String email,String password) {
         int resultado=0;
         // We stablish the connection with database
@@ -40,7 +43,7 @@ public class Dao implements InterfaceUser{
             // We check if the connection was successful
             if (conn != null) {
                 // Preparamos la consulta SQL para seleccionar datos
-                String selectSQL = "SELECT * FROM Usuarios Where email=? AND password=?";
+                String selectSQL = "SELECT * FROM users Where email=? AND password_user=?";
                 try (PreparedStatement pstmt = conn.prepareStatement(selectSQL)) {
                     pstmt.setString(2, password);
                     pstmt.setString(1, email);
@@ -51,7 +54,7 @@ public class Dao implements InterfaceUser{
                     // We iterate all the results
                         
                     if( rs.next() ){
-                    return resultado= rs.getInt("typeUser");
+                    return resultado= rs.getInt("user_rol");
                         
                     }
                 }
@@ -65,13 +68,14 @@ public class Dao implements InterfaceUser{
        return -1;
     }
     
+   // CRUD FOR USERS 
     public User searchUser(int id ) {
         // We stablish the connection with database
         try (Connection conn = conexion.conectarMySQL()) {
             /// We check if the connection was successful
             if (conn != null) {
                 // We prepare the consultation SQL for select data
-                String selectSQL = "SELECT * FROM Usuarios Where id=?";
+                String selectSQL = "SELECT * FROM users Where id_user=?";
                 try (PreparedStatement pstmt = conn.prepareStatement(selectSQL)) {
                     pstmt.setInt(1, id);                  
                     //We execute the query
@@ -80,7 +84,7 @@ public class Dao implements InterfaceUser{
                     // We iterate all the results
                         
                     if( rs.next() ){
-                        User user = new User(rs.getString("name"),rs.getInt("age"), rs.getString("username"), rs.getString("password"), rs.getString("email"), rs.getString("countDetails"), rs.getInt("typeUser"), rs.getString("address"));
+                        User user = new User(rs.getString("full_name"),rs.getInt("age"), rs.getString("username"), rs.getString("password_user"), rs.getString("email"), rs.getString("phone_number"), rs.getInt("user_rol"), rs.getString("address"));
                       return user;
                     }
                 }
@@ -100,7 +104,7 @@ public class Dao implements InterfaceUser{
             // We check if the connection was successful
             if (conn != null) {
                 // We prepare the consultation SQL for insert data
-                String insertSQL = "INSERT INTO Usuarios (name, age, username, password, email, countDetails, typeUser, address) VALUES (?,?,?,?,?,?,?,?)";
+                String insertSQL = "INSERT INTO users(full_name, age, username, password_user, email, phone_number, user_rol, address) VALUES (?,?,?,?,?,?,?,?)";
                 try (PreparedStatement pstmt = conn.prepareStatement(insertSQL)) {
                     pstmt.setString(1, user.getName());
                     pstmt.setInt(2, user.getAge());
@@ -136,7 +140,7 @@ public class Dao implements InterfaceUser{
             // We check if the connection was successful
             if (conn != null) {
                 // We prepare the consultation SQL for select data
-                String deleteSQL = "DELETE FROM Usuarios WHERE id = ?";
+                String deleteSQL = "DELETE FROM users WHERE id_user= ?";
                 try (PreparedStatement pstmt = conn.prepareStatement(deleteSQL)) {
                     pstmt.setInt(1, id);
                     pstmt.executeUpdate();
@@ -159,7 +163,7 @@ public class Dao implements InterfaceUser{
             // We check if the connection was successful
             if (conn != null) {
                 // We prepare the consultation SQL for select data
-                String updateSQL = "UPDATE Usuarios SET name=?, age=?, username=?, password=?, email=?, countDetails=?, typeUser=?, address=? WHERE id=?";
+                String updateSQL = "UPDATE users SET full_name=?, age=?, username=?, password_user=?, email=?, phone_number=?, user_rol=?, address=? WHERE id_user=?";
                 try (PreparedStatement pstmt = conn.prepareStatement(updateSQL)) {
                     pstmt.setString(1, user.getName());
                     pstmt.setInt(2, user.getAge());
@@ -181,14 +185,15 @@ public class Dao implements InterfaceUser{
             e.printStackTrace();
         }
     }
-    
+    //--------------------------------------------------------------------------------------------------------------------------
+    // CRUD FOR HOTELS
         public Hotel searchHotel(int id ) {
         // We stablish the connection with database
         try (Connection conn = conexion.conectarMySQL()) {
             /// We check if the connection was successful
             if (conn != null) {
                 // We prepare the consultation SQL for select data
-                String selectSQL = "SELECT * FROM hotels Where id=?";
+                String selectSQL = "SELECT * FROM hotels Where id_hotel=?";
                 try (PreparedStatement pstmt = conn.prepareStatement(selectSQL)) {
                     pstmt.setInt(1, id);                  
                     //We execute the query
@@ -217,7 +222,7 @@ public class Dao implements InterfaceUser{
             // We check if the connection was successful
             if (conn != null) {
                 // We prepare the consultation SQL for insert data
-                String insertSQL = "INSERT INTO hotel (name_hotel,address_hotel,classification_hotel , mob_cons_hotel,pictures_hotel) VALUES (?,?,?,?,?)";
+                String insertSQL = "INSERT INTO hotels (name_hotel,address_hotel,classification_hotel , mob_cons_hotel,pictures_hotel) VALUES (?,?,?,?,?)";
                 try (PreparedStatement pstmt = conn.prepareStatement(insertSQL)) {
                     pstmt.setString(1, hotel.getNameHotel());
                     pstmt.setString(2, hotel.getAdress());
@@ -291,14 +296,15 @@ public class Dao implements InterfaceUser{
         }
     }
     
-    
-        public User searchRoom(int id ) {
+    //---------------------------------------------------------------------------------------------------------------------------------------
+    // CRUD FOR ROOM
+        public Room searchRoom(int id ) {
         // We stablish the connection with database
         try (Connection conn = conexion.conectarMySQL()) {
             /// We check if the connection was successful
             if (conn != null) {
                 // We prepare the consultation SQL for select data
-                String selectSQL = "SELECT * FROM Usuarios Where id=?";
+                String selectSQL = "SELECT * FROM rooms Where id_rooom=?";
                 try (PreparedStatement pstmt = conn.prepareStatement(selectSQL)) {
                     pstmt.setInt(1, id);                  
                     //We execute the query
@@ -307,8 +313,9 @@ public class Dao implements InterfaceUser{
                     // We iterate all the results
                         
                     if( rs.next() ){
-                        User user = new User(rs.getString("name"),rs.getInt("age"), rs.getString("username"), rs.getString("password"), rs.getString("email"), rs.getString("countDetails"), rs.getInt("typeUser"), rs.getString("address"));
-                      return user;
+                        Room room = new Room(rs.getInt("id_rooom"), rs.getInt("id_stade_room"), rs.getInt("id_type_room"), rs.getInt("id_hotel"), rs.getInt("number_rooom"), rs.getInt("price_nigth"), rs.getString("room_amenities"));
+//                                                User user = new User(rs.getInt("name"),rs.getInt("age"), rs.getString("username"), rs.getString("password"), rs.getString("email"), rs.getString("countDetails"), rs.getInt("typeUser"), rs.getString("address"));
+                      return room;
                     }
                 }
             } else {
@@ -321,23 +328,20 @@ public class Dao implements InterfaceUser{
         return null;
     }
     
-       public void insertRoom(User user) {
+       public void insertRoom(Room room) {
         //We stablish the connection with database
         try (Connection conn = conexion.conectarMySQL()) {
             // We check if the connection was successful
             if (conn != null) {
                 // We prepare the consultation SQL for insert data
-                String insertSQL = "INSERT INTO Usuarios (name, age, username, password, email, countDetails, typeUser, address) VALUES (?,?,?,?,?,?,?,?)";
+                String insertSQL = "INSERT INTO rooms( id_stade_room, id_type_room, id_hotel, number_rooom, price_nigth, room_amenities) VALUES (?,?,?,?,?,?)";
                 try (PreparedStatement pstmt = conn.prepareStatement(insertSQL)) {
-                    pstmt.setString(1, user.getName());
-                    pstmt.setInt(2, user.getAge());
-                    pstmt.setString(3, user.getUsername());
-                    pstmt.setString(4, user.getPassword());
-                    pstmt.setString(5, user.getEmail());
-                    pstmt.setString(6, user.getCountDetails());
-                    pstmt.setInt(7, user.getTypeUser());
-                    pstmt.setString(8, user.getAddress());
-
+                    pstmt.setInt(1, room.getId_stade_room());
+                    pstmt.setInt(2, room.getId_type_room());
+                    pstmt.setInt(3, room.getId_hotel());
+                    pstmt.setInt(4, room.getNumber_rooom());
+                    pstmt.setDouble(5, room.getPriceNigth());
+                    pstmt.setString(6, room.getAmenitiesDetails());
                     //We execute the query
                     int rowsAffected = pstmt.executeUpdate();
 
@@ -363,7 +367,7 @@ public class Dao implements InterfaceUser{
             // We check if the connection was successful
             if (conn != null) {
                 // We prepare the consultation SQL for select data
-                String deleteSQL = "DELETE FROM Usuarios WHERE id = ?";
+                String deleteSQL = "DELETE FROM rooms WHERE id_rooom = ?";
                 try (PreparedStatement pstmt = conn.prepareStatement(deleteSQL)) {
                     pstmt.setInt(1, id);
                     pstmt.executeUpdate();
@@ -380,24 +384,24 @@ public class Dao implements InterfaceUser{
          JOptionPane.showMessageDialog(null, "No se borro el usuario ");
     }
 
-    public void updateRoom(User user) {
+    public void updateRoom(Room room) {
     // We stablish the connection with database
         try (Connection conn = conexion.conectarMySQL()) {
             // We check if the connection was successful
             if (conn != null) {
                 // We prepare the consultation SQL for select data
-                String updateSQL = "UPDATE Usuarios SET name=?, age=?, username=?, password=?, email=?, countDetails=?, typeUser=?, address=? WHERE id=?";
+                String updateSQL = "UPDATE rooms SET id_stade_room=?, id_type_room=?, id_hotel=?, number_rooom=?, price_nigth=?, room_amenities=? WHERE id_rooom=?";
                 try (PreparedStatement pstmt = conn.prepareStatement(updateSQL)) {
-                    pstmt.setString(1, user.getName());
-                    pstmt.setInt(2, user.getAge());
-                    pstmt.setString(3, user.getUsername());
-                    pstmt.setString(4, user.getPassword());
-                    pstmt.setString(5, user.getEmail());
-                    pstmt.setString(6, user.getCountDetails());
-                    pstmt.setInt(7, user.getTypeUser());
-                    pstmt.setString(8, user.getAddress());
-                    pstmt.setInt(9, user.getId());
+                    pstmt.setInt(1, room.getId_stade_room());
+                    pstmt.setInt(2, room.getId_type_room());
+                    pstmt.setInt(3, room.getId_hotel());
+                    pstmt.setInt(4, room.getNumber_rooom());
+                    pstmt.setDouble(5, room.getPriceNigth());
+                    pstmt.setString(6, room.getAmenitiesDetails());
+                    pstmt.setInt(7, room.getId_room());
+                    
                     pstmt.executeUpdate();
+                    
                     JOptionPane.showMessageDialog(null, "Su perfil se ha actualizado  ");
                 }
             } else {
@@ -409,63 +413,8 @@ public class Dao implements InterfaceUser{
         }
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+// JSON FOR TABLES 
+   
            public Map<String, Object> selectUsers() {
         // Inicializamos el mapa de resultados. Este mapa almacenará los nombres de las columnas, el número de columnas y los datos de la tabla.
         Map<String, Object> result = new HashMap<>();
@@ -659,4 +608,11 @@ public class Dao implements InterfaceUser{
         // Retornamos el mapa de resultados
         return result;
     } 
+    
+    //-----------------------------------------------------------------
+
+
+
+
+
 }

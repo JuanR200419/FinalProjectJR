@@ -9,45 +9,64 @@ package Models;
  * @author juan
  */
 public class Room {
-    private int id;
-    private int numberRoom;
+    private int id_room;
+    private int  id_stade_room;
     // (individual, double, suite, etc.)
-    private String typeRoom;
+    private int id_type_room;
+    private int id_hotel;
+    private int number_rooom;
     private double priceNigth;
-    private boolean availability;
     private String amenitiesDetails;
 
-    public Room(int id, int numberRoom, String typeRoom, double priceNigth, boolean availability, String amenitiesDetails) {
-        this.id = id;
-        this.numberRoom = numberRoom;
-        this.typeRoom = typeRoom;
+    public Room(int id, int id_stade_room, int id_type_room, int id_hotel, int number_rooom, double priceNigth, String amenitiesDetails) {
+        this.id_room = id;
+        this.id_stade_room = id_stade_room;
+        this.id_type_room = id_type_room;
+        this.id_hotel = id_hotel;
+        this.number_rooom = number_rooom;
         this.priceNigth = priceNigth;
-        this.availability = availability;
         this.amenitiesDetails = amenitiesDetails;
     }
 
-    public int getId() {
-        return id;
+    public int getId_room() {
+        return id_room;
     }
 
-    public void setId(int id) {
-        this.id = id;
+
+    public void setId_room(int id) {
+        this.id_room = id;
     }
 
-    public int getNumberRoom() {
-        return numberRoom;
+    public int getId_stade_room() {
+        return id_stade_room;
     }
 
-    public void setNumberRoom(int numberRoom) {
-        this.numberRoom = numberRoom;
+    public void setId_stade_room(int id_stade_room) {
+        this.id_stade_room = id_stade_room;
     }
 
-    public String getTypeRoom() {
-        return typeRoom;
+    public int getId_type_room() {
+        return id_type_room;
     }
 
-    public void setTypeRoom(String typeRoom) {
-        this.typeRoom = typeRoom;
+    public void setId_type_room(int id_type_room) {
+        this.id_type_room = id_type_room;
+    }
+
+    public int getId_hotel() {
+        return id_hotel;
+    }
+
+    public void setId_hotel(int id_hotel) {
+        this.id_hotel = id_hotel;
+    }
+
+    public int getNumber_rooom() {
+        return number_rooom;
+    }
+
+    public void setNumber_rooom(int number_rooom) {
+        this.number_rooom = number_rooom;
     }
 
     public double getPriceNigth() {
@@ -58,14 +77,6 @@ public class Room {
         this.priceNigth = priceNigth;
     }
 
-    public boolean isAvailability() {
-        return availability;
-    }
-
-    public void setAvailability(boolean availability) {
-        this.availability = availability;
-    }
-
     public String getAmenitiesDetails() {
         return amenitiesDetails;
     }
@@ -73,5 +84,7 @@ public class Room {
     public void setAmenitiesDetails(String amenitiesDetails) {
         this.amenitiesDetails = amenitiesDetails;
     }
+
+    
     
 }
