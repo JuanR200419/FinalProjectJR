@@ -9,6 +9,7 @@ package Models;
  * @author juan
  */
 public class User {
+
     private int id;
     private String name;
     private int age;
@@ -19,8 +20,8 @@ public class User {
     private int typeUser;
     private String address;
 
-    public User(String name, int age, String username, String password, String email, String countDetails, int typeUser, String address) {
-
+    public User(int id, String name, int age, String username, String password, String email, String countDetails, int typeUser, String address) {
+        this.id = id;
         this.name = name;
         this.age = age;
         this.username = username;
@@ -102,5 +103,5 @@ public class User {
     public void setAddress(String adress) {
         this.address = adress;
     }
-    
+
 }

@@ -11,9 +11,14 @@ import Models.User;
  * @author jilssa
  */
 public interface InterfaceUser {
+
     public void insertUser(User user);
-    public int selectLogin(String email,String password);
-    public User searchUser(int id );
+
+    public int selectLogin(String email, String password);
+
+    public User searchUser(int id);
+
     public void deleteUser(int id);
+
     public void updateUser(User user);
 }

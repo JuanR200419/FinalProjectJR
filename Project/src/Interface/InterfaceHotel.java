@@ -11,8 +11,14 @@ import Models.Hotel;
  * @author juan
  */
 public interface InterfaceHotel {
-        public void insertHotel(Hotel hotel);
-    public Hotel searchHotel(int id );
+
+    public void insertHotel(Hotel hotel);
+
+    public Hotel searchHotel(int id);
+    
+    public Hotel searchHotelbyName(String name);
+    
     public void deleteHotel(int id);
+
     public void updateHotel(Hotel hotel);
 }

@@ -8,7 +8,8 @@ package Models;
  *
  * @author juan
  */
-public class Booking {
+public class Reservation {
+
     private int id;
     private User user;
     private Hotel hotel;
@@ -20,7 +21,7 @@ public class Booking {
     private String state;
     private double totalPrice;
 
-    public Booking(int id, User user, Hotel hotel, Room room, String entryDate, String exitDate, String state, double totalPrice) {
+    public Reservation(int id, User user, Hotel hotel, Room room, String entryDate, String exitDate, String state, double totalPrice) {
         this.id = id;
         this.user = user;
         this.hotel = hotel;
@@ -94,6 +95,5 @@ public class Booking {
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
     }
-    
-    
+
 }

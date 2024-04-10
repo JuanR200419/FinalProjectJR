@@ -9,8 +9,9 @@ package Models;
  * @author juan
  */
 public class Room {
+
     private int id_room;
-    private int  id_stade_room;
+    private int id_stade_room;
     // (individual, double, suite, etc.)
     private int id_type_room;
     private int id_hotel;
@@ -31,7 +32,6 @@ public class Room {
     public int getId_room() {
         return id_room;
     }
-
 
     public void setId_room(int id) {
         this.id_room = id;
@@ -85,6 +85,4 @@ public class Room {
         this.amenitiesDetails = amenitiesDetails;
     }
 
-    
-    
 }

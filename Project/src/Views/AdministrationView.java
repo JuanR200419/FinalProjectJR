@@ -4,10 +4,14 @@
  */
 package Views;
 
+import Models.Hotel;
+import Models.Room;
 import Services.UserController;
 import Models.User;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -18,12 +22,16 @@ import javax.swing.table.DefaultTableModel;
 public class AdministrationView extends javax.swing.JFrame {
 
     UserController control;
+
     /**
      * Creates new form Administration
      */
     public AdministrationView() {
         initComponents();
         control = new UserController();
+        fillTableHotels();
+        fillTableRooms();
+        fillTableUsers();
     }
 
     /**
@@ -39,48 +47,87 @@ public class AdministrationView extends javax.swing.JFrame {
         jPasswordField1 = new javax.swing.JPasswordField();
         PanelPrincipal = new javax.swing.JTabbedPane();
         PanelAdminHabita = new javax.swing.JPanel();
+        PanelDentroGestion2 = new javax.swing.JPanel();
+        lblNameHotel1 = new javax.swing.JLabel();
+        txtNumberRoom = new javax.swing.JTextField();
+        jSeparator22 = new javax.swing.JSeparator();
+        lblAddressHotel1 = new javax.swing.JLabel();
+        lblClassificationHotel1 = new javax.swing.JLabel();
+        lblModCons1 = new javax.swing.JLabel();
+        txtModConsRoom = new javax.swing.JTextField();
+        jSeparator25 = new javax.swing.JSeparator();
+        lblPriceNight = new javax.swing.JLabel();
+        txtPriceNight = new javax.swing.JTextField();
+        jSeparator26 = new javax.swing.JSeparator();
+        cbxTypeRoom = new javax.swing.JComboBox<>();
+        cbxStadeRoom = new javax.swing.JComboBox<>();
+        txtHotelName = new javax.swing.JTextField();
+        jSeparator27 = new javax.swing.JSeparator();
+        lblnameHotel = new javax.swing.JLabel();
+        PanelDentroGestion3 = new javax.swing.JPanel();
+        btnDeleteRoom = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        btnRegisterRoom = new javax.swing.JButton();
+        btnUpdateRoom = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tbl_rooms = new javax.swing.JTable();
         PanelGestionarUsuario = new javax.swing.JPanel();
         PanelDentroGestion1 = new javax.swing.JPanel();
-        btnDelete = new javax.swing.JButton();
+        btnDeleteUser = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        btnRegister = new javax.swing.JButton();
-        btnSearch = new javax.swing.JButton();
-        btnUpdate = new javax.swing.JButton();
-        PanelDentroGestion = new javax.swing.JPanel();
+        btnRegisterUser = new javax.swing.JButton();
+        btnUpdateUser = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tbl_users = new javax.swing.JTable();
+        PanelDentroGestion = new javax.swing.JPanel();
         lblName = new javax.swing.JLabel();
-        txtName = new javax.swing.JTextField();
+        txtNameUser = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
-        txtAge = new javax.swing.JTextField();
+        txtAgeUser = new javax.swing.JTextField();
         lblEdad = new javax.swing.JLabel();
-        txtAddress = new javax.swing.JTextField();
+        txtAddressUser = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
         lblAddress = new javax.swing.JLabel();
-        txtPhoneNumber = new javax.swing.JTextField();
+        txtPhoneNumberUser = new javax.swing.JTextField();
         lblPhoneNumber = new javax.swing.JLabel();
         txtUsername = new javax.swing.JTextField();
         jSeparator5 = new javax.swing.JSeparator();
         lblUsername = new javax.swing.JLabel();
         jSeparator6 = new javax.swing.JSeparator();
-        txtEmail = new javax.swing.JTextField();
+        txtEmailUser = new javax.swing.JTextField();
         lblEmail = new javax.swing.JLabel();
         lblPassword = new javax.swing.JLabel();
-        txtID = new javax.swing.JTextField();
-        lblName1 = new javax.swing.JLabel();
-        jSeparator4 = new javax.swing.JSeparator();
-        txtPassword = new javax.swing.JTextField();
+        txtPasswordUser = new javax.swing.JTextField();
         jSeparator8 = new javax.swing.JSeparator();
         jSeparator9 = new javax.swing.JSeparator();
         PanelAdminHotel = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        PanelDentroGestion2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblUsuarios = new javax.swing.JTable();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tblHoteles = new javax.swing.JTable();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tblHabitaciones = new javax.swing.JTable();
+        PanelDentroGestion4 = new javax.swing.JPanel();
+        lblNameHotel = new javax.swing.JLabel();
+        txtNameHotel = new javax.swing.JTextField();
+        jSeparator17 = new javax.swing.JSeparator();
+        jSeparator18 = new javax.swing.JSeparator();
+        txtAddressHotel = new javax.swing.JTextField();
+        lblAddressHotel = new javax.swing.JLabel();
+        txtClassificationHotel = new javax.swing.JTextField();
+        jSeparator19 = new javax.swing.JSeparator();
+        lblClassificationHotel = new javax.swing.JLabel();
+        txtModConsHotel = new javax.swing.JTextField();
+        jSeparator20 = new javax.swing.JSeparator();
+        lblModCons = new javax.swing.JLabel();
+        jSeparator21 = new javax.swing.JSeparator();
+        txtPicturesHotel = new javax.swing.JTextField();
+        lblPictures = new javax.swing.JLabel();
+        PanelDentroGestion5 = new javax.swing.JPanel();
+        btnDeleteHotel = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        btnRegisterHotel = new javax.swing.JButton();
+        btnUpdateHotel = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        tbl_hotels = new javax.swing.JTable();
 
         jLabel1.setText("jLabel1");
 
@@ -92,15 +139,261 @@ public class AdministrationView extends javax.swing.JFrame {
         PanelPrincipal.setForeground(new java.awt.Color(255, 255, 255));
         PanelPrincipal.setFont(new java.awt.Font("Lohit Devanagari", 1, 15)); // NOI18N
 
+        PanelDentroGestion2.setBackground(new java.awt.Color(4, 27, 43));
+        PanelDentroGestion2.setPreferredSize(new java.awt.Dimension(400, 500));
+
+        lblNameHotel1.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        lblNameHotel1.setForeground(new java.awt.Color(255, 255, 255));
+        lblNameHotel1.setText("NUMERO HABITACIÓN");
+
+        txtNumberRoom.setBackground(new java.awt.Color(0, 0, 102));
+        txtNumberRoom.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtNumberRoom.setForeground(new java.awt.Color(73, 181, 172));
+        txtNumberRoom.setBorder(null);
+        txtNumberRoom.setCaretColor(new java.awt.Color(73, 181, 172));
+
+        jSeparator22.setBackground(new java.awt.Color(0, 153, 255));
+        jSeparator22.setForeground(new java.awt.Color(0, 153, 255));
+
+        lblAddressHotel1.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        lblAddressHotel1.setForeground(new java.awt.Color(255, 255, 255));
+        lblAddressHotel1.setText("TIPO HABITACIÓN");
+
+        lblClassificationHotel1.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        lblClassificationHotel1.setForeground(new java.awt.Color(255, 255, 255));
+        lblClassificationHotel1.setText("ESTADO");
+
+        lblModCons1.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        lblModCons1.setForeground(new java.awt.Color(255, 255, 255));
+        lblModCons1.setText("COMODIDADES");
+
+        txtModConsRoom.setBackground(new java.awt.Color(0, 0, 102));
+        txtModConsRoom.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtModConsRoom.setForeground(new java.awt.Color(73, 181, 172));
+        txtModConsRoom.setBorder(null);
+        txtModConsRoom.setCaretColor(new java.awt.Color(73, 181, 172));
+
+        jSeparator25.setBackground(new java.awt.Color(0, 153, 255));
+        jSeparator25.setForeground(new java.awt.Color(0, 153, 255));
+
+        lblPriceNight.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        lblPriceNight.setForeground(new java.awt.Color(255, 255, 255));
+        lblPriceNight.setText("PRECIO NOCHE");
+
+        txtPriceNight.setBackground(new java.awt.Color(0, 0, 102));
+        txtPriceNight.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtPriceNight.setForeground(new java.awt.Color(73, 181, 172));
+        txtPriceNight.setBorder(null);
+        txtPriceNight.setCaretColor(new java.awt.Color(73, 181, 172));
+
+        jSeparator26.setBackground(new java.awt.Color(0, 153, 255));
+        jSeparator26.setForeground(new java.awt.Color(0, 153, 255));
+
+        cbxTypeRoom.setBackground(new java.awt.Color(0, 0, 102));
+        cbxTypeRoom.setFont(new java.awt.Font("Lohit Devanagari", 0, 15)); // NOI18N
+        cbxTypeRoom.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "seleccione", "individual", "doble", "suite" }));
+
+        cbxStadeRoom.setBackground(new java.awt.Color(0, 0, 102));
+        cbxStadeRoom.setFont(new java.awt.Font("Lohit Devanagari", 0, 15)); // NOI18N
+        cbxStadeRoom.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "seleccione", "Disponible", "Ocupada" }));
+        cbxStadeRoom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxStadeRoomActionPerformed(evt);
+            }
+        });
+
+        txtHotelName.setBackground(new java.awt.Color(0, 0, 102));
+        txtHotelName.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtHotelName.setForeground(new java.awt.Color(73, 181, 172));
+        txtHotelName.setBorder(null);
+        txtHotelName.setCaretColor(new java.awt.Color(73, 181, 172));
+
+        jSeparator27.setBackground(new java.awt.Color(0, 153, 255));
+        jSeparator27.setForeground(new java.awt.Color(0, 153, 255));
+
+        lblnameHotel.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        lblnameHotel.setForeground(new java.awt.Color(255, 255, 255));
+        lblnameHotel.setText("HOTEL");
+
+        javax.swing.GroupLayout PanelDentroGestion2Layout = new javax.swing.GroupLayout(PanelDentroGestion2);
+        PanelDentroGestion2.setLayout(PanelDentroGestion2Layout);
+        PanelDentroGestion2Layout.setHorizontalGroup(
+            PanelDentroGestion2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelDentroGestion2Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addGroup(PanelDentroGestion2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelDentroGestion2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jSeparator27)
+                        .addComponent(lblnameHotel)
+                        .addComponent(txtHotelName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PanelDentroGestion2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(lblModCons1)
+                        .addComponent(jSeparator26, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
+                        .addComponent(txtModConsRoom, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
+                        .addComponent(jSeparator25, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
+                        .addComponent(lblPriceNight)
+                        .addComponent(txtPriceNight, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
+                        .addComponent(lblNameHotel1)
+                        .addComponent(txtNumberRoom, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
+                        .addComponent(jSeparator22, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
+                        .addComponent(lblAddressHotel1)
+                        .addComponent(lblClassificationHotel1)
+                        .addComponent(cbxTypeRoom, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cbxStadeRoom, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(46, Short.MAX_VALUE))
+        );
+        PanelDentroGestion2Layout.setVerticalGroup(
+            PanelDentroGestion2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelDentroGestion2Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(lblNameHotel1)
+                .addGap(5, 5, 5)
+                .addComponent(txtNumberRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jSeparator22, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(lblAddressHotel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cbxTypeRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblClassificationHotel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cbxStadeRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(7, 7, 7)
+                .addComponent(lblnameHotel)
+                .addGap(5, 5, 5)
+                .addComponent(txtHotelName, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jSeparator27, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblModCons1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtModConsRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jSeparator25, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(lblPriceNight)
+                .addGap(5, 5, 5)
+                .addComponent(txtPriceNight, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jSeparator26, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(263, 263, 263))
+        );
+
+        PanelDentroGestion3.setBackground(new java.awt.Color(0, 0, 102));
+        PanelDentroGestion3.setPreferredSize(new java.awt.Dimension(400, 500));
+
+        btnDeleteRoom.setBackground(new java.awt.Color(0, 153, 255));
+        btnDeleteRoom.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        btnDeleteRoom.setForeground(new java.awt.Color(255, 255, 255));
+        btnDeleteRoom.setText("BORRAR");
+        btnDeleteRoom.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnDeleteRoom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteRoomActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Lohit Devanagari", 1, 40)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Gestion De Usuarios");
+
+        btnRegisterRoom.setBackground(new java.awt.Color(0, 153, 255));
+        btnRegisterRoom.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        btnRegisterRoom.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegisterRoom.setText(" REGISTRAR HABITACIÓN");
+        btnRegisterRoom.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnRegisterRoom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegisterRoomActionPerformed(evt);
+            }
+        });
+
+        btnUpdateRoom.setBackground(new java.awt.Color(0, 153, 255));
+        btnUpdateRoom.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        btnUpdateRoom.setForeground(new java.awt.Color(255, 255, 255));
+        btnUpdateRoom.setText("ACTUALIZAR");
+        btnUpdateRoom.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnUpdateRoom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateRoomActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logo_mid.jpg"))); // NOI18N
+
+        tbl_rooms.setFont(new java.awt.Font("Lohit Devanagari", 0, 15)); // NOI18N
+        tbl_rooms.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane5.setViewportView(tbl_rooms);
+
+        javax.swing.GroupLayout PanelDentroGestion3Layout = new javax.swing.GroupLayout(PanelDentroGestion3);
+        PanelDentroGestion3.setLayout(PanelDentroGestion3Layout);
+        PanelDentroGestion3Layout.setHorizontalGroup(
+            PanelDentroGestion3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelDentroGestion3Layout.createSequentialGroup()
+                .addGroup(PanelDentroGestion3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelDentroGestion3Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(137, 137, 137)
+                        .addComponent(jLabel4))
+                    .addGroup(PanelDentroGestion3Layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addGroup(PanelDentroGestion3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 754, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(PanelDentroGestion3Layout.createSequentialGroup()
+                                .addGroup(PanelDentroGestion3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnRegisterRoom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnUpdateRoom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(37, 37, 37)
+                                .addComponent(btnDeleteRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(37, Short.MAX_VALUE))
+        );
+        PanelDentroGestion3Layout.setVerticalGroup(
+            PanelDentroGestion3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelDentroGestion3Layout.createSequentialGroup()
+                .addGroup(PanelDentroGestion3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addGroup(PanelDentroGestion3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnDeleteRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRegisterRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnUpdateRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(51, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout PanelAdminHabitaLayout = new javax.swing.GroupLayout(PanelAdminHabita);
         PanelAdminHabita.setLayout(PanelAdminHabitaLayout);
         PanelAdminHabitaLayout.setHorizontalGroup(
             PanelAdminHabitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1119, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelAdminHabitaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(PanelDentroGestion2, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(PanelDentroGestion3, javax.swing.GroupLayout.DEFAULT_SIZE, 828, Short.MAX_VALUE)
+                .addContainerGap())
         );
         PanelAdminHabitaLayout.setVerticalGroup(
             PanelAdminHabitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 864, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelAdminHabitaLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(PanelAdminHabitaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(PanelDentroGestion2, javax.swing.GroupLayout.PREFERRED_SIZE, 768, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PanelDentroGestion3, javax.swing.GroupLayout.PREFERRED_SIZE, 768, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         PanelPrincipal.addTab("Administrar Habitaciones", PanelAdminHabita);
@@ -108,14 +401,14 @@ public class AdministrationView extends javax.swing.JFrame {
         PanelDentroGestion1.setBackground(new java.awt.Color(0, 0, 102));
         PanelDentroGestion1.setPreferredSize(new java.awt.Dimension(400, 500));
 
-        btnDelete.setBackground(new java.awt.Color(0, 153, 255));
-        btnDelete.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
-        btnDelete.setForeground(new java.awt.Color(255, 255, 255));
-        btnDelete.setText("BORRAR");
-        btnDelete.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+        btnDeleteUser.setBackground(new java.awt.Color(0, 153, 255));
+        btnDeleteUser.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        btnDeleteUser.setForeground(new java.awt.Color(255, 255, 255));
+        btnDeleteUser.setText("BORRAR");
+        btnDeleteUser.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnDeleteUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteActionPerformed(evt);
+                btnDeleteUserActionPerformed(evt);
             }
         });
 
@@ -123,86 +416,94 @@ public class AdministrationView extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Gestion De Usuarios");
 
-        btnRegister.setBackground(new java.awt.Color(0, 153, 255));
-        btnRegister.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
-        btnRegister.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegister.setText(" REGISTRAR USUARIO");
-        btnRegister.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnRegister.addActionListener(new java.awt.event.ActionListener() {
+        btnRegisterUser.setBackground(new java.awt.Color(0, 153, 255));
+        btnRegisterUser.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        btnRegisterUser.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegisterUser.setText(" REGISTRAR USUARIO");
+        btnRegisterUser.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnRegisterUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegisterActionPerformed(evt);
+                btnRegisterUserActionPerformed(evt);
             }
         });
 
-        btnSearch.setBackground(new java.awt.Color(0, 153, 255));
-        btnSearch.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
-        btnSearch.setForeground(new java.awt.Color(255, 255, 255));
-        btnSearch.setText("BUSCAR");
-        btnSearch.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+        btnUpdateUser.setBackground(new java.awt.Color(0, 153, 255));
+        btnUpdateUser.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        btnUpdateUser.setForeground(new java.awt.Color(255, 255, 255));
+        btnUpdateUser.setText("ACTUALIZAR");
+        btnUpdateUser.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnUpdateUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearchActionPerformed(evt);
+                btnUpdateUserActionPerformed(evt);
             }
         });
 
-        btnUpdate.setBackground(new java.awt.Color(0, 153, 255));
-        btnUpdate.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
-        btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
-        btnUpdate.setText("ACTUALIZAR");
-        btnUpdate.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateActionPerformed(evt);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logo_mid.jpg"))); // NOI18N
+
+        tbl_users.setFont(new java.awt.Font("Lohit Devanagari", 0, 15)); // NOI18N
+        tbl_users.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        });
+        ));
+        jScrollPane4.setViewportView(tbl_users);
 
         javax.swing.GroupLayout PanelDentroGestion1Layout = new javax.swing.GroupLayout(PanelDentroGestion1);
         PanelDentroGestion1.setLayout(PanelDentroGestion1Layout);
         PanelDentroGestion1Layout.setHorizontalGroup(
             PanelDentroGestion1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelDentroGestion1Layout.createSequentialGroup()
-                .addGap(90, 90, 90)
-                .addGroup(PanelDentroGestion1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnRegister, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                    .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(120, 120, 120))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDentroGestion1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
-                .addContainerGap())
+                .addGroup(PanelDentroGestion1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelDentroGestion1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(136, 136, 136)
+                        .addComponent(jLabel3))
+                    .addGroup(PanelDentroGestion1Layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addGroup(PanelDentroGestion1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 754, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(PanelDentroGestion1Layout.createSequentialGroup()
+                                .addComponent(btnRegisterUser)
+                                .addGap(37, 37, 37)
+                                .addComponent(btnDeleteUser, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnUpdateUser, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         PanelDentroGestion1Layout.setVerticalGroup(
             PanelDentroGestion1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelDentroGestion1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
-                .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(PanelDentroGestion1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(PanelDentroGestion1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnDeleteUser, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRegisterUser, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnUpdateUser, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         PanelDentroGestion.setBackground(new java.awt.Color(4, 27, 43));
         PanelDentroGestion.setPreferredSize(new java.awt.Dimension(400, 500));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logo_mid.jpg"))); // NOI18N
-
         lblName.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
         lblName.setForeground(new java.awt.Color(255, 255, 255));
         lblName.setText("NOMBRE");
 
-        txtName.setBackground(new java.awt.Color(0, 0, 102));
-        txtName.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
-        txtName.setForeground(new java.awt.Color(73, 181, 172));
-        txtName.setBorder(null);
-        txtName.setCaretColor(new java.awt.Color(73, 181, 172));
+        txtNameUser.setBackground(new java.awt.Color(0, 0, 102));
+        txtNameUser.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtNameUser.setForeground(new java.awt.Color(73, 181, 172));
+        txtNameUser.setBorder(null);
+        txtNameUser.setCaretColor(new java.awt.Color(73, 181, 172));
 
         jSeparator1.setBackground(new java.awt.Color(0, 153, 255));
         jSeparator1.setForeground(new java.awt.Color(0, 153, 255));
@@ -210,14 +511,14 @@ public class AdministrationView extends javax.swing.JFrame {
         jSeparator2.setBackground(new java.awt.Color(0, 153, 255));
         jSeparator2.setForeground(new java.awt.Color(0, 153, 255));
 
-        txtAge.setBackground(new java.awt.Color(0, 0, 102));
-        txtAge.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
-        txtAge.setForeground(new java.awt.Color(73, 181, 172));
-        txtAge.setBorder(null);
-        txtAge.setCaretColor(new java.awt.Color(73, 181, 172));
-        txtAge.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtAgeUser.setBackground(new java.awt.Color(0, 0, 102));
+        txtAgeUser.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtAgeUser.setForeground(new java.awt.Color(73, 181, 172));
+        txtAgeUser.setBorder(null);
+        txtAgeUser.setCaretColor(new java.awt.Color(73, 181, 172));
+        txtAgeUser.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtAgeKeyTyped(evt);
+                txtAgeUserKeyTyped(evt);
             }
         });
 
@@ -225,11 +526,11 @@ public class AdministrationView extends javax.swing.JFrame {
         lblEdad.setForeground(new java.awt.Color(255, 255, 255));
         lblEdad.setText("EDAD");
 
-        txtAddress.setBackground(new java.awt.Color(0, 0, 102));
-        txtAddress.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
-        txtAddress.setForeground(new java.awt.Color(73, 181, 172));
-        txtAddress.setBorder(null);
-        txtAddress.setCaretColor(new java.awt.Color(73, 181, 172));
+        txtAddressUser.setBackground(new java.awt.Color(0, 0, 102));
+        txtAddressUser.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtAddressUser.setForeground(new java.awt.Color(73, 181, 172));
+        txtAddressUser.setBorder(null);
+        txtAddressUser.setCaretColor(new java.awt.Color(73, 181, 172));
 
         jSeparator3.setBackground(new java.awt.Color(0, 153, 255));
         jSeparator3.setForeground(new java.awt.Color(0, 153, 255));
@@ -238,11 +539,11 @@ public class AdministrationView extends javax.swing.JFrame {
         lblAddress.setForeground(new java.awt.Color(255, 255, 255));
         lblAddress.setText("DIRECCIÓN");
 
-        txtPhoneNumber.setBackground(new java.awt.Color(0, 0, 102));
-        txtPhoneNumber.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
-        txtPhoneNumber.setForeground(new java.awt.Color(73, 181, 172));
-        txtPhoneNumber.setBorder(null);
-        txtPhoneNumber.setCaretColor(new java.awt.Color(73, 181, 172));
+        txtPhoneNumberUser.setBackground(new java.awt.Color(0, 0, 102));
+        txtPhoneNumberUser.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtPhoneNumberUser.setForeground(new java.awt.Color(73, 181, 172));
+        txtPhoneNumberUser.setBorder(null);
+        txtPhoneNumberUser.setCaretColor(new java.awt.Color(73, 181, 172));
 
         lblPhoneNumber.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
         lblPhoneNumber.setForeground(new java.awt.Color(255, 255, 255));
@@ -264,11 +565,11 @@ public class AdministrationView extends javax.swing.JFrame {
         jSeparator6.setBackground(new java.awt.Color(0, 153, 255));
         jSeparator6.setForeground(new java.awt.Color(0, 153, 255));
 
-        txtEmail.setBackground(new java.awt.Color(0, 0, 102));
-        txtEmail.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
-        txtEmail.setForeground(new java.awt.Color(73, 181, 172));
-        txtEmail.setBorder(null);
-        txtEmail.setCaretColor(new java.awt.Color(73, 181, 172));
+        txtEmailUser.setBackground(new java.awt.Color(0, 0, 102));
+        txtEmailUser.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtEmailUser.setForeground(new java.awt.Color(73, 181, 172));
+        txtEmailUser.setBorder(null);
+        txtEmailUser.setCaretColor(new java.awt.Color(73, 181, 172));
 
         lblEmail.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
         lblEmail.setForeground(new java.awt.Color(255, 255, 255));
@@ -278,24 +579,11 @@ public class AdministrationView extends javax.swing.JFrame {
         lblPassword.setForeground(new java.awt.Color(255, 255, 255));
         lblPassword.setText("CONTRASEÑA");
 
-        txtID.setBackground(new java.awt.Color(0, 0, 102));
-        txtID.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
-        txtID.setForeground(new java.awt.Color(73, 181, 172));
-        txtID.setBorder(null);
-        txtID.setCaretColor(new java.awt.Color(73, 181, 172));
-
-        lblName1.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
-        lblName1.setForeground(new java.awt.Color(255, 255, 255));
-        lblName1.setText("ID");
-
-        jSeparator4.setBackground(new java.awt.Color(0, 153, 255));
-        jSeparator4.setForeground(new java.awt.Color(0, 153, 255));
-
-        txtPassword.setBackground(new java.awt.Color(0, 0, 102));
-        txtPassword.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
-        txtPassword.setForeground(new java.awt.Color(73, 181, 172));
-        txtPassword.setBorder(null);
-        txtPassword.setCaretColor(new java.awt.Color(73, 181, 172));
+        txtPasswordUser.setBackground(new java.awt.Color(0, 0, 102));
+        txtPasswordUser.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtPasswordUser.setForeground(new java.awt.Color(73, 181, 172));
+        txtPasswordUser.setBorder(null);
+        txtPasswordUser.setCaretColor(new java.awt.Color(73, 181, 172));
 
         jSeparator8.setBackground(new java.awt.Color(0, 153, 255));
         jSeparator8.setForeground(new java.awt.Color(0, 153, 255));
@@ -308,72 +596,56 @@ public class AdministrationView extends javax.swing.JFrame {
         PanelDentroGestionLayout.setHorizontalGroup(
             PanelDentroGestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelDentroGestionLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(37, 37, 37)
                 .addGroup(PanelDentroGestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblUsername)
                     .addComponent(lblPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPasswordUser, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPhoneNumberUser, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblEmail)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(PanelDentroGestionLayout.createSequentialGroup()
-                        .addGroup(PanelDentroGestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblName1)
-                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblName))
-                        .addGap(40, 40, 40)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEmailUser, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblName)
+                    .addComponent(txtNameUser, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblEdad)
-                    .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAgeUser, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblAddress)
-                    .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAddressUser, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblPhoneNumber))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
         PanelDentroGestionLayout.setVerticalGroup(
             PanelDentroGestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelDentroGestionLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(PanelDentroGestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelDentroGestionLayout.createSequentialGroup()
-                        .addComponent(lblName1)
-                        .addGap(5, 5, 5)
-                        .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(lblName))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addComponent(lblName)
                 .addGap(5, 5, 5)
-                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtNameUser, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(lblEdad)
                 .addGap(5, 5, 5)
-                .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtAgeUser, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(lblAddress)
                 .addGap(5, 5, 5)
-                .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtAddressUser, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblPhoneNumber)
                 .addGap(4, 4, 4)
-                .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtPhoneNumberUser, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -385,189 +657,681 @@ public class AdministrationView extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(lblEmail)
                 .addGap(5, 5, 5)
-                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtEmailUser, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblPassword)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtPasswordUser, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63))
+                .addGap(158, 158, 158))
         );
 
         javax.swing.GroupLayout PanelGestionarUsuarioLayout = new javax.swing.GroupLayout(PanelGestionarUsuario);
         PanelGestionarUsuario.setLayout(PanelGestionarUsuarioLayout);
         PanelGestionarUsuarioLayout.setHorizontalGroup(
             PanelGestionarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelGestionarUsuarioLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelGestionarUsuarioLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(PanelDentroGestion, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 612, Short.MAX_VALUE))
-            .addGroup(PanelGestionarUsuarioLayout.createSequentialGroup()
-                .addGap(485, 485, 485)
-                .addComponent(PanelDentroGestion1, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
+                .addComponent(PanelDentroGestion, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(PanelDentroGestion1, javax.swing.GroupLayout.DEFAULT_SIZE, 828, Short.MAX_VALUE)
                 .addContainerGap())
         );
         PanelGestionarUsuarioLayout.setVerticalGroup(
             PanelGestionarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelGestionarUsuarioLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(PanelGestionarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(PanelDentroGestion1, javax.swing.GroupLayout.DEFAULT_SIZE, 732, Short.MAX_VALUE)
-                    .addComponent(PanelDentroGestion, javax.swing.GroupLayout.PREFERRED_SIZE, 732, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(PanelGestionarUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(PanelDentroGestion1, javax.swing.GroupLayout.DEFAULT_SIZE, 753, Short.MAX_VALUE)
+                    .addComponent(PanelDentroGestion, javax.swing.GroupLayout.PREFERRED_SIZE, 753, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         PanelPrincipal.addTab("Gestionar Usuarios", PanelGestionarUsuario);
+
+        PanelDentroGestion4.setBackground(new java.awt.Color(4, 27, 43));
+        PanelDentroGestion4.setPreferredSize(new java.awt.Dimension(400, 500));
+
+        lblNameHotel.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        lblNameHotel.setForeground(new java.awt.Color(255, 255, 255));
+        lblNameHotel.setText("NOMBRE");
+
+        txtNameHotel.setBackground(new java.awt.Color(0, 0, 102));
+        txtNameHotel.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtNameHotel.setForeground(new java.awt.Color(73, 181, 172));
+        txtNameHotel.setBorder(null);
+        txtNameHotel.setCaretColor(new java.awt.Color(73, 181, 172));
+        txtNameHotel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNameHotelActionPerformed(evt);
+            }
+        });
+
+        jSeparator17.setBackground(new java.awt.Color(0, 153, 255));
+        jSeparator17.setForeground(new java.awt.Color(0, 153, 255));
+
+        jSeparator18.setBackground(new java.awt.Color(0, 153, 255));
+        jSeparator18.setForeground(new java.awt.Color(0, 153, 255));
+
+        txtAddressHotel.setBackground(new java.awt.Color(0, 0, 102));
+        txtAddressHotel.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtAddressHotel.setForeground(new java.awt.Color(73, 181, 172));
+        txtAddressHotel.setBorder(null);
+        txtAddressHotel.setCaretColor(new java.awt.Color(73, 181, 172));
+        txtAddressHotel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtAddressHotelKeyTyped(evt);
+            }
+        });
+
+        lblAddressHotel.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        lblAddressHotel.setForeground(new java.awt.Color(255, 255, 255));
+        lblAddressHotel.setText("DIRECCIÓN");
+
+        txtClassificationHotel.setBackground(new java.awt.Color(0, 0, 102));
+        txtClassificationHotel.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtClassificationHotel.setForeground(new java.awt.Color(73, 181, 172));
+        txtClassificationHotel.setBorder(null);
+        txtClassificationHotel.setCaretColor(new java.awt.Color(73, 181, 172));
+        txtClassificationHotel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtClassificationHotelActionPerformed(evt);
+            }
+        });
+
+        jSeparator19.setBackground(new java.awt.Color(0, 153, 255));
+        jSeparator19.setForeground(new java.awt.Color(0, 153, 255));
+
+        lblClassificationHotel.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        lblClassificationHotel.setForeground(new java.awt.Color(255, 255, 255));
+        lblClassificationHotel.setText("CLASIFICACIÓN");
+
+        txtModConsHotel.setBackground(new java.awt.Color(0, 0, 102));
+        txtModConsHotel.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtModConsHotel.setForeground(new java.awt.Color(73, 181, 172));
+        txtModConsHotel.setBorder(null);
+        txtModConsHotel.setCaretColor(new java.awt.Color(73, 181, 172));
+
+        jSeparator20.setBackground(new java.awt.Color(0, 153, 255));
+        jSeparator20.setForeground(new java.awt.Color(0, 153, 255));
+
+        lblModCons.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        lblModCons.setForeground(new java.awt.Color(255, 255, 255));
+        lblModCons.setText("COMODIDADES");
+
+        jSeparator21.setBackground(new java.awt.Color(0, 153, 255));
+        jSeparator21.setForeground(new java.awt.Color(0, 153, 255));
+
+        txtPicturesHotel.setBackground(new java.awt.Color(0, 0, 102));
+        txtPicturesHotel.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtPicturesHotel.setForeground(new java.awt.Color(73, 181, 172));
+        txtPicturesHotel.setBorder(null);
+        txtPicturesHotel.setCaretColor(new java.awt.Color(73, 181, 172));
+
+        lblPictures.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        lblPictures.setForeground(new java.awt.Color(255, 255, 255));
+        lblPictures.setText("IMAGENES");
+
+        javax.swing.GroupLayout PanelDentroGestion4Layout = new javax.swing.GroupLayout(PanelDentroGestion4);
+        PanelDentroGestion4.setLayout(PanelDentroGestion4Layout);
+        PanelDentroGestion4Layout.setHorizontalGroup(
+            PanelDentroGestion4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelDentroGestion4Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addGroup(PanelDentroGestion4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblModCons)
+                    .addComponent(jSeparator21, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtModConsHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator20, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPictures)
+                    .addComponent(txtPicturesHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNameHotel)
+                    .addComponent(txtNameHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator17, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAddressHotel)
+                    .addComponent(txtAddressHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator18, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblClassificationHotel)
+                    .addComponent(txtClassificationHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator19, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(46, Short.MAX_VALUE))
+        );
+        PanelDentroGestion4Layout.setVerticalGroup(
+            PanelDentroGestion4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelDentroGestion4Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(lblNameHotel)
+                .addGap(5, 5, 5)
+                .addComponent(txtNameHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jSeparator17, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(lblAddressHotel)
+                .addGap(5, 5, 5)
+                .addComponent(txtAddressHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jSeparator18, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(lblClassificationHotel)
+                .addGap(5, 5, 5)
+                .addComponent(txtClassificationHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jSeparator19, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblModCons)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtModConsHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jSeparator20, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(lblPictures)
+                .addGap(5, 5, 5)
+                .addComponent(txtPicturesHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jSeparator21, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(332, 332, 332))
+        );
+
+        PanelDentroGestion5.setBackground(new java.awt.Color(0, 0, 102));
+        PanelDentroGestion5.setPreferredSize(new java.awt.Dimension(400, 500));
+
+        btnDeleteHotel.setBackground(new java.awt.Color(0, 153, 255));
+        btnDeleteHotel.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        btnDeleteHotel.setForeground(new java.awt.Color(255, 255, 255));
+        btnDeleteHotel.setText("BORRAR");
+        btnDeleteHotel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnDeleteHotel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteHotelActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Lohit Devanagari", 1, 40)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Gestion De Hoteles");
+
+        btnRegisterHotel.setBackground(new java.awt.Color(0, 153, 255));
+        btnRegisterHotel.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        btnRegisterHotel.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegisterHotel.setText(" REGISTRAR HOTEL");
+        btnRegisterHotel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnRegisterHotel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegisterHotelActionPerformed(evt);
+            }
+        });
+
+        btnUpdateHotel.setBackground(new java.awt.Color(0, 153, 255));
+        btnUpdateHotel.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        btnUpdateHotel.setForeground(new java.awt.Color(255, 255, 255));
+        btnUpdateHotel.setText("ACTUALIZAR");
+        btnUpdateHotel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnUpdateHotel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateHotelActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logo_mid.jpg"))); // NOI18N
+
+        tbl_hotels.setFont(new java.awt.Font("Lohit Devanagari", 0, 15)); // NOI18N
+        tbl_hotels.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane6.setViewportView(tbl_hotels);
+
+        javax.swing.GroupLayout PanelDentroGestion5Layout = new javax.swing.GroupLayout(PanelDentroGestion5);
+        PanelDentroGestion5.setLayout(PanelDentroGestion5Layout);
+        PanelDentroGestion5Layout.setHorizontalGroup(
+            PanelDentroGestion5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelDentroGestion5Layout.createSequentialGroup()
+                .addGroup(PanelDentroGestion5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelDentroGestion5Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(138, 138, 138)
+                        .addComponent(jLabel6))
+                    .addGroup(PanelDentroGestion5Layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addGroup(PanelDentroGestion5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 754, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(PanelDentroGestion5Layout.createSequentialGroup()
+                                .addGroup(PanelDentroGestion5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(btnRegisterHotel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnUpdateHotel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE))
+                                .addGap(37, 37, 37)
+                                .addComponent(btnDeleteHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(37, Short.MAX_VALUE))
+        );
+        PanelDentroGestion5Layout.setVerticalGroup(
+            PanelDentroGestion5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelDentroGestion5Layout.createSequentialGroup()
+                .addGroup(PanelDentroGestion5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(PanelDentroGestion5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRegisterHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDeleteHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnUpdateHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout PanelAdminHotelLayout = new javax.swing.GroupLayout(PanelAdminHotel);
         PanelAdminHotel.setLayout(PanelAdminHotelLayout);
         PanelAdminHotelLayout.setHorizontalGroup(
             PanelAdminHotelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1119, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelAdminHotelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(PanelDentroGestion4, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(PanelDentroGestion5, javax.swing.GroupLayout.DEFAULT_SIZE, 828, Short.MAX_VALUE)
+                .addContainerGap())
         );
         PanelAdminHotelLayout.setVerticalGroup(
             PanelAdminHotelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 864, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelAdminHotelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(PanelAdminHotelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(PanelDentroGestion5, javax.swing.GroupLayout.DEFAULT_SIZE, 753, Short.MAX_VALUE)
+                    .addComponent(PanelDentroGestion4, javax.swing.GroupLayout.PREFERRED_SIZE, 753, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         PanelPrincipal.addTab("Administrar Hoteles", PanelAdminHotel);
-
-        PanelDentroGestion2.setBackground(new java.awt.Color(4, 27, 43));
-        PanelDentroGestion2.setPreferredSize(new java.awt.Dimension(400, 500));
-
-        tblUsuarios.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(tblUsuarios);
-
-        tblHoteles.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(tblHoteles);
-
-        tblHabitaciones.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane3.setViewportView(tblHabitaciones);
-
-        javax.swing.GroupLayout PanelDentroGestion2Layout = new javax.swing.GroupLayout(PanelDentroGestion2);
-        PanelDentroGestion2.setLayout(PanelDentroGestion2Layout);
-        PanelDentroGestion2Layout.setHorizontalGroup(
-            PanelDentroGestion2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelDentroGestion2Layout.createSequentialGroup()
-                .addGroup(PanelDentroGestion2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelDentroGestion2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(67, 67, 67)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PanelDentroGestion2Layout.createSequentialGroup()
-                        .addGap(268, 268, 268)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(95, Short.MAX_VALUE))
-        );
-        PanelDentroGestion2Layout.setVerticalGroup(
-            PanelDentroGestion2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelDentroGestion2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(PanelDentroGestion2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(PanelDentroGestion2, javax.swing.GroupLayout.PREFERRED_SIZE, 1074, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(PanelDentroGestion2, javax.swing.GroupLayout.PREFERRED_SIZE, 864, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
-        PanelPrincipal.addTab("Tablas ", jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
                 .addComponent(PanelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(0, 12, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(PanelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 782, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtAgeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAgeKeyTyped
+    private void txtAgeUserKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAgeUserKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtAgeKeyTyped
+    }//GEN-LAST:event_txtAgeUserKeyTyped
 
-    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        int id =Integer.parseInt(txtID.getText());
-        control.delete(id);
-        clean();
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDeleteActionPerformed
+    private void btnUpdateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateUserActionPerformed
 
-    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
-        
-        String name = txtName.getText();
+        String name = null;
         String username = txtUsername.getText();
-        int age = Integer.parseInt(txtAge.getText());
-        String email = txtEmail.getText();
-        String password = (txtPassword.getText());
-        String address = txtAddress.getText();
-        String phone_number = txtPhoneNumber.getText();
-        User user = new User(name, age, username, password, email, phone_number, 2, address);
+        int age = 0;
+        String email = null;
+        String password = (txtPasswordUser.getText());
+        String address = txtAddressUser.getText();
+        String phone_number = null;
+        if (txtNameUser.getText() == null || username.isEmpty() || txtEmailUser.getText() == null || txtPasswordUser.getText() == null || txtAddressUser.getText() == null || txtNameUser.getText() == null) {
+            JOptionPane.showMessageDialog(null, "Debe completar todos los campos obligatorios");
+            return;
+        } else {
+            if (verifyCaracter_spaces(txtNameUser.getText())) {
+                name = txtNameUser.getText();
+            } else {
+                JOptionPane.showMessageDialog(null, "No puede ingresar números en la casilla de nombre");
+            }
+            if (verifyNumber(txtAgeUser.getText())) {
+                age = Integer.parseInt(txtAgeUser.getText());
+            } else {
+                JOptionPane.showMessageDialog(null, "No puede ingresar letras en la casilla de edad");
+            }
+            if (verify_email(txtEmailUser.getText())) {
+                email = txtEmailUser.getText();
+            } else {
+                JOptionPane.showMessageDialog(null, "Ingrese un correo valido");
+            }
+            if (verifyNumber(txtPhoneNumberUser.getText())) {
+                phone_number = txtPhoneNumberUser.getText();
+            } else {
+                JOptionPane.showMessageDialog(null, "Ingrese un correo valido");
+            }
+        }
+        int selectedRow = tbl_users.getSelectedRow();
+        if (selectedRow != -1) {
+            Object selectedValue = tbl_users.getValueAt(selectedRow, 0);
+            if (selectedValue != null) {
+                int id = Integer.parseInt(selectedValue.toString());
+                User user = new User(id, name, age, username, password, email, phone_number, 2, address);
+                control.update(user);
+                clean();
+                JOptionPane.showMessageDialog(null, "Ha actualizado el usuario de: " + name);
+            } else {
+                JOptionPane.showMessageDialog(null, "Debe seleccionar el usuario en la lista que desea actualizar");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar el usuario en la lista que desea actualizar");
+        }
+        
+        fillTableUsers();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUpdateUserActionPerformed
+
+    private void btnRegisterUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterUserActionPerformed
+        int id = 0;
+        String name = null;
+        String username = txtUsername.getText();
+        int age = 0;
+        String email = null;
+        String password = (txtPasswordUser.getText());
+        String address = txtAddressUser.getText();
+        String phone_number = null;
+        if (txtNameUser.getText() == null || username.isEmpty() || txtEmailUser.getText() == null || txtPasswordUser.getText() == null || txtAddressUser.getText() == null || txtNameUser.getText() == null) {
+            JOptionPane.showMessageDialog(null, "Debe completar todos los campos obligatorios");
+            return;
+        } else {
+            if (verifyCaracter_spaces(txtNameUser.getText())) {
+                name = txtNameUser.getText();
+            } else {
+                JOptionPane.showMessageDialog(null, "No puede ingresar números en la casilla de nombre");
+            }
+            if (verifyNumber(txtAgeUser.getText())) {
+                age = Integer.parseInt(txtAgeUser.getText());
+            } else {
+                JOptionPane.showMessageDialog(null, "No puede ingresar letras en la casilla de edad");
+            }
+            if (verify_email(txtEmailUser.getText())) {
+                email = txtEmailUser.getText();
+            } else {
+                JOptionPane.showMessageDialog(null, "Ingrese un correo valido");
+            }
+            if (verifyNumber(txtPhoneNumberUser.getText())) {
+                phone_number = txtPhoneNumberUser.getText();
+            } else {
+                JOptionPane.showMessageDialog(null, "Ingrese un correo valido");
+            }
+        }
+        User user = new User(id, name, age, username, password, email, phone_number, 2, address);
         control.insert(user);
         clean();
-        JOptionPane.showMessageDialog(null, "Ha creado el usuar de: "+name);
-    }//GEN-LAST:event_btnRegisterActionPerformed
-    
-        public void fillTableUsers() {
+        JOptionPane.showMessageDialog(null, "Ha creado el usuario de: " + name);
+        fillTableUsers();
+    }//GEN-LAST:event_btnRegisterUserActionPerformed
+
+    private void btnDeleteUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteUserActionPerformed
+        int selectedRow = tbl_users.getSelectedRow();
+        if (selectedRow != -1) {
+            Object selectedValue = tbl_users.getValueAt(selectedRow, 0);
+            if (selectedValue != null) {
+                int id = Integer.parseInt(selectedValue.toString());
+                control.delete(id);
+            } else {
+                JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila.");
+        }
+        fillTableUsers();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDeleteUserActionPerformed
+
+    private void btnDeleteRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteRoomActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tbl_rooms.getSelectedRow();
+        if (selectedRow != -1) {
+            Object selectedValue = tbl_rooms.getValueAt(selectedRow, 0);
+            if (selectedValue != null) {
+                int id = Integer.parseInt(selectedValue.toString());
+                control.deleteRoom(id);
+            } else {
+                JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila.");
+        }
+        fillTableRooms();
+    }//GEN-LAST:event_btnDeleteRoomActionPerformed
+
+    private void btnRegisterRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterRoomActionPerformed
+        // TODO add your handling code here:
+        Hotel hotel = control.searchHotelbyName(txtHotelName.getText());
+        int id_hotel = hotel.getId();
+        int id_stade_room = -1;
+        int id_type_room = -1;
+        int number_rooom = -1;
+        double priceNigth = -1;
+        String amenitiesDetails = txtModConsRoom.getText();
+        if (txtNumberRoom.getText() == null || txtHotelName.getText() == null || amenitiesDetails == null || txtPriceNight.getText() == null){
+            JOptionPane.showMessageDialog(null, "llene todos los campos");
+            return;
+        } else {
+            if (verifyIndexItems(cbxStadeRoom.getSelectedIndex())) {
+            id_stade_room = cbxStadeRoom.getSelectedIndex();
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione un estado para la habitación");
+            return;
+        }
+        if (verifyIndexItems(cbxTypeRoom.getSelectedIndex())) {
+            id_type_room = cbxTypeRoom.getSelectedIndex();
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione un tipo de habitación");
+            return;
+        }
+        if (verifyNumber(txtNumberRoom.getText())) {
+            number_rooom = Integer.parseInt(txtNumberRoom.getText());
+        } else {
+            JOptionPane.showMessageDialog(null, "Ingrese solo numeros para el número de habitación");
+            return;
+        }
+        if (verifyNumber(txtPriceNight.getText())) {
+            priceNigth = Float.parseFloat(txtPriceNight.getText());
+        } else {
+            JOptionPane.showMessageDialog(null, "Ingrese solo numeros para el precio de la noche");
+            return;
+        }
+
+        Room room = new Room(0, id_stade_room, id_type_room, id_hotel, number_rooom, priceNigth, amenitiesDetails);
+        control.insertRoom(room);
+        fillTableRooms();
+        }
+    }//GEN-LAST:event_btnRegisterRoomActionPerformed
+
+    private void btnUpdateRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateRoomActionPerformed
+        // TODO add your handling code here:
+        Hotel hotel = control.searchHotelbyName(txtHotelName.getText());
+        int id_hotel = hotel.getId();
+        int id_stade_room = -1;
+        int id_type_room = -1;
+        int number_rooom = -1;
+        double priceNigth = -1;
+        String amenitiesDetails = txtModConsRoom.getText();
+        if (txtNumberRoom.getText() == null || txtHotelName.getText() == null || amenitiesDetails == null || txtPriceNight.getText() == null){
+            JOptionPane.showMessageDialog(null, "llene todos los campos");
+            return;
+        } else {
+            if (verifyIndexItems(cbxStadeRoom.getSelectedIndex())) {
+            id_stade_room = cbxStadeRoom.getSelectedIndex();
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione un estado para la habitación");
+            return;
+        }
+        if (verifyIndexItems(cbxTypeRoom.getSelectedIndex())) {
+            id_type_room = cbxTypeRoom.getSelectedIndex();
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione un tipo de habitación");
+            return;
+        }
+        if (verifyNumber(txtNumberRoom.getText())) {
+            number_rooom = Integer.parseInt(txtNumberRoom.getText());
+        } else {
+            JOptionPane.showMessageDialog(null, "Ingrese solo numeros para el número de habitación");
+            return;
+        }
+        if (verifyNumber(txtPriceNight.getText())) {
+            priceNigth = Float.parseFloat(txtPriceNight.getText());
+        } else {
+            JOptionPane.showMessageDialog(null, "Ingrese solo numeros para el precio de la noche");
+            return;
+        }
+
+        int selectedRow = tbl_rooms.getSelectedRow();
+        if (selectedRow != -1) {
+            Object selectedValue = tbl_rooms.getValueAt(selectedRow, 0);
+            if (selectedValue != null) {
+                int id = Integer.parseInt(selectedValue.toString());
+                Room room = new Room(id, id_stade_room, id_type_room, id_hotel, number_rooom, priceNigth, amenitiesDetails);
+                control.updateRoom(room);
+            } else {
+                JOptionPane.showMessageDialog(null, "Debe seleccionar la habitación en la lista que desea actualizar");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar la habitación en la lista que desea actualizar");
+        }
+
+        fillTableRooms();
+        }
+        
+    }//GEN-LAST:event_btnUpdateRoomActionPerformed
+
+    private void btnDeleteHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteHotelActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tbl_hotels.getSelectedRow();
+        if (selectedRow != -1) {
+            Object selectedValue = tbl_hotels.getValueAt(selectedRow, 0);
+            if (selectedValue != null) {
+                int id = Integer.parseInt(selectedValue.toString());
+                control.deleteHotel(id);
+            } else {
+                JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila.");
+        }
+        fillTableHotels();
+    }//GEN-LAST:event_btnDeleteHotelActionPerformed
+
+    private void btnRegisterHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterHotelActionPerformed
+        // TODO add your handling code here:
+        int id_hotel = 0;
+        String nameHotel = null;
+        String addressHotel = txtAddressHotel.getText();
+        String classification = txtClassificationHotel.getText();
+        String mob_cons = txtModConsHotel.getText();
+        String images = txtPicturesHotel.getText();
+        if (txtNameHotel.getText() == null || addressHotel == null || classification == null || mob_cons == null || images == null){
+            JOptionPane.showMessageDialog(null, "Debe completar todos los campos obligatorios");
+            return;
+        }else {
+            if (verifyCaracter_spaces(txtNameHotel.getText())) {
+                nameHotel = txtNameHotel.getText();
+            } else {
+                JOptionPane.showMessageDialog(null, "No puede ingresar números en la casilla de nombre");
+            }
+        }
+        Hotel hotel = new Hotel(id_hotel, nameHotel, images, classification, mob_cons, images);
+        control.insertHotel(hotel);
+        fillTableHotels();
+    }//GEN-LAST:event_btnRegisterHotelActionPerformed
+
+    private void btnUpdateHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateHotelActionPerformed
+        // TODO add your handling code here:
+        int id_hotel = 0;
+        String nameHotel = null;
+        String addressHotel = txtAddressHotel.getText();
+        String classification = txtClassificationHotel.getText();
+        String mob_cons = txtModConsHotel.getText();
+        String images = txtPicturesHotel.getText();
+        if (txtNameHotel.getText() == null || addressHotel == null || classification == null || mob_cons == null || images == null){
+            JOptionPane.showMessageDialog(null, "Debe completar todos los campos obligatorios");
+            return;
+        }else {
+            if (verifyCaracter_spaces(txtNameHotel.getText())) {
+                nameHotel = txtNameHotel.getText();
+            } else {
+                JOptionPane.showMessageDialog(null, "No puede ingresar números en la casilla de nombre");
+            }
+        }
+        int selectedRow = tbl_hotels.getSelectedRow();
+        if (selectedRow != -1) {
+            Object selectedValue = tbl_hotels.getValueAt(selectedRow, 0);
+            if (selectedValue != null) {
+                id_hotel = Integer.parseInt(selectedValue.toString());
+                
+            } else {
+                JOptionPane.showMessageDialog(null, "Debe seleccionar el usuario en la lista que desea actualizar");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar el usuario en la lista que desea actualizar");
+        }
+        Hotel hotel = new Hotel(id_hotel, nameHotel, images, classification, mob_cons, images);
+        control.updateHotel(hotel);
+        fillTableHotels();
+    }//GEN-LAST:event_btnUpdateHotelActionPerformed
+
+    private void txtAddressHotelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAddressHotelKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAddressHotelKeyTyped
+
+    private void txtClassificationHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClassificationHotelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtClassificationHotelActionPerformed
+
+    private void cbxStadeRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxStadeRoomActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxStadeRoomActionPerformed
+
+    private void txtNameHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameHotelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNameHotelActionPerformed
+
+    public boolean verify_email(String email) {
+        String value = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+
+        Pattern pattern = Pattern.compile(value);
+
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    public boolean verifyNumber(String number) {
+
+        String value = "^[0-9]*\\.?[0-9]+$";
+
+        Pattern pattern = Pattern.compile(value);
+
+        Matcher matcher = pattern.matcher(number);
+        return matcher.matches() && Double.parseDouble(number) > 0;
+    }
+
+    public boolean verifyIndexItems(int value) {
+        if (value < 1) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean verifyCaracter_spaces(String text) {
+        String value = "^[a-zA-Z\\s]+$";
+
+        Pattern pattern = Pattern.compile(value);
+
+        Matcher matcher = pattern.matcher(text);
+        return matcher.matches();
+    }
+
+    public void fillTableUsers() {
         // Llamamos al método select del controlador de usuario. Este método devuelve un mapa con los nombres de las columnas, el número de columnas y los datos de la tabla.
         Map<String, Object> result = control.selectUsers();
 
@@ -593,10 +1357,10 @@ public class AdministrationView extends javax.swing.JFrame {
         }
 
         // Establecemos el modelo en la tabla. Esto actualiza la tabla para mostrar los datos del modelo.
-        tblUsuarios.setModel(model);
+        tbl_users.setModel(model);
     }
-    
-            public void fillTableHotels() {
+
+    public void fillTableHotels() {
         // Llamamos al método select del controlador de usuario. Este método devuelve un mapa con los nombres de las columnas, el número de columnas y los datos de la tabla.
         Map<String, Object> result = control.selectHotels();
 
@@ -622,10 +1386,10 @@ public class AdministrationView extends javax.swing.JFrame {
         }
 
         // Establecemos el modelo en la tabla. Esto actualiza la tabla para mostrar los datos del modelo.
-        tblHoteles.setModel(model);
+        tbl_hotels.setModel(model);
     }
-        
-                public void fillTableRooms() {
+
+    public void fillTableRooms() {
         // Llamamos al método select del controlador de usuario. Este método devuelve un mapa con los nombres de las columnas, el número de columnas y los datos de la tabla.
         Map<String, Object> result = control.selectRooms();
 
@@ -651,54 +1415,19 @@ public class AdministrationView extends javax.swing.JFrame {
         }
 
         // Establecemos el modelo en la tabla. Esto actualiza la tabla para mostrar los datos del modelo.
-        tblHoteles.setModel(model);
-    }    
-        
-        
-    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        int id =Integer.parseInt(txtID.getText());
-        User user=control.searchAdmin(id);
-        if(user !=null){
-        txtName.setText(user.getName());
-        txtAge.setText(Integer.toString(user.getAge()));
-        txtUsername.setText(user.getUsername());
-        txtPassword.setText(user.getPassword());
-        txtEmail.setText(user.getEmail());
-        txtPhoneNumber.setText(user.getCountDetails());
-        txtAddress.setText(user.getAddress());
-        }else{
-        JOptionPane.showMessageDialog(null, "No se ha encontrado al usuario con esa id ");
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSearchActionPerformed
-    
-    private void clean(){
-        txtID.setText(" ");
-        txtName.setText("");
-        txtAge.setText("");
-        txtUsername.setText("");
-        txtPassword.setText("");
-        txtEmail.setText("");
-        txtPhoneNumber.setText("");
-        txtAddress.setText("");
-    
+        tbl_rooms.setModel(model);
     }
-    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        String name = txtName.getText();
-        String username = txtUsername.getText();
-        int age = Integer.parseInt(txtAge.getText());
-        String email = txtEmail.getText();
-        String password = (txtPassword.getText());
-        String address = txtAddress.getText();
-        String phone_number = txtPhoneNumber.getText();
-        User user = new User(name, age, username, password, email, phone_number, 2, address);
-        control.update(user);
-        clean();
 
+    private void clean() {
+        txtNameUser.setText("");
+        txtAgeUser.setText("");
+        txtUsername.setText("");
+        txtPasswordUser.setText("");
+        txtEmailUser.setText("");
+        txtPhoneNumberUser.setText("");
+        txtAddressUser.setText("");
 
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnUpdateActionPerformed
+    }
 
     /**
      * @param args the command line arguments
@@ -742,46 +1471,85 @@ public class AdministrationView extends javax.swing.JFrame {
     private javax.swing.JPanel PanelDentroGestion;
     private javax.swing.JPanel PanelDentroGestion1;
     private javax.swing.JPanel PanelDentroGestion2;
+    private javax.swing.JPanel PanelDentroGestion3;
+    private javax.swing.JPanel PanelDentroGestion4;
+    private javax.swing.JPanel PanelDentroGestion5;
     private javax.swing.JPanel PanelGestionarUsuario;
     private javax.swing.JTabbedPane PanelPrincipal;
-    private javax.swing.JButton btnDelete;
-    private javax.swing.JButton btnRegister;
-    private javax.swing.JButton btnSearch;
-    private javax.swing.JButton btnUpdate;
+    private javax.swing.JButton btnDeleteHotel;
+    private javax.swing.JButton btnDeleteRoom;
+    private javax.swing.JButton btnDeleteUser;
+    private javax.swing.JButton btnRegisterHotel;
+    private javax.swing.JButton btnRegisterRoom;
+    private javax.swing.JButton btnRegisterUser;
+    private javax.swing.JButton btnUpdateHotel;
+    private javax.swing.JButton btnUpdateRoom;
+    private javax.swing.JButton btnUpdateUser;
+    private javax.swing.JComboBox<String> cbxStadeRoom;
+    private javax.swing.JComboBox<String> cbxTypeRoom;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator17;
+    private javax.swing.JSeparator jSeparator18;
+    private javax.swing.JSeparator jSeparator19;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator20;
+    private javax.swing.JSeparator jSeparator21;
+    private javax.swing.JSeparator jSeparator22;
+    private javax.swing.JSeparator jSeparator25;
+    private javax.swing.JSeparator jSeparator26;
+    private javax.swing.JSeparator jSeparator27;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JLabel lblAddress;
+    private javax.swing.JLabel lblAddressHotel;
+    private javax.swing.JLabel lblAddressHotel1;
+    private javax.swing.JLabel lblClassificationHotel;
+    private javax.swing.JLabel lblClassificationHotel1;
     private javax.swing.JLabel lblEdad;
     private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblModCons;
+    private javax.swing.JLabel lblModCons1;
     private javax.swing.JLabel lblName;
-    private javax.swing.JLabel lblName1;
+    private javax.swing.JLabel lblNameHotel;
+    private javax.swing.JLabel lblNameHotel1;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblPhoneNumber;
+    private javax.swing.JLabel lblPictures;
+    private javax.swing.JLabel lblPriceNight;
     private javax.swing.JLabel lblUsername;
-    private javax.swing.JTable tblHabitaciones;
-    private javax.swing.JTable tblHoteles;
-    private javax.swing.JTable tblUsuarios;
-    private javax.swing.JTextField txtAddress;
-    private javax.swing.JTextField txtAge;
-    private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtID;
-    private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtPassword;
-    private javax.swing.JTextField txtPhoneNumber;
+    private javax.swing.JLabel lblnameHotel;
+    private javax.swing.JTable tbl_hotels;
+    private javax.swing.JTable tbl_rooms;
+    private javax.swing.JTable tbl_users;
+    private javax.swing.JTextField txtAddressHotel;
+    private javax.swing.JTextField txtAddressUser;
+    private javax.swing.JTextField txtAgeUser;
+    private javax.swing.JTextField txtClassificationHotel;
+    private javax.swing.JTextField txtEmailUser;
+    private javax.swing.JTextField txtHotelName;
+    private javax.swing.JTextField txtModConsHotel;
+    private javax.swing.JTextField txtModConsRoom;
+    private javax.swing.JTextField txtNameHotel;
+    private javax.swing.JTextField txtNameUser;
+    private javax.swing.JTextField txtNumberRoom;
+    private javax.swing.JTextField txtPasswordUser;
+    private javax.swing.JTextField txtPhoneNumberUser;
+    private javax.swing.JTextField txtPicturesHotel;
+    private javax.swing.JTextField txtPriceNight;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }

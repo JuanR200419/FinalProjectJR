@@ -5,6 +5,7 @@ package Models;
  * @author juan
  */
 public class Hotel {
+
     private int id;
     private String nameHotel;
     private String adress;

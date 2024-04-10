@@ -26,36 +26,34 @@ import javax.swing.JOptionPane;
  *
  * @author jilssa
  */
-public class Dao implements InterfaceUser , InterfaceHotel,InterfaceRoom{
-    
+public class Dao implements InterfaceUser, InterfaceHotel, InterfaceRoom {
+
     ConexionMySQL conexion;
-    
+
     public Dao() {
         this.conexion = new ConexionMySQL();
     }
-    
-     
-// Funtion for login
-    public int selectLogin(String email,String password) {
-        int resultado=0;
+
+// Login function
+    public int selectLogin(String email, String password) {
+        int resultado = 0;
         // We stablish the connection with database
         try (Connection conn = conexion.conectarMySQL()) {
             // We check if the connection was successful
             if (conn != null) {
-                // Preparamos la consulta SQL para seleccionar datos
+                // We prepare the consultation SQL for select data
                 String selectSQL = "SELECT * FROM users Where email=? AND password_user=?";
                 try (PreparedStatement pstmt = conn.prepareStatement(selectSQL)) {
                     pstmt.setString(2, password);
                     pstmt.setString(1, email);
-                     
+
                     //We execute the query
                     ResultSet rs = pstmt.executeQuery();
-                   
+
                     // We iterate all the results
-                        
-                    if( rs.next() ){
-                    return resultado= rs.getInt("user_rol");
-                        
+                    if (rs.next()) {
+                        return resultado = rs.getInt("user_rol");
+
                     }
                 }
             } else {
@@ -65,11 +63,11 @@ public class Dao implements InterfaceUser , InterfaceHotel,InterfaceRoom{
             System.out.println("Ocurrió un error al realizar la selección en la base de datos");
             e.printStackTrace();
         }
-       return -1;
+        return -1;
     }
-    
-   // CRUD FOR USERS 
-    public User searchUser(int id ) {
+
+    // CRUD FOR USERS 
+    public User searchUser(int id) {
         // We stablish the connection with database
         try (Connection conn = conexion.conectarMySQL()) {
             /// We check if the connection was successful
@@ -77,15 +75,14 @@ public class Dao implements InterfaceUser , InterfaceHotel,InterfaceRoom{
                 // We prepare the consultation SQL for select data
                 String selectSQL = "SELECT * FROM users Where id_user=?";
                 try (PreparedStatement pstmt = conn.prepareStatement(selectSQL)) {
-                    pstmt.setInt(1, id);                  
+                    pstmt.setInt(1, id);
                     //We execute the query
                     ResultSet rs = pstmt.executeQuery();
-                   
+
                     // We iterate all the results
-                        
-                    if( rs.next() ){
-                        User user = new User(rs.getString("full_name"),rs.getInt("age"), rs.getString("username"), rs.getString("password_user"), rs.getString("email"), rs.getString("phone_number"), rs.getInt("user_rol"), rs.getString("address"));
-                      return user;
+                    if (rs.next()) {
+                        User user = new User(rs.getInt("id_user"), rs.getString("full_name"), rs.getInt("age"), rs.getString("username"), rs.getString("password_user"), rs.getString("email"), rs.getString("phone_number"), rs.getInt("user_rol"), rs.getString("address"));
+                        return user;
                     }
                 }
             } else {
@@ -97,8 +94,8 @@ public class Dao implements InterfaceUser , InterfaceHotel,InterfaceRoom{
         }
         return null;
     }
-    
-       public void insertUser(User user) {
+
+    public void insertUser(User user) {
         //We stablish the connection with database
         try (Connection conn = conexion.conectarMySQL()) {
             // We check if the connection was successful
@@ -134,6 +131,7 @@ public class Dao implements InterfaceUser , InterfaceHotel,InterfaceRoom{
             e.printStackTrace();
         }
     }
+
     public void deleteUser(int id) {
         // We stablish the connection with database
         try (Connection conn = conexion.conectarMySQL()) {
@@ -144,8 +142,8 @@ public class Dao implements InterfaceUser , InterfaceHotel,InterfaceRoom{
                 try (PreparedStatement pstmt = conn.prepareStatement(deleteSQL)) {
                     pstmt.setInt(1, id);
                     pstmt.executeUpdate();
-                   JOptionPane.showMessageDialog(null, "Se borro el usuario");
-                   return;
+                    JOptionPane.showMessageDialog(null, "Se borro el usuario");
+                    return;
                 }
             } else {
                 System.out.println("No se pudo establecer la conexión con la base de datos");
@@ -154,11 +152,11 @@ public class Dao implements InterfaceUser , InterfaceHotel,InterfaceRoom{
             System.out.println("Ocurrió un error al realizar la selección en la base de datos");
             e.printStackTrace();
         }
-         JOptionPane.showMessageDialog(null, "No se borro el usuario ");
+        JOptionPane.showMessageDialog(null, "No se borro el usuario ");
     }
 
     public void updateUser(User user) {
-    // We stablish the connection with database
+        // We stablish the connection with database
         try (Connection conn = conexion.conectarMySQL()) {
             // We check if the connection was successful
             if (conn != null) {
@@ -185,9 +183,10 @@ public class Dao implements InterfaceUser , InterfaceHotel,InterfaceRoom{
             e.printStackTrace();
         }
     }
+
     //--------------------------------------------------------------------------------------------------------------------------
     // CRUD FOR HOTELS
-        public Hotel searchHotel(int id ) {
+    public Hotel searchHotel(int id) {
         // We stablish the connection with database
         try (Connection conn = conexion.conectarMySQL()) {
             /// We check if the connection was successful
@@ -195,15 +194,14 @@ public class Dao implements InterfaceUser , InterfaceHotel,InterfaceRoom{
                 // We prepare the consultation SQL for select data
                 String selectSQL = "SELECT * FROM hotels Where id_hotel=?";
                 try (PreparedStatement pstmt = conn.prepareStatement(selectSQL)) {
-                    pstmt.setInt(1, id);                  
+                    pstmt.setInt(1, id);
                     //We execute the query
                     ResultSet rs = pstmt.executeQuery();
-                   
+
                     // We iterate all the results
-                        
-                    if( rs.next() ){
+                    if (rs.next()) {
                         Hotel hotel = new Hotel(id, rs.getString("name_hotel"), rs.getString("address_hotel"), rs.getString("classification_hotel"), rs.getString("mob_cons_hotel"), rs.getString("pictures_hotel"));
-                       return hotel;
+                        return hotel;
                     }
                 }
             } else {
@@ -216,7 +214,35 @@ public class Dao implements InterfaceUser , InterfaceHotel,InterfaceRoom{
         return null;
     }
     
-       public void insertHotel(Hotel hotel) {
+    public Hotel searchHotelbyName(String name) {
+        // We stablish the connection with database
+        try (Connection conn = conexion.conectarMySQL()) {
+            /// We check if the connection was successful
+            if (conn != null) {
+                // We prepare the consultation SQL for select data
+                String selectSQL = "SELECT * FROM hotels Where name_hotel=?";
+                try (PreparedStatement pstmt = conn.prepareStatement(selectSQL)) {
+                    pstmt.setString(1, name);
+                    //We execute the query
+                    ResultSet rs = pstmt.executeQuery();
+
+                    // We iterate all the results
+                    if (rs.next()) {
+                        Hotel hotel = new Hotel(rs.getInt("id_hotel"), rs.getString("name_hotel"), rs.getString("address_hotel"), rs.getString("classification_hotel"), rs.getString("mob_cons_hotel"), rs.getString("pictures_hotel"));
+                        return hotel;
+                    }
+                }
+            } else {
+                System.out.println("No se pudo establecer la conexión con la base de datos");
+            }
+        } catch (SQLException e) {
+            System.out.println("Ocurrió un error al realizar la selección en la base de datos");
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public void insertHotel(Hotel hotel) {
         //We stablish the connection with database
         try (Connection conn = conexion.conectarMySQL()) {
             // We check if the connection was successful
@@ -248,6 +274,7 @@ public class Dao implements InterfaceUser , InterfaceHotel,InterfaceRoom{
             e.printStackTrace();
         }
     }
+
     public void deleteHotel(int id) {
         // We stablish the connection with database
         try (Connection conn = conexion.conectarMySQL()) {
@@ -258,8 +285,8 @@ public class Dao implements InterfaceUser , InterfaceHotel,InterfaceRoom{
                 try (PreparedStatement pstmt = conn.prepareStatement(deleteSQL)) {
                     pstmt.setInt(1, id);
                     pstmt.executeUpdate();
-                   JOptionPane.showMessageDialog(null, "Se borro el Hotel");
-                   return;
+                    JOptionPane.showMessageDialog(null, "Se borro el Hotel");
+                    return;
                 }
             } else {
                 System.out.println("No se pudo establecer la conexión con la base de datos");
@@ -268,11 +295,11 @@ public class Dao implements InterfaceUser , InterfaceHotel,InterfaceRoom{
             System.out.println("Ocurrió un error al realizar la selección en la base de datos");
             e.printStackTrace();
         }
-         JOptionPane.showMessageDialog(null, "No se borro el usuario ");
+        JOptionPane.showMessageDialog(null, "No se borro el usuario ");
     }
 
     public void updateHotel(Hotel hotel) {
-    // We stablish the connection with database
+        // We establish the connection with the database
         try (Connection conn = conexion.conectarMySQL()) {
             // We check if the connection was successful
             if (conn != null) {
@@ -285,7 +312,16 @@ public class Dao implements InterfaceUser , InterfaceHotel,InterfaceRoom{
                     pstmt.setString(4, hotel.getModCons());
                     pstmt.setString(5, hotel.getPictures());
                     pstmt.setInt(6, hotel.getId());
-                    JOptionPane.showMessageDialog(null, "Su Hotel se ha actualizado  ");
+
+                    // Execute the update
+                    int rowsUpdated = pstmt.executeUpdate();
+
+                    // Check if the update was successful
+                    if (rowsUpdated > 0) {
+                        JOptionPane.showMessageDialog(null, "El hotel se ha actualizado exitosamente");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No se ha realizado ninguna actualización en la base de datos");
+                    }
                 }
             } else {
                 System.out.println("No se pudo establecer la conexión con la base de datos");
@@ -295,10 +331,10 @@ public class Dao implements InterfaceUser , InterfaceHotel,InterfaceRoom{
             e.printStackTrace();
         }
     }
-    
+
     //---------------------------------------------------------------------------------------------------------------------------------------
     // CRUD FOR ROOM
-        public Room searchRoom(int id ) {
+    public Room searchRoom(int id) {
         // We stablish the connection with database
         try (Connection conn = conexion.conectarMySQL()) {
             /// We check if the connection was successful
@@ -306,16 +342,14 @@ public class Dao implements InterfaceUser , InterfaceHotel,InterfaceRoom{
                 // We prepare the consultation SQL for select data
                 String selectSQL = "SELECT * FROM rooms Where id_rooom=?";
                 try (PreparedStatement pstmt = conn.prepareStatement(selectSQL)) {
-                    pstmt.setInt(1, id);                  
+                    pstmt.setInt(1, id);
                     //We execute the query
                     ResultSet rs = pstmt.executeQuery();
-                   
+
                     // We iterate all the results
-                        
-                    if( rs.next() ){
+                    if (rs.next()) {
                         Room room = new Room(rs.getInt("id_rooom"), rs.getInt("id_stade_room"), rs.getInt("id_type_room"), rs.getInt("id_hotel"), rs.getInt("number_rooom"), rs.getInt("price_nigth"), rs.getString("room_amenities"));
-//                                                User user = new User(rs.getInt("name"),rs.getInt("age"), rs.getString("username"), rs.getString("password"), rs.getString("email"), rs.getString("countDetails"), rs.getInt("typeUser"), rs.getString("address"));
-                      return room;
+                        return room;
                     }
                 }
             } else {
@@ -327,8 +361,8 @@ public class Dao implements InterfaceUser , InterfaceHotel,InterfaceRoom{
         }
         return null;
     }
-    
-       public void insertRoom(Room room) {
+
+    public void insertRoom(Room room) {
         //We stablish the connection with database
         try (Connection conn = conexion.conectarMySQL()) {
             // We check if the connection was successful
@@ -361,6 +395,7 @@ public class Dao implements InterfaceUser , InterfaceHotel,InterfaceRoom{
             e.printStackTrace();
         }
     }
+
     public void deleteRoom(int id) {
         // We stablish the connection with database
         try (Connection conn = conexion.conectarMySQL()) {
@@ -371,8 +406,8 @@ public class Dao implements InterfaceUser , InterfaceHotel,InterfaceRoom{
                 try (PreparedStatement pstmt = conn.prepareStatement(deleteSQL)) {
                     pstmt.setInt(1, id);
                     pstmt.executeUpdate();
-                   JOptionPane.showMessageDialog(null, "Se borro el usuario");
-                   return;
+                    JOptionPane.showMessageDialog(null, "Se borro la habitación");
+                    return;
                 }
             } else {
                 System.out.println("No se pudo establecer la conexión con la base de datos");
@@ -381,11 +416,11 @@ public class Dao implements InterfaceUser , InterfaceHotel,InterfaceRoom{
             System.out.println("Ocurrió un error al realizar la selección en la base de datos");
             e.printStackTrace();
         }
-         JOptionPane.showMessageDialog(null, "No se borro el usuario ");
+        JOptionPane.showMessageDialog(null, "No se borro la habitación ");
     }
 
     public void updateRoom(Room room) {
-    // We stablish the connection with database
+        // We stablish the connection with database
         try (Connection conn = conexion.conectarMySQL()) {
             // We check if the connection was successful
             if (conn != null) {
@@ -399,10 +434,10 @@ public class Dao implements InterfaceUser , InterfaceHotel,InterfaceRoom{
                     pstmt.setDouble(5, room.getPriceNigth());
                     pstmt.setString(6, room.getAmenitiesDetails());
                     pstmt.setInt(7, room.getId_room());
-                    
+
                     pstmt.executeUpdate();
-                    
-                    JOptionPane.showMessageDialog(null, "Su perfil se ha actualizado  ");
+
+                    JOptionPane.showMessageDialog(null, "Se ha actualizado");
                 }
             } else {
                 System.out.println("No se pudo establecer la conexión con la base de datos");
@@ -412,20 +447,18 @@ public class Dao implements InterfaceUser , InterfaceHotel,InterfaceRoom{
             e.printStackTrace();
         }
     }
-    
+
 // JSON FOR TABLES 
-   
-           public Map<String, Object> selectUsers() {
+    public Map<String, Object> selectUsers() {
         // Inicializamos el mapa de resultados. Este mapa almacenará los nombres de las columnas, el número de columnas y los datos de la tabla.
         Map<String, Object> result = new HashMap<>();
-        
 
         // Intentamos establecer una conexión con la base de datos
         try (Connection conn = conexion.conectarMySQL()) {
             // Verificamos si la conexión fue exitosa
             if (conn != null) {
                 // Preparamos la consulta SQL para seleccionar datos de la tabla 'usuario'
-                String selectSQL = "SELECT * FROM usuario";
+                String selectSQL = "SELECT * FROM users";
 
                 // Intentamos preparar y ejecutar la consulta SQL
                 try (PreparedStatement pstmt = conn.prepareStatement(selectSQL)) {
@@ -479,10 +512,10 @@ public class Dao implements InterfaceUser , InterfaceHotel,InterfaceRoom{
         // Retornamos el mapa de resultados
         return result;
     }
-            public Map<String, Object> selectHotels() {
+
+    public Map<String, Object> selectHotels() {
         // Inicializamos el mapa de resultados. Este mapa almacenará los nombres de las columnas, el número de columnas y los datos de la tabla.
         Map<String, Object> result = new HashMap<>();
-        
 
         // Intentamos establecer una conexión con la base de datos
         try (Connection conn = conexion.conectarMySQL()) {
@@ -543,11 +576,10 @@ public class Dao implements InterfaceUser , InterfaceHotel,InterfaceRoom{
         // Retornamos el mapa de resultados
         return result;
     }
-            
+
     public Map<String, Object> selectRooms() {
         // Inicializamos el mapa de resultados. Este mapa almacenará los nombres de las columnas, el número de columnas y los datos de la tabla.
         Map<String, Object> result = new HashMap<>();
-        
 
         // Intentamos establecer una conexión con la base de datos
         try (Connection conn = conexion.conectarMySQL()) {
@@ -607,12 +639,7 @@ public class Dao implements InterfaceUser , InterfaceHotel,InterfaceRoom{
 
         // Retornamos el mapa de resultados
         return result;
-    } 
-    
+    }
+
     //-----------------------------------------------------------------
-
-
-
-
-
 }

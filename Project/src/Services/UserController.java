@@ -26,10 +26,9 @@ public class UserController {
     public UserController() {
         this.conexion = new ConexionMySQL();
         this.dao = new Dao();
-
     }
-// Metodos del Usuario
 
+// User methods
     public void insert(User user) {
         dao.insertUser(user);
     }
@@ -49,10 +48,14 @@ public class UserController {
     public void update(User user) {
         dao.updateUser(user);
     }
-// Metodos del Hotel
 
+// hotel methods
     public Hotel searchHotel(int id) {
         return dao.searchHotel(id);
+    }
+    
+    public Hotel searchHotelbyName(String value) {
+        return dao.searchHotelbyName(value);
     }
 
     public void insertHotel(Hotel hotel) {
@@ -67,7 +70,7 @@ public class UserController {
         dao.updateHotel(hotel);
     }
 
-    //Metodos De la Habitacion 
+//room methods  
     public Room searchRoom(int id) {
         return dao.searchRoom(id);
     }
@@ -84,8 +87,7 @@ public class UserController {
         dao.updateRoom(room);
     }
 
-// llenar tablas 
-
+//fill tables
     public Map<String, Object> selectUsers() {
         return dao.selectUsers();
     }

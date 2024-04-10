@@ -6,6 +6,9 @@ package Views;
 
 import Services.UserController;
 import Models.User;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,7 +23,34 @@ public class UserRegisterView extends javax.swing.JFrame {
         initComponents();
         control = new UserController();
     }
+    
+    public boolean verify_email(String email) {
+        String value = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
 
+        Pattern pattern = Pattern.compile(value);
+
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    public boolean verifyNumber(String number) {
+
+        String value = "^[0-9]*\\.?[0-9]+$";
+
+        Pattern pattern = Pattern.compile(value);
+
+        Matcher matcher = pattern.matcher(number);
+        return matcher.matches() && Double.parseDouble(number) > 0;
+    }
+
+    public boolean verifyCaracter_spaces(String text) {
+        String value = "^[a-zA-Z\\s]+$";
+
+        Pattern pattern = Pattern.compile(value);
+
+        Matcher matcher = pattern.matcher(text);
+        return matcher.matches();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -40,7 +70,7 @@ public class UserRegisterView extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         txtPassword = new javax.swing.JPasswordField();
         jSeparator2 = new javax.swing.JSeparator();
-        txtEdad = new javax.swing.JTextField();
+        txtAge = new javax.swing.JTextField();
         lblEdad = new javax.swing.JLabel();
         txtAddress = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
@@ -116,23 +146,28 @@ public class UserRegisterView extends javax.swing.JFrame {
         txtPassword.setForeground(new java.awt.Color(73, 181, 172));
         txtPassword.setBorder(null);
         txtPassword.setCaretColor(new java.awt.Color(73, 181, 172));
+        txtPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPasswordActionPerformed(evt);
+            }
+        });
         jPanel1.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 300, 270, 40));
 
         jSeparator2.setBackground(new java.awt.Color(0, 153, 255));
         jSeparator2.setForeground(new java.awt.Color(0, 153, 255));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 270, 10));
 
-        txtEdad.setBackground(new java.awt.Color(0, 0, 102));
-        txtEdad.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
-        txtEdad.setForeground(new java.awt.Color(73, 181, 172));
-        txtEdad.setBorder(null);
-        txtEdad.setCaretColor(new java.awt.Color(73, 181, 172));
-        txtEdad.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtAge.setBackground(new java.awt.Color(0, 0, 102));
+        txtAge.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtAge.setForeground(new java.awt.Color(73, 181, 172));
+        txtAge.setBorder(null);
+        txtAge.setCaretColor(new java.awt.Color(73, 181, 172));
+        txtAge.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtEdadKeyTyped(evt);
+                txtAgeKeyTyped(evt);
             }
         });
-        jPanel1.add(txtEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 270, 40));
+        jPanel1.add(txtAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 270, 40));
 
         lblEdad.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
         lblEdad.setForeground(new java.awt.Color(255, 255, 255));
@@ -261,14 +296,41 @@ public class UserRegisterView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
-        String nombre = txtName.getText();
-        String usuario = txtUsername.getText();
-        int edad = Integer.parseInt(txtEdad.getText());
-        String correo = txtEmail.getText();
-        String contrasena = new String(txtPassword.getPassword());
-        String direccion = txtAddress.getText();
-        String telefono = txtPhoneNumber.getText();
-        User user = new User(nombre, edad,usuario, contrasena, correo, telefono, 2, direccion);
+        int id = 0;
+        String name = null;
+        String username = txtUsername.getText();
+        int age = 0;
+        String email = null;
+        String password = new String(txtPassword.getPassword());
+        String address = txtAddress.getText();
+        String phone_number = null;
+        
+        if (txtName.getText() == null || username.isEmpty() || txtEmail.getText() == null || password == null || txtAddress.getText() == null || txtName.getText() == null) {
+            JOptionPane.showMessageDialog(null, "Debe completar todos los campos obligatorios");
+            return;
+        } else {
+            if (verifyCaracter_spaces(txtName.getText())) {
+                name = txtName.getText();
+            } else {
+                JOptionPane.showMessageDialog(null, "No puede ingresar números en la casilla de nombre");
+            }
+            if (verifyNumber(txtAge.getText())) {
+                age = Integer.parseInt(txtAge.getText());
+            } else {
+                JOptionPane.showMessageDialog(null, "No puede ingresar letras en la casilla de edad");
+            }
+            if (verify_email(txtEmail.getText())) {
+                email = txtEmail.getText();
+            } else {
+                JOptionPane.showMessageDialog(null, "Ingrese un correo valido");
+            }
+            if (verifyNumber(txtPhoneNumber.getText())) {
+                phone_number = txtPhoneNumber.getText();
+            } else {
+                JOptionPane.showMessageDialog(null, "Ingrese un correo valido");
+            }
+        }
+        User user = new User(id, name, age, username, password, email, phone_number, 2, address);
         control.insert(user);
         LoginView ven = new LoginView();
         ven.setVisible(true);
@@ -277,9 +339,13 @@ public class UserRegisterView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRegisterActionPerformed
 
-    private void txtEdadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEdadKeyTyped
+    private void txtAgeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAgeKeyTyped
                // TODO add your handling code here:
-    }//GEN-LAST:event_txtEdadKeyTyped
+    }//GEN-LAST:event_txtAgeKeyTyped
+
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPasswordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -342,7 +408,7 @@ public class UserRegisterView extends javax.swing.JFrame {
     private javax.swing.JLabel lblPhoneNumber;
     private javax.swing.JLabel lblUsername;
     private javax.swing.JTextField txtAddress;
-    private javax.swing.JTextField txtEdad;
+    private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtName;
     private javax.swing.JPasswordField txtPassword;
