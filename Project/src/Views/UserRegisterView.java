@@ -33,14 +33,24 @@ public class UserRegisterView extends javax.swing.JFrame {
         return matcher.matches();
     }
 
-    public boolean verifyNumber(String number) {
+    public boolean verifyAge(String age) {
 
-        String value = "^[0-9]*\\.?[0-9]+$";
-
-        Pattern pattern = Pattern.compile(value);
-
+        String regex = "^(?:1[0-1][0-9]|[1-9]?[0-9])$|^120$";
+        
+        Pattern pattern = Pattern.compile(regex);
+        
+        Matcher matcher = pattern.matcher(age);
+        return matcher.matches();
+    }
+    
+    public static boolean verifyColombianNumber(String number) {
+        String regex = "^(\\+57)?\\s*([0-9]\\s*){10}$";
+        
+        Pattern pattern = Pattern.compile(regex);
+        
         Matcher matcher = pattern.matcher(number);
-        return matcher.matches() && Double.parseDouble(number) > 0;
+        
+        return matcher.matches();
     }
 
     public boolean verifyCaracter_spaces(String text) {
@@ -304,8 +314,8 @@ public class UserRegisterView extends javax.swing.JFrame {
         String password = new String(txtPassword.getPassword());
         String address = txtAddress.getText();
         String phone_number = null;
-        
-        if (txtName.getText() == null || username.isEmpty() || txtEmail.getText() == null || password == null || txtAddress.getText() == null || txtName.getText() == null) {
+
+        if (txtName.getText() == null || username.isEmpty() || txtEmail.getText() == null || password.isEmpty() || txtAddress.getText() == null || txtName.getText() == null) {
             JOptionPane.showMessageDialog(null, "Debe completar todos los campos obligatorios");
             return;
         } else {
@@ -313,30 +323,33 @@ public class UserRegisterView extends javax.swing.JFrame {
                 name = txtName.getText();
             } else {
                 JOptionPane.showMessageDialog(null, "No puede ingresar números en la casilla de nombre");
+                return;
             }
-            if (verifyNumber(txtAge.getText())) {
+            if (verifyAge(txtAge.getText())) {
                 age = Integer.parseInt(txtAge.getText());
             } else {
                 JOptionPane.showMessageDialog(null, "No puede ingresar letras en la casilla de edad");
+                return;
             }
             if (verify_email(txtEmail.getText())) {
                 email = txtEmail.getText();
             } else {
                 JOptionPane.showMessageDialog(null, "Ingrese un correo valido");
+                return;
             }
-            if (verifyNumber(txtPhoneNumber.getText())) {
+            if (verifyColombianNumber(txtPhoneNumber.getText())) {
                 phone_number = txtPhoneNumber.getText();
             } else {
-                JOptionPane.showMessageDialog(null, "Ingrese un correo valido");
+                JOptionPane.showMessageDialog(null, "Ingrese un numero de telefono valido");
+                return;
             }
+            User user = new User(id, name, age, username, password, email, phone_number, 2, address);
+            control.insert(user);
+            LoginView ven = new LoginView();
+            ven.setVisible(true);
+            ven.setLocationRelativeTo(this);
+            this.dispose();
         }
-        User user = new User(id, name, age, username, password, email, phone_number, 2, address);
-        control.insert(user);
-        LoginView ven = new LoginView();
-        ven.setVisible(true);
-        ven.setLocationRelativeTo(this);
-        this.dispose();
-        // TODO add your handling code here:
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void txtAgeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAgeKeyTyped

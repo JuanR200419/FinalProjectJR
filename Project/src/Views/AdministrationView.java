@@ -147,7 +147,7 @@ public class AdministrationView extends javax.swing.JFrame {
         lblNameHotel1.setText("NUMERO HABITACIÓN");
 
         txtNumberRoom.setBackground(new java.awt.Color(0, 0, 102));
-        txtNumberRoom.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtNumberRoom.setFont(new java.awt.Font("Lohit Devanagari", 0, 18)); // NOI18N
         txtNumberRoom.setForeground(new java.awt.Color(73, 181, 172));
         txtNumberRoom.setBorder(null);
         txtNumberRoom.setCaretColor(new java.awt.Color(73, 181, 172));
@@ -168,7 +168,7 @@ public class AdministrationView extends javax.swing.JFrame {
         lblModCons1.setText("COMODIDADES");
 
         txtModConsRoom.setBackground(new java.awt.Color(0, 0, 102));
-        txtModConsRoom.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtModConsRoom.setFont(new java.awt.Font("Lohit Devanagari", 0, 18)); // NOI18N
         txtModConsRoom.setForeground(new java.awt.Color(73, 181, 172));
         txtModConsRoom.setBorder(null);
         txtModConsRoom.setCaretColor(new java.awt.Color(73, 181, 172));
@@ -181,7 +181,7 @@ public class AdministrationView extends javax.swing.JFrame {
         lblPriceNight.setText("PRECIO NOCHE");
 
         txtPriceNight.setBackground(new java.awt.Color(0, 0, 102));
-        txtPriceNight.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtPriceNight.setFont(new java.awt.Font("Lohit Devanagari", 0, 18)); // NOI18N
         txtPriceNight.setForeground(new java.awt.Color(73, 181, 172));
         txtPriceNight.setBorder(null);
         txtPriceNight.setCaretColor(new java.awt.Color(73, 181, 172));
@@ -190,11 +190,11 @@ public class AdministrationView extends javax.swing.JFrame {
         jSeparator26.setForeground(new java.awt.Color(0, 153, 255));
 
         cbxTypeRoom.setBackground(new java.awt.Color(0, 0, 102));
-        cbxTypeRoom.setFont(new java.awt.Font("Lohit Devanagari", 0, 15)); // NOI18N
+        cbxTypeRoom.setFont(new java.awt.Font("Lohit Devanagari", 0, 18)); // NOI18N
         cbxTypeRoom.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "seleccione", "individual", "doble", "suite" }));
 
         cbxStadeRoom.setBackground(new java.awt.Color(0, 0, 102));
-        cbxStadeRoom.setFont(new java.awt.Font("Lohit Devanagari", 0, 15)); // NOI18N
+        cbxStadeRoom.setFont(new java.awt.Font("Lohit Devanagari", 0, 18)); // NOI18N
         cbxStadeRoom.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "seleccione", "Disponible", "Ocupada" }));
         cbxStadeRoom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -203,7 +203,7 @@ public class AdministrationView extends javax.swing.JFrame {
         });
 
         txtHotelName.setBackground(new java.awt.Color(0, 0, 102));
-        txtHotelName.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtHotelName.setFont(new java.awt.Font("Lohit Devanagari", 0, 18)); // NOI18N
         txtHotelName.setForeground(new java.awt.Color(73, 181, 172));
         txtHotelName.setBorder(null);
         txtHotelName.setCaretColor(new java.awt.Color(73, 181, 172));
@@ -283,7 +283,7 @@ public class AdministrationView extends javax.swing.JFrame {
         PanelDentroGestion3.setBackground(new java.awt.Color(0, 0, 102));
         PanelDentroGestion3.setPreferredSize(new java.awt.Dimension(400, 500));
 
-        btnDeleteRoom.setBackground(new java.awt.Color(0, 153, 255));
+        btnDeleteRoom.setBackground(new java.awt.Color(204, 0, 0));
         btnDeleteRoom.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
         btnDeleteRoom.setForeground(new java.awt.Color(255, 255, 255));
         btnDeleteRoom.setText("BORRAR");
@@ -296,7 +296,7 @@ public class AdministrationView extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Lohit Devanagari", 1, 40)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Gestion De Usuarios");
+        jLabel4.setText("Gestion De Habitaciones");
 
         btnRegisterRoom.setBackground(new java.awt.Color(0, 153, 255));
         btnRegisterRoom.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
@@ -322,7 +322,7 @@ public class AdministrationView extends javax.swing.JFrame {
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logo_mid.jpg"))); // NOI18N
 
-        tbl_rooms.setFont(new java.awt.Font("Lohit Devanagari", 0, 15)); // NOI18N
+        tbl_rooms.setFont(new java.awt.Font("Lohit Devanagari", 0, 18)); // NOI18N
         tbl_rooms.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -344,7 +344,7 @@ public class AdministrationView extends javax.swing.JFrame {
                 .addGroup(PanelDentroGestion3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelDentroGestion3Layout.createSequentialGroup()
                         .addComponent(jLabel5)
-                        .addGap(137, 137, 137)
+                        .addGap(113, 113, 113)
                         .addComponent(jLabel4))
                     .addGroup(PanelDentroGestion3Layout.createSequentialGroup()
                         .addGap(37, 37, 37)
@@ -352,8 +352,8 @@ public class AdministrationView extends javax.swing.JFrame {
                             .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 754, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(PanelDentroGestion3Layout.createSequentialGroup()
                                 .addGroup(PanelDentroGestion3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btnRegisterRoom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnUpdateRoom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(btnUpdateRoom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnRegisterRoom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(37, 37, 37)
                                 .addComponent(btnDeleteRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(37, Short.MAX_VALUE))
@@ -401,7 +401,7 @@ public class AdministrationView extends javax.swing.JFrame {
         PanelDentroGestion1.setBackground(new java.awt.Color(0, 0, 102));
         PanelDentroGestion1.setPreferredSize(new java.awt.Dimension(400, 500));
 
-        btnDeleteUser.setBackground(new java.awt.Color(0, 153, 255));
+        btnDeleteUser.setBackground(new java.awt.Color(204, 0, 0));
         btnDeleteUser.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
         btnDeleteUser.setForeground(new java.awt.Color(255, 255, 255));
         btnDeleteUser.setText("BORRAR");
@@ -469,10 +469,11 @@ public class AdministrationView extends javax.swing.JFrame {
                         .addGroup(PanelDentroGestion1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 754, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(PanelDentroGestion1Layout.createSequentialGroup()
-                                .addComponent(btnRegisterUser)
+                                .addGroup(PanelDentroGestion1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(btnUpdateUser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnRegisterUser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE))
                                 .addGap(37, 37, 37)
-                                .addComponent(btnDeleteUser, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnUpdateUser, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(btnDeleteUser, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
         PanelDentroGestion1Layout.setVerticalGroup(
@@ -500,7 +501,7 @@ public class AdministrationView extends javax.swing.JFrame {
         lblName.setText("NOMBRE");
 
         txtNameUser.setBackground(new java.awt.Color(0, 0, 102));
-        txtNameUser.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtNameUser.setFont(new java.awt.Font("Lohit Devanagari", 0, 18)); // NOI18N
         txtNameUser.setForeground(new java.awt.Color(73, 181, 172));
         txtNameUser.setBorder(null);
         txtNameUser.setCaretColor(new java.awt.Color(73, 181, 172));
@@ -512,7 +513,7 @@ public class AdministrationView extends javax.swing.JFrame {
         jSeparator2.setForeground(new java.awt.Color(0, 153, 255));
 
         txtAgeUser.setBackground(new java.awt.Color(0, 0, 102));
-        txtAgeUser.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtAgeUser.setFont(new java.awt.Font("Lohit Devanagari", 0, 18)); // NOI18N
         txtAgeUser.setForeground(new java.awt.Color(73, 181, 172));
         txtAgeUser.setBorder(null);
         txtAgeUser.setCaretColor(new java.awt.Color(73, 181, 172));
@@ -527,7 +528,7 @@ public class AdministrationView extends javax.swing.JFrame {
         lblEdad.setText("EDAD");
 
         txtAddressUser.setBackground(new java.awt.Color(0, 0, 102));
-        txtAddressUser.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtAddressUser.setFont(new java.awt.Font("Lohit Devanagari", 0, 18)); // NOI18N
         txtAddressUser.setForeground(new java.awt.Color(73, 181, 172));
         txtAddressUser.setBorder(null);
         txtAddressUser.setCaretColor(new java.awt.Color(73, 181, 172));
@@ -540,7 +541,7 @@ public class AdministrationView extends javax.swing.JFrame {
         lblAddress.setText("DIRECCIÓN");
 
         txtPhoneNumberUser.setBackground(new java.awt.Color(0, 0, 102));
-        txtPhoneNumberUser.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtPhoneNumberUser.setFont(new java.awt.Font("Lohit Devanagari", 0, 18)); // NOI18N
         txtPhoneNumberUser.setForeground(new java.awt.Color(73, 181, 172));
         txtPhoneNumberUser.setBorder(null);
         txtPhoneNumberUser.setCaretColor(new java.awt.Color(73, 181, 172));
@@ -550,7 +551,7 @@ public class AdministrationView extends javax.swing.JFrame {
         lblPhoneNumber.setText("TELEFONO");
 
         txtUsername.setBackground(new java.awt.Color(0, 0, 102));
-        txtUsername.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtUsername.setFont(new java.awt.Font("Lohit Devanagari", 0, 18)); // NOI18N
         txtUsername.setForeground(new java.awt.Color(73, 181, 172));
         txtUsername.setBorder(null);
         txtUsername.setCaretColor(new java.awt.Color(73, 181, 172));
@@ -566,7 +567,7 @@ public class AdministrationView extends javax.swing.JFrame {
         jSeparator6.setForeground(new java.awt.Color(0, 153, 255));
 
         txtEmailUser.setBackground(new java.awt.Color(0, 0, 102));
-        txtEmailUser.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtEmailUser.setFont(new java.awt.Font("Lohit Devanagari", 0, 18)); // NOI18N
         txtEmailUser.setForeground(new java.awt.Color(73, 181, 172));
         txtEmailUser.setBorder(null);
         txtEmailUser.setCaretColor(new java.awt.Color(73, 181, 172));
@@ -580,7 +581,7 @@ public class AdministrationView extends javax.swing.JFrame {
         lblPassword.setText("CONTRASEÑA");
 
         txtPasswordUser.setBackground(new java.awt.Color(0, 0, 102));
-        txtPasswordUser.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtPasswordUser.setFont(new java.awt.Font("Lohit Devanagari", 0, 18)); // NOI18N
         txtPasswordUser.setForeground(new java.awt.Color(73, 181, 172));
         txtPasswordUser.setBorder(null);
         txtPasswordUser.setCaretColor(new java.awt.Color(73, 181, 172));
@@ -700,7 +701,7 @@ public class AdministrationView extends javax.swing.JFrame {
         lblNameHotel.setText("NOMBRE");
 
         txtNameHotel.setBackground(new java.awt.Color(0, 0, 102));
-        txtNameHotel.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtNameHotel.setFont(new java.awt.Font("Lohit Devanagari", 0, 18)); // NOI18N
         txtNameHotel.setForeground(new java.awt.Color(73, 181, 172));
         txtNameHotel.setBorder(null);
         txtNameHotel.setCaretColor(new java.awt.Color(73, 181, 172));
@@ -717,7 +718,7 @@ public class AdministrationView extends javax.swing.JFrame {
         jSeparator18.setForeground(new java.awt.Color(0, 153, 255));
 
         txtAddressHotel.setBackground(new java.awt.Color(0, 0, 102));
-        txtAddressHotel.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtAddressHotel.setFont(new java.awt.Font("Lohit Devanagari", 0, 18)); // NOI18N
         txtAddressHotel.setForeground(new java.awt.Color(73, 181, 172));
         txtAddressHotel.setBorder(null);
         txtAddressHotel.setCaretColor(new java.awt.Color(73, 181, 172));
@@ -732,7 +733,7 @@ public class AdministrationView extends javax.swing.JFrame {
         lblAddressHotel.setText("DIRECCIÓN");
 
         txtClassificationHotel.setBackground(new java.awt.Color(0, 0, 102));
-        txtClassificationHotel.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtClassificationHotel.setFont(new java.awt.Font("Lohit Devanagari", 0, 18)); // NOI18N
         txtClassificationHotel.setForeground(new java.awt.Color(73, 181, 172));
         txtClassificationHotel.setBorder(null);
         txtClassificationHotel.setCaretColor(new java.awt.Color(73, 181, 172));
@@ -750,7 +751,7 @@ public class AdministrationView extends javax.swing.JFrame {
         lblClassificationHotel.setText("CLASIFICACIÓN");
 
         txtModConsHotel.setBackground(new java.awt.Color(0, 0, 102));
-        txtModConsHotel.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtModConsHotel.setFont(new java.awt.Font("Lohit Devanagari", 0, 18)); // NOI18N
         txtModConsHotel.setForeground(new java.awt.Color(73, 181, 172));
         txtModConsHotel.setBorder(null);
         txtModConsHotel.setCaretColor(new java.awt.Color(73, 181, 172));
@@ -766,7 +767,7 @@ public class AdministrationView extends javax.swing.JFrame {
         jSeparator21.setForeground(new java.awt.Color(0, 153, 255));
 
         txtPicturesHotel.setBackground(new java.awt.Color(0, 0, 102));
-        txtPicturesHotel.setFont(new java.awt.Font("Gotham Thin", 0, 18)); // NOI18N
+        txtPicturesHotel.setFont(new java.awt.Font("Lohit Devanagari", 0, 18)); // NOI18N
         txtPicturesHotel.setForeground(new java.awt.Color(73, 181, 172));
         txtPicturesHotel.setBorder(null);
         txtPicturesHotel.setCaretColor(new java.awt.Color(73, 181, 172));
@@ -838,7 +839,7 @@ public class AdministrationView extends javax.swing.JFrame {
         PanelDentroGestion5.setBackground(new java.awt.Color(0, 0, 102));
         PanelDentroGestion5.setPreferredSize(new java.awt.Dimension(400, 500));
 
-        btnDeleteHotel.setBackground(new java.awt.Color(0, 153, 255));
+        btnDeleteHotel.setBackground(new java.awt.Color(204, 0, 0));
         btnDeleteHotel.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
         btnDeleteHotel.setForeground(new java.awt.Color(255, 255, 255));
         btnDeleteHotel.setText("BORRAR");
@@ -906,11 +907,11 @@ public class AdministrationView extends javax.swing.JFrame {
                         .addGroup(PanelDentroGestion5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 754, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(PanelDentroGestion5Layout.createSequentialGroup()
-                                .addGroup(PanelDentroGestion5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(btnRegisterHotel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnUpdateHotel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE))
+                                .addGroup(PanelDentroGestion5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnRegisterHotel, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+                                    .addComponent(btnUpdateHotel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(37, 37, 37)
-                                .addComponent(btnDeleteHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(btnDeleteHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
         PanelDentroGestion5Layout.setVerticalGroup(
@@ -927,7 +928,7 @@ public class AdministrationView extends javax.swing.JFrame {
                     .addComponent(btnDeleteHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnUpdateHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout PanelAdminHotelLayout = new javax.swing.GroupLayout(PanelAdminHotel);
@@ -992,41 +993,44 @@ public class AdministrationView extends javax.swing.JFrame {
                 name = txtNameUser.getText();
             } else {
                 JOptionPane.showMessageDialog(null, "No puede ingresar números en la casilla de nombre");
+                return;
             }
             if (verifyNumber(txtAgeUser.getText())) {
                 age = Integer.parseInt(txtAgeUser.getText());
             } else {
                 JOptionPane.showMessageDialog(null, "No puede ingresar letras en la casilla de edad");
+                return;
             }
             if (verify_email(txtEmailUser.getText())) {
                 email = txtEmailUser.getText();
             } else {
                 JOptionPane.showMessageDialog(null, "Ingrese un correo valido");
+                return;
             }
-            if (verifyNumber(txtPhoneNumberUser.getText())) {
+            if (verifyColombianNumber(txtPhoneNumberUser.getText())) {
                 phone_number = txtPhoneNumberUser.getText();
             } else {
-                JOptionPane.showMessageDialog(null, "Ingrese un correo valido");
+                JOptionPane.showMessageDialog(null, "Ingrese un numero de telefono valido");
+                return;
             }
-        }
-        int selectedRow = tbl_users.getSelectedRow();
-        if (selectedRow != -1) {
-            Object selectedValue = tbl_users.getValueAt(selectedRow, 0);
-            if (selectedValue != null) {
-                int id = Integer.parseInt(selectedValue.toString());
-                User user = new User(id, name, age, username, password, email, phone_number, 2, address);
-                control.update(user);
-                clean();
-                JOptionPane.showMessageDialog(null, "Ha actualizado el usuario de: " + name);
+            int selectedRow = tbl_users.getSelectedRow();
+            if (selectedRow != -1) {
+                Object selectedValue = tbl_users.getValueAt(selectedRow, 0);
+                if (selectedValue != null) {
+                    int id = Integer.parseInt(selectedValue.toString());
+                    User user = new User(id, name, age, username, password, email, phone_number, 2, address);
+                    control.update(user);
+                    clean();
+                    JOptionPane.showMessageDialog(null, "Ha actualizado el usuario de: " + name);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Debe seleccionar el usuario en la lista que desea actualizar");
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "Debe seleccionar el usuario en la lista que desea actualizar");
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "Debe seleccionar el usuario en la lista que desea actualizar");
+
+            fillTableUsers();
         }
-        
-        fillTableUsers();
-        // TODO add your handling code here:
     }//GEN-LAST:event_btnUpdateUserActionPerformed
 
     private void btnRegisterUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterUserActionPerformed
@@ -1046,28 +1050,32 @@ public class AdministrationView extends javax.swing.JFrame {
                 name = txtNameUser.getText();
             } else {
                 JOptionPane.showMessageDialog(null, "No puede ingresar números en la casilla de nombre");
+                return;
             }
-            if (verifyNumber(txtAgeUser.getText())) {
+            if (verifyAge(txtAgeUser.getText())) {
                 age = Integer.parseInt(txtAgeUser.getText());
             } else {
-                JOptionPane.showMessageDialog(null, "No puede ingresar letras en la casilla de edad");
+                JOptionPane.showMessageDialog(null, "No puede ingresar letras en la casilla de edad, tampoco numeros negativos de otro tipo");
+                return;
             }
             if (verify_email(txtEmailUser.getText())) {
                 email = txtEmailUser.getText();
             } else {
                 JOptionPane.showMessageDialog(null, "Ingrese un correo valido");
+                return;
             }
-            if (verifyNumber(txtPhoneNumberUser.getText())) {
+            if (verifyColombianNumber(txtPhoneNumberUser.getText())) {
                 phone_number = txtPhoneNumberUser.getText();
             } else {
-                JOptionPane.showMessageDialog(null, "Ingrese un correo valido");
+                JOptionPane.showMessageDialog(null, "Ingrese un numero de telefono valido");
+                return;
             }
+            User user = new User(id, name, age, username, password, email, phone_number, 2, address);
+            control.insert(user);
+            clean();
+            JOptionPane.showMessageDialog(null, "Ha creado el usuario de: " + name);
+            fillTableUsers();
         }
-        User user = new User(id, name, age, username, password, email, phone_number, 2, address);
-        control.insert(user);
-        clean();
-        JOptionPane.showMessageDialog(null, "Ha creado el usuario de: " + name);
-        fillTableUsers();
     }//GEN-LAST:event_btnRegisterUserActionPerformed
 
     private void btnDeleteUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteUserActionPerformed
@@ -1077,14 +1085,13 @@ public class AdministrationView extends javax.swing.JFrame {
             if (selectedValue != null) {
                 int id = Integer.parseInt(selectedValue.toString());
                 control.delete(id);
+                fillTableUsers();
             } else {
                 JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila.");
             }
         } else {
             JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila.");
         }
-        fillTableUsers();
-        // TODO add your handling code here:
     }//GEN-LAST:event_btnDeleteUserActionPerformed
 
     private void btnDeleteRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteRoomActionPerformed
@@ -1095,114 +1102,115 @@ public class AdministrationView extends javax.swing.JFrame {
             if (selectedValue != null) {
                 int id = Integer.parseInt(selectedValue.toString());
                 control.deleteRoom(id);
+                fillTableRooms();
             } else {
                 JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila.");
             }
         } else {
             JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila.");
         }
-        fillTableRooms();
     }//GEN-LAST:event_btnDeleteRoomActionPerformed
 
     private void btnRegisterRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterRoomActionPerformed
         // TODO add your handling code here:
-        Hotel hotel = control.searchHotelbyName(txtHotelName.getText());
-        int id_hotel = hotel.getId();
         int id_stade_room = -1;
         int id_type_room = -1;
         int number_rooom = -1;
         double priceNigth = -1;
         String amenitiesDetails = txtModConsRoom.getText();
-        if (txtNumberRoom.getText() == null || txtHotelName.getText() == null || amenitiesDetails == null || txtPriceNight.getText() == null){
+        if (txtNumberRoom.getText().isEmpty() || txtHotelName.getText().isEmpty() || amenitiesDetails == null || txtPriceNight.getText().isEmpty() || txtHotelName.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "llene todos los campos");
             return;
         } else {
+            Hotel hotel = control.searchHotelbyName(txtHotelName.getText());
+            int id_hotel = hotel.getId();
             if (verifyIndexItems(cbxStadeRoom.getSelectedIndex())) {
-            id_stade_room = cbxStadeRoom.getSelectedIndex();
-        } else {
-            JOptionPane.showMessageDialog(null, "Selecione un estado para la habitación");
-            return;
-        }
-        if (verifyIndexItems(cbxTypeRoom.getSelectedIndex())) {
-            id_type_room = cbxTypeRoom.getSelectedIndex();
-        } else {
-            JOptionPane.showMessageDialog(null, "Selecione un tipo de habitación");
-            return;
-        }
-        if (verifyNumber(txtNumberRoom.getText())) {
-            number_rooom = Integer.parseInt(txtNumberRoom.getText());
-        } else {
-            JOptionPane.showMessageDialog(null, "Ingrese solo numeros para el número de habitación");
-            return;
-        }
-        if (verifyNumber(txtPriceNight.getText())) {
-            priceNigth = Float.parseFloat(txtPriceNight.getText());
-        } else {
-            JOptionPane.showMessageDialog(null, "Ingrese solo numeros para el precio de la noche");
-            return;
-        }
+                id_stade_room = cbxStadeRoom.getSelectedIndex();
+            } else {
+                JOptionPane.showMessageDialog(null, "Selecione un estado para la habitación");
+                return;
+            }
+            if (verifyIndexItems(cbxTypeRoom.getSelectedIndex())) {
+                id_type_room = cbxTypeRoom.getSelectedIndex();
+            } else {
+                JOptionPane.showMessageDialog(null, "Selecione un tipo de habitación");
+                return;
+            }
+            if (verifyNumber(txtNumberRoom.getText())) {
+                number_rooom = Integer.parseInt(txtNumberRoom.getText());
+            } else {
+                JOptionPane.showMessageDialog(null, "Ingrese solo numeros para el número de habitación");
+                return;
+            }
+            if (verifyNumber(txtPriceNight.getText())) {
+                priceNigth = Float.parseFloat(txtPriceNight.getText());
+            } else {
+                JOptionPane.showMessageDialog(null, "Ingrese solo numeros para el precio de la noche");
+                return;
+            }
 
-        Room room = new Room(0, id_stade_room, id_type_room, id_hotel, number_rooom, priceNigth, amenitiesDetails);
-        control.insertRoom(room);
-        fillTableRooms();
+            Room room = new Room(0, id_stade_room, id_type_room, id_hotel, number_rooom, priceNigth, amenitiesDetails);
+            control.insertRoom(room);
+            fillTableRooms();
         }
     }//GEN-LAST:event_btnRegisterRoomActionPerformed
 
     private void btnUpdateRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateRoomActionPerformed
         // TODO add your handling code here:
-        Hotel hotel = control.searchHotelbyName(txtHotelName.getText());
-        int id_hotel = hotel.getId();
         int id_stade_room = -1;
         int id_type_room = -1;
         int number_rooom = -1;
         double priceNigth = -1;
         String amenitiesDetails = txtModConsRoom.getText();
-        if (txtNumberRoom.getText() == null || txtHotelName.getText() == null || amenitiesDetails == null || txtPriceNight.getText() == null){
+        if (txtNumberRoom.getText().isEmpty() || txtHotelName.getText().isEmpty() || amenitiesDetails == null || txtPriceNight.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "llene todos los campos");
             return;
         } else {
             if (verifyIndexItems(cbxStadeRoom.getSelectedIndex())) {
-            id_stade_room = cbxStadeRoom.getSelectedIndex();
-        } else {
-            JOptionPane.showMessageDialog(null, "Selecione un estado para la habitación");
-            return;
-        }
-        if (verifyIndexItems(cbxTypeRoom.getSelectedIndex())) {
-            id_type_room = cbxTypeRoom.getSelectedIndex();
-        } else {
-            JOptionPane.showMessageDialog(null, "Selecione un tipo de habitación");
-            return;
-        }
-        if (verifyNumber(txtNumberRoom.getText())) {
-            number_rooom = Integer.parseInt(txtNumberRoom.getText());
-        } else {
-            JOptionPane.showMessageDialog(null, "Ingrese solo numeros para el número de habitación");
-            return;
-        }
-        if (verifyNumber(txtPriceNight.getText())) {
-            priceNigth = Float.parseFloat(txtPriceNight.getText());
-        } else {
-            JOptionPane.showMessageDialog(null, "Ingrese solo numeros para el precio de la noche");
-            return;
-        }
+                id_stade_room = cbxStadeRoom.getSelectedIndex();
+            } else {
+                JOptionPane.showMessageDialog(null, "Selecione un estado para la habitación");
+                return;
+            }
+            if (verifyIndexItems(cbxTypeRoom.getSelectedIndex())) {
+                id_type_room = cbxTypeRoom.getSelectedIndex();
+            } else {
+                JOptionPane.showMessageDialog(null, "Selecione un tipo de habitación");
+                return;
+            }
+            if (verifyNumber(txtNumberRoom.getText())) {
+                number_rooom = Integer.parseInt(txtNumberRoom.getText());
+            } else {
+                JOptionPane.showMessageDialog(null, "Ingrese solo numeros para el número de habitación");
+                return;
+            }
+            if (verifyNumber(txtPriceNight.getText())) {
+                priceNigth = Float.parseFloat(txtPriceNight.getText());
+            } else {
+                JOptionPane.showMessageDialog(null, "Ingrese solo numeros para el precio de la noche");
+                return;
+            }
 
-        int selectedRow = tbl_rooms.getSelectedRow();
-        if (selectedRow != -1) {
-            Object selectedValue = tbl_rooms.getValueAt(selectedRow, 0);
-            if (selectedValue != null) {
-                int id = Integer.parseInt(selectedValue.toString());
-                Room room = new Room(id, id_stade_room, id_type_room, id_hotel, number_rooom, priceNigth, amenitiesDetails);
-                control.updateRoom(room);
+            int selectedRow = tbl_rooms.getSelectedRow();
+            if (selectedRow != -1) {
+                Object selectedValue = tbl_rooms.getValueAt(selectedRow, 0);
+                if (selectedValue != null) {
+                    Hotel hotel = control.searchHotelbyName(txtHotelName.getText());
+                    int id_hotel = hotel.getId();
+                    int id = Integer.parseInt(selectedValue.toString());
+                    Room room = new Room(id, id_stade_room, id_type_room, id_hotel, number_rooom, priceNigth, amenitiesDetails);
+                    control.updateRoom(room);
+                    fillTableRooms();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Debe seleccionar la habitación en la lista que desea actualizar");
+                    return;
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "Debe seleccionar la habitación en la lista que desea actualizar");
+                return;
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "Debe seleccionar la habitación en la lista que desea actualizar");
         }
 
-        fillTableRooms();
-        }
-        
     }//GEN-LAST:event_btnUpdateRoomActionPerformed
 
     private void btnDeleteHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteHotelActionPerformed
@@ -1230,19 +1238,19 @@ public class AdministrationView extends javax.swing.JFrame {
         String classification = txtClassificationHotel.getText();
         String mob_cons = txtModConsHotel.getText();
         String images = txtPicturesHotel.getText();
-        if (txtNameHotel.getText() == null || addressHotel == null || classification == null || mob_cons == null || images == null){
+        if (txtNameHotel.getText().isEmpty() || addressHotel.isEmpty() || classification.isEmpty() || mob_cons.isEmpty() || images.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Debe completar todos los campos obligatorios");
             return;
-        }else {
+        } else {
             if (verifyCaracter_spaces(txtNameHotel.getText())) {
                 nameHotel = txtNameHotel.getText();
+                Hotel hotel = new Hotel(id_hotel, nameHotel, addressHotel, classification, mob_cons, images);
+                control.insertHotel(hotel);
+                fillTableHotels();
             } else {
                 JOptionPane.showMessageDialog(null, "No puede ingresar números en la casilla de nombre");
             }
         }
-        Hotel hotel = new Hotel(id_hotel, nameHotel, images, classification, mob_cons, images);
-        control.insertHotel(hotel);
-        fillTableHotels();
     }//GEN-LAST:event_btnRegisterHotelActionPerformed
 
     private void btnUpdateHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateHotelActionPerformed
@@ -1253,31 +1261,31 @@ public class AdministrationView extends javax.swing.JFrame {
         String classification = txtClassificationHotel.getText();
         String mob_cons = txtModConsHotel.getText();
         String images = txtPicturesHotel.getText();
-        if (txtNameHotel.getText() == null || addressHotel == null || classification == null || mob_cons == null || images == null){
+        if (txtNameHotel.getText().isEmpty() || addressHotel.isEmpty() || classification.isEmpty() || mob_cons.isEmpty() || images.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Debe completar todos los campos obligatorios");
             return;
-        }else {
+        } else {
             if (verifyCaracter_spaces(txtNameHotel.getText())) {
                 nameHotel = txtNameHotel.getText();
             } else {
                 JOptionPane.showMessageDialog(null, "No puede ingresar números en la casilla de nombre");
             }
-        }
-        int selectedRow = tbl_hotels.getSelectedRow();
-        if (selectedRow != -1) {
-            Object selectedValue = tbl_hotels.getValueAt(selectedRow, 0);
-            if (selectedValue != null) {
-                id_hotel = Integer.parseInt(selectedValue.toString());
-                
+            int selectedRow = tbl_hotels.getSelectedRow();
+            if (selectedRow != -1) {
+                Object selectedValue = tbl_hotels.getValueAt(selectedRow, 0);
+                if (selectedValue != null) {
+                    id_hotel = Integer.parseInt(selectedValue.toString());
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Debe seleccionar el usuario en la lista que desea actualizar");
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "Debe seleccionar el usuario en la lista que desea actualizar");
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "Debe seleccionar el usuario en la lista que desea actualizar");
+            Hotel hotel = new Hotel(id_hotel, nameHotel, addressHotel, classification, mob_cons, images);
+            control.updateHotel(hotel);
+            fillTableHotels();
         }
-        Hotel hotel = new Hotel(id_hotel, nameHotel, images, classification, mob_cons, images);
-        control.updateHotel(hotel);
-        fillTableHotels();
     }//GEN-LAST:event_btnUpdateHotelActionPerformed
 
     private void txtAddressHotelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAddressHotelKeyTyped
@@ -1304,7 +1312,17 @@ public class AdministrationView extends javax.swing.JFrame {
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
     }
-
+    
+    public static boolean verifyColombianNumber(String number) {
+        String regex = "^(\\+57)?\\s*([0-9]\\s*){10}$";
+        
+        Pattern pattern = Pattern.compile(regex);
+        
+        Matcher matcher = pattern.matcher(number);
+        
+        return matcher.matches();
+    }
+    
     public boolean verifyNumber(String number) {
 
         String value = "^[0-9]*\\.?[0-9]+$";
@@ -1313,6 +1331,15 @@ public class AdministrationView extends javax.swing.JFrame {
 
         Matcher matcher = pattern.matcher(number);
         return matcher.matches() && Double.parseDouble(number) > 0;
+    }
+
+    public static boolean verifyAge(String age) {
+        String regex = "^(?:1[0-1][0-9]|[1-9]?[0-9])$|^120$";
+        
+        Pattern pattern = Pattern.compile(regex);
+        
+        Matcher matcher = pattern.matcher(age);
+        return matcher.matches();
     }
 
     public boolean verifyIndexItems(int value) {
