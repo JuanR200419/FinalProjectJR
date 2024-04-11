@@ -72,6 +72,8 @@ public class AdministrationView extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
         tbl_rooms = new javax.swing.JTable();
+        btnSearchRoom = new javax.swing.JButton();
+        btnBack2 = new javax.swing.JButton();
         PanelGestionarUsuario = new javax.swing.JPanel();
         PanelDentroGestion1 = new javax.swing.JPanel();
         btnDeleteUser = new javax.swing.JButton();
@@ -81,6 +83,8 @@ public class AdministrationView extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tbl_users = new javax.swing.JTable();
+        btnSearchUser = new javax.swing.JButton();
+        btnBack1 = new javax.swing.JButton();
         PanelDentroGestion = new javax.swing.JPanel();
         lblName = new javax.swing.JLabel();
         txtNameUser = new javax.swing.JTextField();
@@ -128,6 +132,8 @@ public class AdministrationView extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
         tbl_hotels = new javax.swing.JTable();
+        btnSearchHotel = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
@@ -336,6 +342,28 @@ public class AdministrationView extends javax.swing.JFrame {
         ));
         jScrollPane5.setViewportView(tbl_rooms);
 
+        btnSearchRoom.setBackground(new java.awt.Color(0, 153, 255));
+        btnSearchRoom.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        btnSearchRoom.setForeground(new java.awt.Color(255, 255, 255));
+        btnSearchRoom.setText("BUSCAR");
+        btnSearchRoom.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnSearchRoom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchRoomActionPerformed(evt);
+            }
+        });
+
+        btnBack2.setBackground(new java.awt.Color(0, 0, 51));
+        btnBack2.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        btnBack2.setForeground(new java.awt.Color(255, 255, 255));
+        btnBack2.setText("ATRAS");
+        btnBack2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnBack2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBack2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelDentroGestion3Layout = new javax.swing.GroupLayout(PanelDentroGestion3);
         PanelDentroGestion3.setLayout(PanelDentroGestion3Layout);
         PanelDentroGestion3Layout.setHorizontalGroup(
@@ -348,14 +376,18 @@ public class AdministrationView extends javax.swing.JFrame {
                         .addComponent(jLabel4))
                     .addGroup(PanelDentroGestion3Layout.createSequentialGroup()
                         .addGap(37, 37, 37)
-                        .addGroup(PanelDentroGestion3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(PanelDentroGestion3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 754, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(PanelDentroGestion3Layout.createSequentialGroup()
                                 .addGroup(PanelDentroGestion3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(btnUpdateRoom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnRegisterRoom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(37, 37, 37)
-                                .addComponent(btnDeleteRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(PanelDentroGestion3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnDeleteRoom, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+                                    .addComponent(btnSearchRoom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnBack2, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
         PanelDentroGestion3Layout.setVerticalGroup(
@@ -371,7 +403,10 @@ public class AdministrationView extends javax.swing.JFrame {
                     .addComponent(btnDeleteRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRegisterRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btnUpdateRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(PanelDentroGestion3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnUpdateRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearchRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBack2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(51, Short.MAX_VALUE))
         );
 
@@ -454,6 +489,28 @@ public class AdministrationView extends javax.swing.JFrame {
         ));
         jScrollPane4.setViewportView(tbl_users);
 
+        btnSearchUser.setBackground(new java.awt.Color(0, 153, 255));
+        btnSearchUser.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        btnSearchUser.setForeground(new java.awt.Color(255, 255, 255));
+        btnSearchUser.setText("BUSCAR");
+        btnSearchUser.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnSearchUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchUserActionPerformed(evt);
+            }
+        });
+
+        btnBack1.setBackground(new java.awt.Color(0, 0, 51));
+        btnBack1.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        btnBack1.setForeground(new java.awt.Color(255, 255, 255));
+        btnBack1.setText("ATRAS");
+        btnBack1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnBack1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBack1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelDentroGestion1Layout = new javax.swing.GroupLayout(PanelDentroGestion1);
         PanelDentroGestion1.setLayout(PanelDentroGestion1Layout);
         PanelDentroGestion1Layout.setHorizontalGroup(
@@ -466,14 +523,18 @@ public class AdministrationView extends javax.swing.JFrame {
                         .addComponent(jLabel3))
                     .addGroup(PanelDentroGestion1Layout.createSequentialGroup()
                         .addGap(37, 37, 37)
-                        .addGroup(PanelDentroGestion1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(PanelDentroGestion1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 754, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(PanelDentroGestion1Layout.createSequentialGroup()
                                 .addGroup(PanelDentroGestion1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(btnUpdateUser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnRegisterUser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE))
                                 .addGap(37, 37, 37)
-                                .addComponent(btnDeleteUser, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(PanelDentroGestion1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnDeleteUser, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+                                    .addComponent(btnSearchUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnBack1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
         PanelDentroGestion1Layout.setVerticalGroup(
@@ -489,7 +550,10 @@ public class AdministrationView extends javax.swing.JFrame {
                     .addComponent(btnDeleteUser, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRegisterUser, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btnUpdateUser, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(PanelDentroGestion1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnUpdateUser, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearchUser, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBack1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
@@ -892,6 +956,28 @@ public class AdministrationView extends javax.swing.JFrame {
         ));
         jScrollPane6.setViewportView(tbl_hotels);
 
+        btnSearchHotel.setBackground(new java.awt.Color(0, 153, 255));
+        btnSearchHotel.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        btnSearchHotel.setForeground(new java.awt.Color(255, 255, 255));
+        btnSearchHotel.setText("BUSCAR");
+        btnSearchHotel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnSearchHotel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchHotelActionPerformed(evt);
+            }
+        });
+
+        btnBack.setBackground(new java.awt.Color(0, 0, 51));
+        btnBack.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(255, 255, 255));
+        btnBack.setText("ATRAS");
+        btnBack.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelDentroGestion5Layout = new javax.swing.GroupLayout(PanelDentroGestion5);
         PanelDentroGestion5.setLayout(PanelDentroGestion5Layout);
         PanelDentroGestion5Layout.setHorizontalGroup(
@@ -911,7 +997,12 @@ public class AdministrationView extends javax.swing.JFrame {
                                     .addComponent(btnRegisterHotel, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
                                     .addComponent(btnUpdateHotel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(37, 37, 37)
-                                .addComponent(btnDeleteHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(PanelDentroGestion5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnDeleteHotel, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+                                    .addComponent(btnSearchHotel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(121, 121, 121)
+                                .addComponent(btnBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(8, 8, 8)))))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
         PanelDentroGestion5Layout.setVerticalGroup(
@@ -927,8 +1018,11 @@ public class AdministrationView extends javax.swing.JFrame {
                     .addComponent(btnRegisterHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDeleteHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btnUpdateHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addGroup(PanelDentroGestion5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnUpdateHotel, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                    .addComponent(btnBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSearchHotel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout PanelAdminHotelLayout = new javax.swing.GroupLayout(PanelAdminHotel);
@@ -1277,10 +1371,10 @@ public class AdministrationView extends javax.swing.JFrame {
                     id_hotel = Integer.parseInt(selectedValue.toString());
 
                 } else {
-                    JOptionPane.showMessageDialog(null, "Debe seleccionar el usuario en la lista que desea actualizar");
+                    JOptionPane.showMessageDialog(null, "Debe seleccionar el hotel en la lista que desea actualizar");
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Debe seleccionar el usuario en la lista que desea actualizar");
+                JOptionPane.showMessageDialog(null, "Debe seleccionar el hotel en la lista que desea actualizar");
             }
             Hotel hotel = new Hotel(id_hotel, nameHotel, addressHotel, classification, mob_cons, images);
             control.updateHotel(hotel);
@@ -1303,6 +1397,108 @@ public class AdministrationView extends javax.swing.JFrame {
     private void txtNameHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameHotelActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNameHotelActionPerformed
+
+    private void btnSearchRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchRoomActionPerformed
+        // TODO add your handling code here:
+        int id_room = 0;
+        int selectedRow = tbl_rooms.getSelectedRow();
+        if (selectedRow != -1) {
+            Object selectedValue = tbl_rooms.getValueAt(selectedRow, 0);
+            if (selectedValue != null) {
+                id_room = Integer.parseInt(selectedValue.toString());
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Debe seleccionar la habitación en la lista que desea buscar");
+                return;
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar la habitación en la lista que desea buscar");
+            return;
+        }
+        Room room = control.searchRoom(id_room);
+        txtNumberRoom.setText(String.valueOf(room.getNumber_rooom()));
+        txtHotelName.setText(control.searchHotel(room.getId_hotel()).getNameHotel());
+        txtModConsRoom.setText(room.getAmenitiesDetails());
+        txtPriceNight.setText(String.valueOf(room.getPriceNigth()));
+        cbxStadeRoom.setSelectedIndex(room.getId_stade_room());
+        cbxTypeRoom.setSelectedIndex(room.getId_type_room());
+    }//GEN-LAST:event_btnSearchRoomActionPerformed
+
+    private void btnSearchUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchUserActionPerformed
+        // TODO add your handling code here:
+        int id_user = 0;
+        int selectedRow = tbl_users.getSelectedRow();
+        if (selectedRow != -1) {
+            Object selectedValue = tbl_users.getValueAt(selectedRow, 0);
+            if (selectedValue != null) {
+                id_user = Integer.parseInt(selectedValue.toString());
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Debe seleccionar el usuario en la lista que desea buscar");
+                return;
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar el usuario en la lista que desea buscar");
+            return;
+        }
+        User user = control.searchAdmin(id_user);
+        txtNameUser.setText(user.getName());
+        txtAgeUser.setText(String.valueOf(user.getAge()));
+        txtAddressUser.setText(user.getAddress());
+        txtPhoneNumberUser.setText(user.getCountDetails());
+        txtUsername.setText(user.getUsername());
+        txtEmailUser.setText(user.getEmail());
+        txtPasswordUser.setText(user.getPassword());
+    }//GEN-LAST:event_btnSearchUserActionPerformed
+
+    private void btnSearchHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchHotelActionPerformed
+        // TODO add your handling code here:
+        int id_hotel = 0;
+        int selectedRow = tbl_hotels.getSelectedRow();
+        if (selectedRow != -1) {
+            Object selectedValue = tbl_hotels.getValueAt(selectedRow, 0);
+            if (selectedValue != null) {
+                id_hotel = Integer.parseInt(selectedValue.toString());
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Debe seleccionar el hotel en la lista que desea buscar");
+                return;
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar el hotel en la lista que desea buscar");
+            return;
+        }
+        Hotel hotel = control.searchHotel(id_hotel);
+        txtNameHotel.setText(hotel.getNameHotel());
+        txtAddressHotel.setText(hotel.getAdress());
+        txtClassificationHotel.setText(hotel.getClassification());
+        txtModConsHotel.setText(hotel.getModCons());
+        txtPicturesHotel.setText(hotel.getPictures());
+    }//GEN-LAST:event_btnSearchHotelActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        LoginView ven = new LoginView();
+        ven.setVisible(true);
+        ven.setLocationRelativeTo(this);
+        this.dispose();
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack1ActionPerformed
+        // TODO add your handling code here:
+        LoginView ven = new LoginView();
+        ven.setVisible(true);
+        ven.setLocationRelativeTo(this);
+        this.dispose();
+    }//GEN-LAST:event_btnBack1ActionPerformed
+
+    private void btnBack2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack2ActionPerformed
+        // TODO add your handling code here:
+        LoginView ven = new LoginView();
+        ven.setVisible(true);
+        ven.setLocationRelativeTo(this);
+        this.dispose();
+    }//GEN-LAST:event_btnBack2ActionPerformed
 
     public boolean verify_email(String email) {
         String value = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
@@ -1503,12 +1699,18 @@ public class AdministrationView extends javax.swing.JFrame {
     private javax.swing.JPanel PanelDentroGestion5;
     private javax.swing.JPanel PanelGestionarUsuario;
     private javax.swing.JTabbedPane PanelPrincipal;
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnBack1;
+    private javax.swing.JButton btnBack2;
     private javax.swing.JButton btnDeleteHotel;
     private javax.swing.JButton btnDeleteRoom;
     private javax.swing.JButton btnDeleteUser;
     private javax.swing.JButton btnRegisterHotel;
     private javax.swing.JButton btnRegisterRoom;
     private javax.swing.JButton btnRegisterUser;
+    private javax.swing.JButton btnSearchHotel;
+    private javax.swing.JButton btnSearchRoom;
+    private javax.swing.JButton btnSearchUser;
     private javax.swing.JButton btnUpdateHotel;
     private javax.swing.JButton btnUpdateRoom;
     private javax.swing.JButton btnUpdateUser;
