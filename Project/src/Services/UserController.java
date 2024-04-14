@@ -1,6 +1,6 @@
 package Services;
 
-import Connection.ConexionMySQL;
+import java.sql.Connection;
 import Models.User;
 import com.sun.source.tree.BreakTree;
 import java.sql.Connection;
@@ -16,15 +16,16 @@ import javax.swing.JOptionPane;
 import Dao.Dao;
 import Models.Hotel;
 import Models.Room;
+import Singleton.DataBaseSingleton;
 
 public class UserController {
 
     //We create an object of the class ConexionMySQL
-    ConexionMySQL conexion;
+    Connection connection;
     Dao dao;
 
     public UserController() {
-        this.conexion = new ConexionMySQL();
+        this.connection = DataBaseSingleton.getInstance().getConnection();
         this.dao = new Dao();
     }
 

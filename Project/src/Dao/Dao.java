@@ -4,13 +4,13 @@
  */
 package Dao;
 
-import Connection.ConexionMySQL;
 import Interface.InterfaceHotel;
 import Interface.InterfaceRoom;
 import Interface.InterfaceUser;
 import Models.Hotel;
 import Models.Room;
 import Models.User;
+import Singleton.DataBaseSingleton;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,36 +28,27 @@ import javax.swing.JOptionPane;
  */
 public class Dao implements InterfaceUser, InterfaceHotel, InterfaceRoom {
 
-    ConexionMySQL conexion;
+    Connection connection;
 
     public Dao() {
-        this.conexion = new ConexionMySQL();
+        this.connection = DataBaseSingleton.getInstance().getConnection();
     }
 
 // Login function
     public int selectLogin(String email, String password) {
         int resultado = 0;
-        // We stablish the connection with database
-        try (Connection conn = conexion.conectarMySQL()) {
-            // We check if the connection was successful
-            if (conn != null) {
-                // We prepare the consultation SQL for select data
-                String selectSQL = "SELECT * FROM users Where email=? AND password_user=?";
-                try (PreparedStatement pstmt = conn.prepareStatement(selectSQL)) {
-                    pstmt.setString(2, password);
-                    pstmt.setString(1, email);
+        // We prepare the consultation SQL for select data
+        String selectSQL = "SELECT * FROM users Where email=? AND password_user=?";
+        try (PreparedStatement pstmt = connection.prepareStatement(selectSQL)) {
+            pstmt.setString(2, password);
+            pstmt.setString(1, email);
 
-                    //We execute the query
-                    ResultSet rs = pstmt.executeQuery();
+            //We execute the query
+            ResultSet rs = pstmt.executeQuery();
 
-                    // We iterate all the results
-                    if (rs.next()) {
-                        return resultado = rs.getInt("user_rol");
-
-                    }
-                }
-            } else {
-                System.out.println("No se pudo establecer la conexión con la base de datos");
+            // We iterate all the results
+            if (rs.next()) {
+                return resultado = rs.getInt("user_rol");
             }
         } catch (SQLException e) {
             System.out.println("Ocurrió un error al realizar la selección en la base de datos");
@@ -68,25 +59,17 @@ public class Dao implements InterfaceUser, InterfaceHotel, InterfaceRoom {
 
     // CRUD FOR USERS 
     public User searchUser(int id) {
-        // We stablish the connection with database
-        try (Connection conn = conexion.conectarMySQL()) {
-            /// We check if the connection was successful
-            if (conn != null) {
-                // We prepare the consultation SQL for select data
-                String selectSQL = "SELECT * FROM users Where id_user=?";
-                try (PreparedStatement pstmt = conn.prepareStatement(selectSQL)) {
-                    pstmt.setInt(1, id);
-                    //We execute the query
-                    ResultSet rs = pstmt.executeQuery();
+        // We prepare the consultation SQL for select data
+        String selectSQL = "SELECT * FROM users Where id_user=?";
+        try (PreparedStatement pstmt = connection.prepareStatement(selectSQL)) {
+            pstmt.setInt(1, id);
+            //We execute the query
+            ResultSet rs = pstmt.executeQuery();
 
-                    // We iterate all the results
-                    if (rs.next()) {
-                        User user = new User(rs.getInt("id_user"), rs.getString("full_name"), rs.getInt("age"), rs.getString("username"), rs.getString("password_user"), rs.getString("email"), rs.getString("phone_number"), rs.getInt("user_rol"), rs.getString("address"));
-                        return user;
-                    }
-                }
-            } else {
-                System.out.println("No se pudo establecer la conexión con la base de datos");
+            // We iterate all the results
+            if (rs.next()) {
+                User user = new User(rs.getInt("id_user"), rs.getString("full_name"), rs.getInt("age"), rs.getString("username"), rs.getString("password_user"), rs.getString("email"), rs.getString("phone_number"), rs.getInt("user_rol"), rs.getString("address"));
+                return user;
             }
         } catch (SQLException e) {
             System.out.println("Ocurrió un error al realizar la selección en la base de datos");
@@ -96,35 +79,27 @@ public class Dao implements InterfaceUser, InterfaceHotel, InterfaceRoom {
     }
 
     public void insertUser(User user) {
-        //We stablish the connection with database
-        try (Connection conn = conexion.conectarMySQL()) {
-            // We check if the connection was successful
-            if (conn != null) {
-                // We prepare the consultation SQL for insert data
-                String insertSQL = "INSERT INTO users(full_name, age, username, password_user, email, phone_number, user_rol, address) VALUES (?,?,?,?,?,?,?,?)";
-                try (PreparedStatement pstmt = conn.prepareStatement(insertSQL)) {
-                    pstmt.setString(1, user.getName());
-                    pstmt.setInt(2, user.getAge());
-                    pstmt.setString(3, user.getUsername());
-                    pstmt.setString(4, user.getPassword());
-                    pstmt.setString(5, user.getEmail());
-                    pstmt.setString(6, user.getCountDetails());
-                    pstmt.setInt(7, user.getTypeUser());
-                    pstmt.setString(8, user.getAddress());
+        // We prepare the consultation SQL for insert data
+        String insertSQL = "INSERT INTO users(full_name, age, username, password_user, email, phone_number, user_rol, address) VALUES (?,?,?,?,?,?,?,?)";
+        try (PreparedStatement pstmt = connection.prepareStatement(insertSQL)) {
+            pstmt.setString(1, user.getName());
+            pstmt.setInt(2, user.getAge());
+            pstmt.setString(3, user.getUsername());
+            pstmt.setString(4, user.getPassword());
+            pstmt.setString(5, user.getEmail());
+            pstmt.setString(6, user.getCountDetails());
+            pstmt.setInt(7, user.getTypeUser());
+            pstmt.setString(8, user.getAddress());
 
-                    //We execute the query
-                    int rowsAffected = pstmt.executeUpdate();
+            //We execute the query
+            int rowsAffected = pstmt.executeUpdate();
 
-                    // We check if the insert was successful
-                    if (rowsAffected > 0) {
-                        System.out.println("Inserción exitosa");
-                        JOptionPane.showMessageDialog(null, "Se ha registrado con exito ");
-                    } else {
-                        System.out.println("No se pudo insertar los datos");
-                    }
-                }
+            // We check if the insert was successful
+            if (rowsAffected > 0) {
+                System.out.println("Inserción exitosa");
+                JOptionPane.showMessageDialog(null, "Se ha registrado con exito ");
             } else {
-                System.out.println("No se pudo establecer la conexión con la base de datos");
+                System.out.println("No se pudo insertar los datos");
             }
         } catch (SQLException e) {
             System.out.println("Ocurrió un error al realizar la inserción en la base de datos");
@@ -133,21 +108,13 @@ public class Dao implements InterfaceUser, InterfaceHotel, InterfaceRoom {
     }
 
     public void deleteUser(int id) {
-        // We stablish the connection with database
-        try (Connection conn = conexion.conectarMySQL()) {
-            // We check if the connection was successful
-            if (conn != null) {
-                // We prepare the consultation SQL for select data
-                String deleteSQL = "DELETE FROM users WHERE id_user= ?";
-                try (PreparedStatement pstmt = conn.prepareStatement(deleteSQL)) {
-                    pstmt.setInt(1, id);
-                    pstmt.executeUpdate();
-                    JOptionPane.showMessageDialog(null, "Se borro el usuario");
-                    return;
-                }
-            } else {
-                System.out.println("No se pudo establecer la conexión con la base de datos");
-            }
+        // We prepare the consultation SQL for select data
+        String deleteSQL = "DELETE FROM users WHERE id_user= ?";
+        try (PreparedStatement pstmt = connection.prepareStatement(deleteSQL)) {
+            pstmt.setInt(1, id);
+            pstmt.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Se borro el usuario");
+            return;
         } catch (SQLException e) {
             System.out.println("Ocurrió un error al realizar la selección en la base de datos");
             e.printStackTrace();
@@ -156,28 +123,20 @@ public class Dao implements InterfaceUser, InterfaceHotel, InterfaceRoom {
     }
 
     public void updateUser(User user) {
-        // We stablish the connection with database
-        try (Connection conn = conexion.conectarMySQL()) {
-            // We check if the connection was successful
-            if (conn != null) {
-                // We prepare the consultation SQL for select data
-                String updateSQL = "UPDATE users SET full_name=?, age=?, username=?, password_user=?, email=?, phone_number=?, user_rol=?, address=? WHERE id_user=?";
-                try (PreparedStatement pstmt = conn.prepareStatement(updateSQL)) {
-                    pstmt.setString(1, user.getName());
-                    pstmt.setInt(2, user.getAge());
-                    pstmt.setString(3, user.getUsername());
-                    pstmt.setString(4, user.getPassword());
-                    pstmt.setString(5, user.getEmail());
-                    pstmt.setString(6, user.getCountDetails());
-                    pstmt.setInt(7, user.getTypeUser());
-                    pstmt.setString(8, user.getAddress());
-                    pstmt.setInt(9, user.getId());
-                    pstmt.executeUpdate();
-                    JOptionPane.showMessageDialog(null, "Su perfil se ha actualizado  ");
-                }
-            } else {
-                System.out.println("No se pudo establecer la conexión con la base de datos");
-            }
+        // We prepare the consultation SQL for select data
+        String updateSQL = "UPDATE users SET full_name=?, age=?, username=?, password_user=?, email=?, phone_number=?, user_rol=?, address=? WHERE id_user=?";
+        try (PreparedStatement pstmt = connection.prepareStatement(updateSQL)) {
+            pstmt.setString(1, user.getName());
+            pstmt.setInt(2, user.getAge());
+            pstmt.setString(3, user.getUsername());
+            pstmt.setString(4, user.getPassword());
+            pstmt.setString(5, user.getEmail());
+            pstmt.setString(6, user.getCountDetails());
+            pstmt.setInt(7, user.getTypeUser());
+            pstmt.setString(8, user.getAddress());
+            pstmt.setInt(9, user.getId());
+            pstmt.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Su perfil se ha actualizado  ");
         } catch (SQLException e) {
             System.out.println("Ocurrió un error al realizar la actualización en la base de datos");
             e.printStackTrace();
@@ -187,25 +146,17 @@ public class Dao implements InterfaceUser, InterfaceHotel, InterfaceRoom {
     //--------------------------------------------------------------------------------------------------------------------------
     // CRUD FOR HOTELS
     public Hotel searchHotel(int id) {
-        // We stablish the connection with database
-        try (Connection conn = conexion.conectarMySQL()) {
-            /// We check if the connection was successful
-            if (conn != null) {
-                // We prepare the consultation SQL for select data
-                String selectSQL = "SELECT * FROM hotels Where id_hotel=?";
-                try (PreparedStatement pstmt = conn.prepareStatement(selectSQL)) {
-                    pstmt.setInt(1, id);
-                    //We execute the query
-                    ResultSet rs = pstmt.executeQuery();
+        // We prepare the consultation SQL for select data
+        String selectSQL = "SELECT * FROM hotels Where id_hotel=?";
+        try (PreparedStatement pstmt = connection.prepareStatement(selectSQL)) {
+            pstmt.setInt(1, id);
+            //We execute the query
+            ResultSet rs = pstmt.executeQuery();
 
-                    // We iterate all the results
-                    if (rs.next()) {
-                        Hotel hotel = new Hotel(id, rs.getString("name_hotel"), rs.getString("address_hotel"), rs.getString("classification_hotel"), rs.getString("mob_cons_hotel"), rs.getString("pictures_hotel"));
-                        return hotel;
-                    }
-                }
-            } else {
-                System.out.println("No se pudo establecer la conexión con la base de datos");
+            // We iterate all the results
+            if (rs.next()) {
+                Hotel hotel = new Hotel(id, rs.getString("name_hotel"), rs.getString("address_hotel"), rs.getString("classification_hotel"), rs.getString("mob_cons_hotel"), rs.getString("pictures_hotel"));
+                return hotel;
             }
         } catch (SQLException e) {
             System.out.println("Ocurrió un error al realizar la selección en la base de datos");
@@ -213,27 +164,19 @@ public class Dao implements InterfaceUser, InterfaceHotel, InterfaceRoom {
         }
         return null;
     }
-    
-    public Hotel searchHotelbyName(String name) {
-        // We stablish the connection with database
-        try (Connection conn = conexion.conectarMySQL()) {
-            /// We check if the connection was successful
-            if (conn != null) {
-                // We prepare the consultation SQL for select data
-                String selectSQL = "SELECT * FROM hotels Where name_hotel=?";
-                try (PreparedStatement pstmt = conn.prepareStatement(selectSQL)) {
-                    pstmt.setString(1, name);
-                    //We execute the query
-                    ResultSet rs = pstmt.executeQuery();
 
-                    // We iterate all the results
-                    if (rs.next()) {
-                        Hotel hotel = new Hotel(rs.getInt("id_hotel"), rs.getString("name_hotel"), rs.getString("address_hotel"), rs.getString("classification_hotel"), rs.getString("mob_cons_hotel"), rs.getString("pictures_hotel"));
-                        return hotel;
-                    }
-                }
-            } else {
-                System.out.println("No se pudo establecer la conexión con la base de datos");
+    public Hotel searchHotelbyName(String name) {
+        // We prepare the consultation SQL for select data
+        String selectSQL = "SELECT * FROM hotels Where name_hotel=?";
+        try (PreparedStatement pstmt = connection.prepareStatement(selectSQL)) {
+            pstmt.setString(1, name);
+            //We execute the query
+            ResultSet rs = pstmt.executeQuery();
+
+            // We iterate all the results
+            if (rs.next()) {
+                Hotel hotel = new Hotel(rs.getInt("id_hotel"), rs.getString("name_hotel"), rs.getString("address_hotel"), rs.getString("classification_hotel"), rs.getString("mob_cons_hotel"), rs.getString("pictures_hotel"));
+                return hotel;
             }
         } catch (SQLException e) {
             System.out.println("Ocurrió un error al realizar la selección en la base de datos");
@@ -243,31 +186,23 @@ public class Dao implements InterfaceUser, InterfaceHotel, InterfaceRoom {
     }
 
     public void insertHotel(Hotel hotel) {
-        //We stablish the connection with database
-        try (Connection conn = conexion.conectarMySQL()) {
-            // We check if the connection was successful
-            if (conn != null) {
-                // We prepare the consultation SQL for insert data
-                String insertSQL = "INSERT INTO hotels (name_hotel,address_hotel,classification_hotel , mob_cons_hotel,pictures_hotel) VALUES (?,?,?,?,?)";
-                try (PreparedStatement pstmt = conn.prepareStatement(insertSQL)) {
-                    pstmt.setString(1, hotel.getNameHotel());
-                    pstmt.setString(2, hotel.getAdress());
-                    pstmt.setString(3, hotel.getClassification());
-                    pstmt.setString(4, hotel.getModCons());
-                    pstmt.setString(5, hotel.getPictures());
-                    //We execute the query
-                    int rowsAffected = pstmt.executeUpdate();
+        // We prepare the consultation SQL for insert data
+        String insertSQL = "INSERT INTO hotels (name_hotel,address_hotel,classification_hotel , mob_cons_hotel,pictures_hotel) VALUES (?,?,?,?,?)";
+        try (PreparedStatement pstmt = connection.prepareStatement(insertSQL)) {
+            pstmt.setString(1, hotel.getNameHotel());
+            pstmt.setString(2, hotel.getAdress());
+            pstmt.setString(3, hotel.getClassification());
+            pstmt.setString(4, hotel.getModCons());
+            pstmt.setString(5, hotel.getPictures());
+            //We execute the query
+            int rowsAffected = pstmt.executeUpdate();
 
-                    // We check if the insert was successful
-                    if (rowsAffected > 0) {
-                        System.out.println("Inserción exitosa");
-                        JOptionPane.showMessageDialog(null, "Se ha registrado con exito ");
-                    } else {
-                        System.out.println("No se pudo insertar los datos");
-                    }
-                }
+            // We check if the insert was successful
+            if (rowsAffected > 0) {
+                System.out.println("Inserción exitosa");
+                JOptionPane.showMessageDialog(null, "Se ha registrado con exito ");
             } else {
-                System.out.println("No se pudo establecer la conexión con la base de datos");
+                System.out.println("No se pudo insertar los datos");
             }
         } catch (SQLException e) {
             System.out.println("Ocurrió un error al realizar la inserción en la base de datos");
@@ -276,21 +211,13 @@ public class Dao implements InterfaceUser, InterfaceHotel, InterfaceRoom {
     }
 
     public void deleteHotel(int id) {
-        // We stablish the connection with database
-        try (Connection conn = conexion.conectarMySQL()) {
-            // We check if the connection was successful
-            if (conn != null) {
-                // We prepare the consultation SQL for select data
-                String deleteSQL = "DELETE FROM hotels WHERE id_hotel = ?";
-                try (PreparedStatement pstmt = conn.prepareStatement(deleteSQL)) {
-                    pstmt.setInt(1, id);
-                    pstmt.executeUpdate();
-                    JOptionPane.showMessageDialog(null, "Se borro el Hotel");
-                    return;
-                }
-            } else {
-                System.out.println("No se pudo establecer la conexión con la base de datos");
-            }
+        // We prepare the consultation SQL for select data
+        String deleteSQL = "DELETE FROM hotels WHERE id_hotel = ?";
+        try (PreparedStatement pstmt = connection.prepareStatement(deleteSQL)) {
+            pstmt.setInt(1, id);
+            pstmt.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Se borro el Hotel");
+            return;
         } catch (SQLException e) {
             System.out.println("Ocurrió un error al realizar la selección en la base de datos");
             e.printStackTrace();
@@ -299,32 +226,24 @@ public class Dao implements InterfaceUser, InterfaceHotel, InterfaceRoom {
     }
 
     public void updateHotel(Hotel hotel) {
-        // We establish the connection with the database
-        try (Connection conn = conexion.conectarMySQL()) {
-            // We check if the connection was successful
-            if (conn != null) {
-                // We prepare the consultation SQL for select data
-                String updateSQL = "UPDATE hotels SET name_hotel =?, address_hotel=?, classification_hotel =?, mob_cons_hotel=?, pictures_hotel =? WHERE id_hotel=?";
-                try (PreparedStatement pstmt = conn.prepareStatement(updateSQL)) {
-                    pstmt.setString(1, hotel.getNameHotel());
-                    pstmt.setString(2, hotel.getAdress());
-                    pstmt.setString(3, hotel.getClassification());
-                    pstmt.setString(4, hotel.getModCons());
-                    pstmt.setString(5, hotel.getPictures());
-                    pstmt.setInt(6, hotel.getId());
+        // We prepare the consultation SQL for select data
+        String updateSQL = "UPDATE hotels SET name_hotel =?, address_hotel=?, classification_hotel =?, mob_cons_hotel=?, pictures_hotel =? WHERE id_hotel=?";
+        try (PreparedStatement pstmt = connection.prepareStatement(updateSQL)) {
+            pstmt.setString(1, hotel.getNameHotel());
+            pstmt.setString(2, hotel.getAdress());
+            pstmt.setString(3, hotel.getClassification());
+            pstmt.setString(4, hotel.getModCons());
+            pstmt.setString(5, hotel.getPictures());
+            pstmt.setInt(6, hotel.getId());
 
-                    // Execute the update
-                    int rowsUpdated = pstmt.executeUpdate();
+            // Execute the update
+            int rowsUpdated = pstmt.executeUpdate();
 
-                    // Check if the update was successful
-                    if (rowsUpdated > 0) {
-                        JOptionPane.showMessageDialog(null, "El hotel se ha actualizado exitosamente");
-                    } else {
-                        JOptionPane.showMessageDialog(null, "No se ha realizado ninguna actualización en la base de datos");
-                    }
-                }
+            // Check if the update was successful
+            if (rowsUpdated > 0) {
+                JOptionPane.showMessageDialog(null, "El hotel se ha actualizado exitosamente");
             } else {
-                System.out.println("No se pudo establecer la conexión con la base de datos");
+                JOptionPane.showMessageDialog(null, "No se ha realizado ninguna actualización en la base de datos");
             }
         } catch (SQLException e) {
             System.out.println("Ocurrió un error al realizar la actualización en la base de datos");
@@ -335,25 +254,17 @@ public class Dao implements InterfaceUser, InterfaceHotel, InterfaceRoom {
     //---------------------------------------------------------------------------------------------------------------------------------------
     // CRUD FOR ROOM
     public Room searchRoom(int id) {
-        // We stablish the connection with database
-        try (Connection conn = conexion.conectarMySQL()) {
-            /// We check if the connection was successful
-            if (conn != null) {
-                // We prepare the consultation SQL for select data
-                String selectSQL = "SELECT * FROM rooms Where id_rooom=?";
-                try (PreparedStatement pstmt = conn.prepareStatement(selectSQL)) {
-                    pstmt.setInt(1, id);
-                    //We execute the query
-                    ResultSet rs = pstmt.executeQuery();
+        // We prepare the consultation SQL for select data
+        String selectSQL = "SELECT * FROM rooms Where id_rooom=?";
+        try (PreparedStatement pstmt = connection.prepareStatement(selectSQL)) {
+            pstmt.setInt(1, id);
+            //We execute the query
+            ResultSet rs = pstmt.executeQuery();
 
-                    // We iterate all the results
-                    if (rs.next()) {
-                        Room room = new Room(rs.getInt("id_rooom"), rs.getInt("id_stade_room"), rs.getInt("id_type_room"), rs.getInt("id_hotel"), rs.getInt("number_rooom"), rs.getInt("price_nigth"), rs.getString("room_amenities"));
-                        return room;
-                    }
-                }
-            } else {
-                System.out.println("No se pudo establecer la conexión con la base de datos");
+            // We iterate all the results
+            if (rs.next()) {
+                Room room = new Room(rs.getInt("id_rooom"), rs.getInt("id_stade_room"), rs.getInt("id_type_room"), rs.getInt("id_hotel"), rs.getInt("number_rooom"), rs.getInt("price_nigth"), rs.getString("room_amenities"));
+                return room;
             }
         } catch (SQLException e) {
             System.out.println("Ocurrió un error al realizar la selección en la base de datos");
@@ -363,32 +274,24 @@ public class Dao implements InterfaceUser, InterfaceHotel, InterfaceRoom {
     }
 
     public void insertRoom(Room room) {
-        //We stablish the connection with database
-        try (Connection conn = conexion.conectarMySQL()) {
-            // We check if the connection was successful
-            if (conn != null) {
-                // We prepare the consultation SQL for insert data
-                String insertSQL = "INSERT INTO rooms( id_stade_room, id_type_room, id_hotel, number_rooom, price_nigth, room_amenities) VALUES (?,?,?,?,?,?)";
-                try (PreparedStatement pstmt = conn.prepareStatement(insertSQL)) {
-                    pstmt.setInt(1, room.getId_stade_room());
-                    pstmt.setInt(2, room.getId_type_room());
-                    pstmt.setInt(3, room.getId_hotel());
-                    pstmt.setInt(4, room.getNumber_rooom());
-                    pstmt.setDouble(5, room.getPriceNigth());
-                    pstmt.setString(6, room.getAmenitiesDetails());
-                    //We execute the query
-                    int rowsAffected = pstmt.executeUpdate();
+        // We prepare the consultation SQL for insert data
+        String insertSQL = "INSERT INTO rooms( id_stade_room, id_type_room, id_hotel, number_rooom, price_nigth, room_amenities) VALUES (?,?,?,?,?,?)";
+        try (PreparedStatement pstmt = connection.prepareStatement(insertSQL)) {
+            pstmt.setInt(1, room.getId_stade_room());
+            pstmt.setInt(2, room.getId_type_room());
+            pstmt.setInt(3, room.getId_hotel());
+            pstmt.setInt(4, room.getNumber_rooom());
+            pstmt.setDouble(5, room.getPriceNigth());
+            pstmt.setString(6, room.getAmenitiesDetails());
+            //We execute the query
+            int rowsAffected = pstmt.executeUpdate();
 
-                    // We check if the insert was successful
-                    if (rowsAffected > 0) {
-                        System.out.println("Inserción exitosa");
-                        JOptionPane.showMessageDialog(null, "Se ha registrado con exito ");
-                    } else {
-                        System.out.println("No se pudo insertar los datos");
-                    }
-                }
+            // We check if the insert was successful
+            if (rowsAffected > 0) {
+                System.out.println("Inserción exitosa");
+                JOptionPane.showMessageDialog(null, "Se ha registrado con exito ");
             } else {
-                System.out.println("No se pudo establecer la conexión con la base de datos");
+                System.out.println("No se pudo insertar los datos");
             }
         } catch (SQLException e) {
             System.out.println("Ocurrió un error al realizar la inserción en la base de datos");
@@ -397,21 +300,13 @@ public class Dao implements InterfaceUser, InterfaceHotel, InterfaceRoom {
     }
 
     public void deleteRoom(int id) {
-        // We stablish the connection with database
-        try (Connection conn = conexion.conectarMySQL()) {
-            // We check if the connection was successful
-            if (conn != null) {
-                // We prepare the consultation SQL for select data
-                String deleteSQL = "DELETE FROM rooms WHERE id_rooom = ?";
-                try (PreparedStatement pstmt = conn.prepareStatement(deleteSQL)) {
-                    pstmt.setInt(1, id);
-                    pstmt.executeUpdate();
-                    JOptionPane.showMessageDialog(null, "Se borro la habitación");
-                    return;
-                }
-            } else {
-                System.out.println("No se pudo establecer la conexión con la base de datos");
-            }
+        // We prepare the consultation SQL for select data
+        String deleteSQL = "DELETE FROM rooms WHERE id_rooom = ?";
+        try (PreparedStatement pstmt = connection.prepareStatement(deleteSQL)) {
+            pstmt.setInt(1, id);
+            pstmt.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Se borro la habitación");
+            return;
         } catch (SQLException e) {
             System.out.println("Ocurrió un error al realizar la selección en la base de datos");
             e.printStackTrace();
@@ -420,28 +315,20 @@ public class Dao implements InterfaceUser, InterfaceHotel, InterfaceRoom {
     }
 
     public void updateRoom(Room room) {
-        // We stablish the connection with database
-        try (Connection conn = conexion.conectarMySQL()) {
-            // We check if the connection was successful
-            if (conn != null) {
-                // We prepare the consultation SQL for select data
-                String updateSQL = "UPDATE rooms SET id_stade_room=?, id_type_room=?, id_hotel=?, number_rooom=?, price_nigth=?, room_amenities=? WHERE id_rooom=?";
-                try (PreparedStatement pstmt = conn.prepareStatement(updateSQL)) {
-                    pstmt.setInt(1, room.getId_stade_room());
-                    pstmt.setInt(2, room.getId_type_room());
-                    pstmt.setInt(3, room.getId_hotel());
-                    pstmt.setInt(4, room.getNumber_rooom());
-                    pstmt.setDouble(5, room.getPriceNigth());
-                    pstmt.setString(6, room.getAmenitiesDetails());
-                    pstmt.setInt(7, room.getId_room());
+        // We prepare the consultation SQL for select data
+        String updateSQL = "UPDATE rooms SET id_stade_room=?, id_type_room=?, id_hotel=?, number_rooom=?, price_nigth=?, room_amenities=? WHERE id_rooom=?";
+        try (PreparedStatement pstmt = connection.prepareStatement(updateSQL)) {
+            pstmt.setInt(1, room.getId_stade_room());
+            pstmt.setInt(2, room.getId_type_room());
+            pstmt.setInt(3, room.getId_hotel());
+            pstmt.setInt(4, room.getNumber_rooom());
+            pstmt.setDouble(5, room.getPriceNigth());
+            pstmt.setString(6, room.getAmenitiesDetails());
+            pstmt.setInt(7, room.getId_room());
 
-                    pstmt.executeUpdate();
+            pstmt.executeUpdate();
 
-                    JOptionPane.showMessageDialog(null, "Se ha actualizado");
-                }
-            } else {
-                System.out.println("No se pudo establecer la conexión con la base de datos");
-            }
+            JOptionPane.showMessageDialog(null, "Se ha actualizado");
         } catch (SQLException e) {
             System.out.println("Ocurrió un error al realizar la actualización en la base de datos");
             e.printStackTrace();
@@ -453,53 +340,44 @@ public class Dao implements InterfaceUser, InterfaceHotel, InterfaceRoom {
         // Inicializamos el mapa de resultados. Este mapa almacenará los nombres de las columnas, el número de columnas y los datos de la tabla.
         Map<String, Object> result = new HashMap<>();
 
-        // Intentamos establecer una conexión con la base de datos
-        try (Connection conn = conexion.conectarMySQL()) {
-            // Verificamos si la conexión fue exitosa
-            if (conn != null) {
-                // Preparamos la consulta SQL para seleccionar datos de la tabla 'usuario'
-                String selectSQL = "SELECT * FROM users";
+        // Preparamos la consulta SQL para seleccionar datos de la tabla 'usuario'
+        String selectSQL = "SELECT * FROM users";
 
-                // Intentamos preparar y ejecutar la consulta SQL
-                try (PreparedStatement pstmt = conn.prepareStatement(selectSQL)) {
-                    // Ejecutamos la consulta y obtenemos los resultados en un ResultSet
-                    ResultSet rs = pstmt.executeQuery();
+        // Intentamos preparar y ejecutar la consulta SQL
+        try (PreparedStatement pstmt = connection.prepareStatement(selectSQL)) {
+            // Ejecutamos la consulta y obtenemos los resultados en un ResultSet
+            ResultSet rs = pstmt.executeQuery();
 
-                    // Obtenemos los metadatos del ResultSet. Los metadatos contienen información sobre la estructura de los resultados, como el número de columnas y los nombres de las columnas.
-                    ResultSetMetaData rsmd = rs.getMetaData();
+            // Obtenemos los metadatos del ResultSet. Los metadatos contienen información sobre la estructura de los resultados, como el número de columnas y los nombres de las columnas.
+            ResultSetMetaData rsmd = rs.getMetaData();
 
-                    // Obtenemos el número de columnas de los metadatos
-                    int numColumns = rsmd.getColumnCount();
+            // Obtenemos el número de columnas de los metadatos
+            int numColumns = rsmd.getColumnCount();
 
-                    // Creamos una lista para almacenar los nombres de las columnas
-                    List<String> columnNames = new ArrayList<>();
-                    for (int i = 1; i <= numColumns; i++) {
-                        // Obtenemos el nombre de cada columna de los metadatos y lo agregamos a la lista
-                        columnNames.add(rsmd.getColumnName(i));
-                    }
-
-                    // Creamos una lista para almacenar los datos de la tabla
-                    List<List<Object>> tableData = new ArrayList<>();
-                    while (rs.next()) {
-                        // Creamos una lista para almacenar los datos de la fila actual
-                        List<Object> rowData = new ArrayList<>();
-                        for (int i = 1; i <= numColumns; i++) {
-                            // Obtenemos el dato de cada columna de la fila actual y lo agregamos a la lista
-                            rowData.add(rs.getObject(i));
-                        }
-                        // Agregamos la lista de datos de la fila a la lista de datos de la tabla
-                        tableData.add(rowData);
-                    }
-
-                    // Agregamos el número de columnas, los nombres de las columnas y los datos de la tabla al mapa de resultados
-                    result.put("numColumns", numColumns);
-                    result.put("columnNames", columnNames);
-                    result.put("tableData", tableData);
-                }
-            } else {
-                // Si no se pudo establecer la conexión con la base de datos, imprimimos un mensaje de error
-                System.out.println("No se pudo establecer la conexión con la base de datos");
+            // Creamos una lista para almacenar los nombres de las columnas
+            List<String> columnNames = new ArrayList<>();
+            for (int i = 1; i <= numColumns; i++) {
+                // Obtenemos el nombre de cada columna de los metadatos y lo agregamos a la lista
+                columnNames.add(rsmd.getColumnName(i));
             }
+
+            // Creamos una lista para almacenar los datos de la tabla
+            List<List<Object>> tableData = new ArrayList<>();
+            while (rs.next()) {
+                // Creamos una lista para almacenar los datos de la fila actual
+                List<Object> rowData = new ArrayList<>();
+                for (int i = 1; i <= numColumns; i++) {
+                    // Obtenemos el dato de cada columna de la fila actual y lo agregamos a la lista
+                    rowData.add(rs.getObject(i));
+                }
+                // Agregamos la lista de datos de la fila a la lista de datos de la tabla
+                tableData.add(rowData);
+            }
+
+            // Agregamos el número de columnas, los nombres de las columnas y los datos de la tabla al mapa de resultados
+            result.put("numColumns", numColumns);
+            result.put("columnNames", columnNames);
+            result.put("tableData", tableData);
         } catch (SQLException e) {
             // Si ocurre un error al realizar la selección en la base de datos, imprimimos un mensaje de error y la traza de la pila del error
             System.out.println("Ocurrió un error al realizar la selección en la base de datos");
@@ -517,53 +395,44 @@ public class Dao implements InterfaceUser, InterfaceHotel, InterfaceRoom {
         // Inicializamos el mapa de resultados. Este mapa almacenará los nombres de las columnas, el número de columnas y los datos de la tabla.
         Map<String, Object> result = new HashMap<>();
 
-        // Intentamos establecer una conexión con la base de datos
-        try (Connection conn = conexion.conectarMySQL()) {
-            // Verificamos si la conexión fue exitosa
-            if (conn != null) {
-                // Preparamos la consulta SQL para seleccionar datos de la tabla 'usuario'
-                String selectSQL = "SELECT * FROM hotels";
+        // Preparamos la consulta SQL para seleccionar datos de la tabla 'usuario'
+        String selectSQL = "SELECT * FROM hotels";
 
-                // Intentamos preparar y ejecutar la consulta SQL
-                try (PreparedStatement pstmt = conn.prepareStatement(selectSQL)) {
-                    // Ejecutamos la consulta y obtenemos los resultados en un ResultSet
-                    ResultSet rs = pstmt.executeQuery();
+        // Intentamos preparar y ejecutar la consulta SQL
+        try (PreparedStatement pstmt = connection.prepareStatement(selectSQL)) {
+            // Ejecutamos la consulta y obtenemos los resultados en un ResultSet
+            ResultSet rs = pstmt.executeQuery();
 
-                    // Obtenemos los metadatos del ResultSet. Los metadatos contienen información sobre la estructura de los resultados, como el número de columnas y los nombres de las columnas.
-                    ResultSetMetaData rsmd = rs.getMetaData();
+            // Obtenemos los metadatos del ResultSet. Los metadatos contienen información sobre la estructura de los resultados, como el número de columnas y los nombres de las columnas.
+            ResultSetMetaData rsmd = rs.getMetaData();
 
-                    // Obtenemos el número de columnas de los metadatos
-                    int numColumns = rsmd.getColumnCount();
+            // Obtenemos el número de columnas de los metadatos
+            int numColumns = rsmd.getColumnCount();
 
-                    // Creamos una lista para almacenar los nombres de las columnas
-                    List<String> columnNames = new ArrayList<>();
-                    for (int i = 1; i <= numColumns; i++) {
-                        // Obtenemos el nombre de cada columna de los metadatos y lo agregamos a la lista
-                        columnNames.add(rsmd.getColumnName(i));
-                    }
-
-                    // Creamos una lista para almacenar los datos de la tabla
-                    List<List<Object>> tableData = new ArrayList<>();
-                    while (rs.next()) {
-                        // Creamos una lista para almacenar los datos de la fila actual
-                        List<Object> rowData = new ArrayList<>();
-                        for (int i = 1; i <= numColumns; i++) {
-                            // Obtenemos el dato de cada columna de la fila actual y lo agregamos a la lista
-                            rowData.add(rs.getObject(i));
-                        }
-                        // Agregamos la lista de datos de la fila a la lista de datos de la tabla
-                        tableData.add(rowData);
-                    }
-
-                    // Agregamos el número de columnas, los nombres de las columnas y los datos de la tabla al mapa de resultados
-                    result.put("numColumns", numColumns);
-                    result.put("columnNames", columnNames);
-                    result.put("tableData", tableData);
-                }
-            } else {
-                // Si no se pudo establecer la conexión con la base de datos, imprimimos un mensaje de error
-                System.out.println("No se pudo establecer la conexión con la base de datos");
+            // Creamos una lista para almacenar los nombres de las columnas
+            List<String> columnNames = new ArrayList<>();
+            for (int i = 1; i <= numColumns; i++) {
+                // Obtenemos el nombre de cada columna de los metadatos y lo agregamos a la lista
+                columnNames.add(rsmd.getColumnName(i));
             }
+
+            // Creamos una lista para almacenar los datos de la tabla
+            List<List<Object>> tableData = new ArrayList<>();
+            while (rs.next()) {
+                // Creamos una lista para almacenar los datos de la fila actual
+                List<Object> rowData = new ArrayList<>();
+                for (int i = 1; i <= numColumns; i++) {
+                    // Obtenemos el dato de cada columna de la fila actual y lo agregamos a la lista
+                    rowData.add(rs.getObject(i));
+                }
+                // Agregamos la lista de datos de la fila a la lista de datos de la tabla
+                tableData.add(rowData);
+            }
+
+            // Agregamos el número de columnas, los nombres de las columnas y los datos de la tabla al mapa de resultados
+            result.put("numColumns", numColumns);
+            result.put("columnNames", columnNames);
+            result.put("tableData", tableData);
         } catch (SQLException e) {
             // Si ocurre un error al realizar la selección en la base de datos, imprimimos un mensaje de error y la traza de la pila del error
             System.out.println("Ocurrió un error al realizar la selección en la base de datos");
@@ -581,53 +450,44 @@ public class Dao implements InterfaceUser, InterfaceHotel, InterfaceRoom {
         // Inicializamos el mapa de resultados. Este mapa almacenará los nombres de las columnas, el número de columnas y los datos de la tabla.
         Map<String, Object> result = new HashMap<>();
 
-        // Intentamos establecer una conexión con la base de datos
-        try (Connection conn = conexion.conectarMySQL()) {
-            // Verificamos si la conexión fue exitosa
-            if (conn != null) {
-                // Preparamos la consulta SQL para seleccionar datos de la tabla 'usuario'
-                String selectSQL = "SELECT * FROM rooms";
+        // Preparamos la consulta SQL para seleccionar datos de la tabla 'usuario'
+        String selectSQL = "SELECT * FROM rooms";
 
-                // Intentamos preparar y ejecutar la consulta SQL
-                try (PreparedStatement pstmt = conn.prepareStatement(selectSQL)) {
-                    // Ejecutamos la consulta y obtenemos los resultados en un ResultSet
-                    ResultSet rs = pstmt.executeQuery();
+        // Intentamos preparar y ejecutar la consulta SQL
+        try (PreparedStatement pstmt = connection.prepareStatement(selectSQL)) {
+            // Ejecutamos la consulta y obtenemos los resultados en un ResultSet
+            ResultSet rs = pstmt.executeQuery();
 
-                    // Obtenemos los metadatos del ResultSet. Los metadatos contienen información sobre la estructura de los resultados, como el número de columnas y los nombres de las columnas.
-                    ResultSetMetaData rsmd = rs.getMetaData();
+            // Obtenemos los metadatos del ResultSet. Los metadatos contienen información sobre la estructura de los resultados, como el número de columnas y los nombres de las columnas.
+            ResultSetMetaData rsmd = rs.getMetaData();
 
-                    // Obtenemos el número de columnas de los metadatos
-                    int numColumns = rsmd.getColumnCount();
+            // Obtenemos el número de columnas de los metadatos
+            int numColumns = rsmd.getColumnCount();
 
-                    // Creamos una lista para almacenar los nombres de las columnas
-                    List<String> columnNames = new ArrayList<>();
-                    for (int i = 1; i <= numColumns; i++) {
-                        // Obtenemos el nombre de cada columna de los metadatos y lo agregamos a la lista
-                        columnNames.add(rsmd.getColumnName(i));
-                    }
-
-                    // Creamos una lista para almacenar los datos de la tabla
-                    List<List<Object>> tableData = new ArrayList<>();
-                    while (rs.next()) {
-                        // Creamos una lista para almacenar los datos de la fila actual
-                        List<Object> rowData = new ArrayList<>();
-                        for (int i = 1; i <= numColumns; i++) {
-                            // Obtenemos el dato de cada columna de la fila actual y lo agregamos a la lista
-                            rowData.add(rs.getObject(i));
-                        }
-                        // Agregamos la lista de datos de la fila a la lista de datos de la tabla
-                        tableData.add(rowData);
-                    }
-
-                    // Agregamos el número de columnas, los nombres de las columnas y los datos de la tabla al mapa de resultados
-                    result.put("numColumns", numColumns);
-                    result.put("columnNames", columnNames);
-                    result.put("tableData", tableData);
-                }
-            } else {
-                // Si no se pudo establecer la conexión con la base de datos, imprimimos un mensaje de error
-                System.out.println("No se pudo establecer la conexión con la base de datos");
+            // Creamos una lista para almacenar los nombres de las columnas
+            List<String> columnNames = new ArrayList<>();
+            for (int i = 1; i <= numColumns; i++) {
+                // Obtenemos el nombre de cada columna de los metadatos y lo agregamos a la lista
+                columnNames.add(rsmd.getColumnName(i));
             }
+
+            // Creamos una lista para almacenar los datos de la tabla
+            List<List<Object>> tableData = new ArrayList<>();
+            while (rs.next()) {
+                // Creamos una lista para almacenar los datos de la fila actual
+                List<Object> rowData = new ArrayList<>();
+                for (int i = 1; i <= numColumns; i++) {
+                    // Obtenemos el dato de cada columna de la fila actual y lo agregamos a la lista
+                    rowData.add(rs.getObject(i));
+                }
+                // Agregamos la lista de datos de la fila a la lista de datos de la tabla
+                tableData.add(rowData);
+            }
+
+            // Agregamos el número de columnas, los nombres de las columnas y los datos de la tabla al mapa de resultados
+            result.put("numColumns", numColumns);
+            result.put("columnNames", columnNames);
+            result.put("tableData", tableData);
         } catch (SQLException e) {
             // Si ocurre un error al realizar la selección en la base de datos, imprimimos un mensaje de error y la traza de la pila del error
             System.out.println("Ocurrió un error al realizar la selección en la base de datos");
