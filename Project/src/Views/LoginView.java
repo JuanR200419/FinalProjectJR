@@ -17,6 +17,7 @@ UserController control;
      */
     public LoginView() {
         initComponents();
+              this.setLocationRelativeTo(null);
         control = new UserController();
         setLocationRelativeTo(this);
     }

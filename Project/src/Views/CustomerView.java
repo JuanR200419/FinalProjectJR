@@ -21,6 +21,7 @@ public class CustomerView extends javax.swing.JFrame {
     UserController control;
     public CustomerView() {
         initComponents();
+              this.setLocationRelativeTo(null);
         control = new UserController();
         fill_table();
     }
@@ -70,6 +71,13 @@ public class CustomerView extends javax.swing.JFrame {
         tbl_hoteles = new javax.swing.JTable();
         btnBack = new javax.swing.JButton();
         btn_hotel = new javax.swing.JButton();
+        txtFechaSalida = new javax.swing.JFormattedTextField();
+        btn_hotel1 = new javax.swing.JButton();
+        lblNameHotel = new javax.swing.JLabel();
+        lblNameHotel1 = new javax.swing.JLabel();
+        txtFechaEntrada = new javax.swing.JFormattedTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        lblNameHotel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -132,13 +140,55 @@ public class CustomerView extends javax.swing.JFrame {
         btn_hotel.setBackground(new java.awt.Color(0, 153, 255));
         btn_hotel.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
         btn_hotel.setForeground(new java.awt.Color(255, 255, 255));
-        btn_hotel.setText("REGISTRARSE");
+        btn_hotel.setText("RESERVAR");
         btn_hotel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn_hotel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_hotelActionPerformed(evt);
             }
         });
+
+        try {
+            txtFechaSalida.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtFechaSalida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFechaSalidaActionPerformed(evt);
+            }
+        });
+
+        btn_hotel1.setBackground(new java.awt.Color(0, 153, 255));
+        btn_hotel1.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        btn_hotel1.setForeground(new java.awt.Color(255, 255, 255));
+        btn_hotel1.setText("RESERVAR");
+        btn_hotel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_hotel1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_hotel1ActionPerformed(evt);
+            }
+        });
+
+        lblNameHotel.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        lblNameHotel.setForeground(new java.awt.Color(255, 255, 255));
+        lblNameHotel.setText("Fecha Entrada:");
+
+        lblNameHotel1.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        lblNameHotel1.setForeground(new java.awt.Color(255, 255, 255));
+        lblNameHotel1.setText("Ciudad:");
+
+        try {
+            txtFechaEntrada.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        lblNameHotel2.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        lblNameHotel2.setForeground(new java.awt.Color(255, 255, 255));
+        lblNameHotel2.setText("Fecha Salida:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -152,10 +202,36 @@ public class CustomerView extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 527, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(59, 59, 59)
-                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(370, 370, 370)
-                        .addComponent(btn_hotel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(69, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(98, 98, 98)
+                                .addComponent(btn_hotel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblNameHotel))
+                        .addGap(133, 133, 133)
+                        .addComponent(lblNameHotel1)))
+                .addContainerGap(119, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(txtFechaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(76, 76, 76)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(133, 133, 133))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addContainerGap(569, Short.MAX_VALUE)
+                    .addComponent(btn_hotel1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(59, 59, 59)))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(69, 69, 69)
+                    .addComponent(txtFechaEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(544, Short.MAX_VALUE)))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addContainerGap(339, Short.MAX_VALUE)
+                    .addComponent(lblNameHotel2)
+                    .addGap(314, 314, 314)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,11 +239,34 @@ public class CustomerView extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 267, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNameHotel)
+                    .addComponent(lblNameHotel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtFechaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(87, 87, 87)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_hotel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addContainerGap(582, Short.MAX_VALUE)
+                    .addComponent(btn_hotel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(25, 25, 25)))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addContainerGap(465, Short.MAX_VALUE)
+                    .addComponent(txtFechaEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(161, 161, 161)))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addContainerGap(431, Short.MAX_VALUE)
+                    .addComponent(lblNameHotel2)
+                    .addGap(191, 191, 191)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -198,6 +297,14 @@ public class CustomerView extends javax.swing.JFrame {
         System.out.println(tbl_hoteles.getValueAt(tbl_hoteles.getSelectedRow(), 0));
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_hotelActionPerformed
+
+    private void btn_hotel1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hotel1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_hotel1ActionPerformed
+
+    private void txtFechaSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaSalidaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFechaSalidaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -237,11 +344,18 @@ public class CustomerView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btn_hotel;
+    private javax.swing.JButton btn_hotel1;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblNameHotel;
+    private javax.swing.JLabel lblNameHotel1;
+    private javax.swing.JLabel lblNameHotel2;
     private javax.swing.JTable tbl_hoteles;
+    private javax.swing.JFormattedTextField txtFechaEntrada;
+    private javax.swing.JFormattedTextField txtFechaSalida;
     // End of variables declaration//GEN-END:variables
 }

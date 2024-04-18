@@ -23,6 +23,12 @@ public class Hotel {
         this.pictures = pictures;
     }
 
+    @Override
+    public String toString() {
+        return  "NAME: "+this.nameHotel +"  "+"Identificacion: "+this.id;
+    }
+
+     
     public int getId() {
         return id;
     }

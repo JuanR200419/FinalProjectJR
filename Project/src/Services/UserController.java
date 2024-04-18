@@ -100,4 +100,8 @@ public class UserController {
     public Map<String, Object> selectRooms() {
         return dao.selectRooms();
     }
+    public ArrayList<Hotel> fullComboHotel() {
+    return dao.fullComboHotel( );
+    }
+    
 }

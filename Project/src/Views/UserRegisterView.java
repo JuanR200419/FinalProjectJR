@@ -21,6 +21,7 @@ public class UserRegisterView extends javax.swing.JFrame {
      */
     public UserRegisterView() {
         initComponents();
+        this.setLocationRelativeTo(null);
         control = new UserController();
     }
     
@@ -302,7 +303,10 @@ public class UserRegisterView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
+        LoginView log = new LoginView();
+        log.setVisible(true);
+        log.setLocationRelativeTo(this);
+        this.dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
