@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 import javax.swing.JOptionPane;
 import Dao.Dao;
+import Models.City;
 import Models.Hotel;
 import Models.Room;
 import Singleton.DataBaseSingleton;
@@ -103,5 +104,7 @@ public class UserController {
     public ArrayList<Hotel> fullComboHotel() {
     return dao.fullComboHotel( );
     }
-    
+     public ArrayList<City> fullComboCity() {
+     return dao.fullComboCity();
+     }
 }

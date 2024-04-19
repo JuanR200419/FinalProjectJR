@@ -17,6 +17,13 @@ public class City {
         this.nameCity = nameCity;
     }
 
+    @Override
+    public String toString() {
+    return this.nameCity;
+    }
+
+    
+    
     public int getId_city() {
         return id_city;
     }

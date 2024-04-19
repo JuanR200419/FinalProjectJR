@@ -7,6 +7,7 @@ package Dao;
 import Interface.InterfaceHotel;
 import Interface.InterfaceRoom;
 import Interface.InterfaceUser;
+import Models.City;
 import Models.Hotel;
 import Models.Room;
 import Models.User;
@@ -155,7 +156,7 @@ public class Dao implements InterfaceUser, InterfaceHotel, InterfaceRoom {
 
             // We iterate all the results
             if (rs.next()) {
-                Hotel hotel = new Hotel(id, rs.getString("name_hotel"), rs.getString("address_hotel"), rs.getString("classification_hotel"), rs.getString("mob_cons_hotel"), rs.getString("pictures_hotel"));
+                Hotel hotel = new Hotel(id, rs.getString("name_hotel"), rs.getString("address_hotel"), rs.getString("classification_hotel"), rs.getString("mob_cons_hotel"), rs.getString("pictures_hotel"),rs.getInt("id_city"));
                 return hotel;
             }
         } catch (SQLException e) {
@@ -175,7 +176,7 @@ public class Dao implements InterfaceUser, InterfaceHotel, InterfaceRoom {
 
             // We iterate all the results
             if (rs.next()) {
-                Hotel hotel = new Hotel(rs.getInt("id_hotel"), rs.getString("name_hotel"), rs.getString("address_hotel"), rs.getString("classification_hotel"), rs.getString("mob_cons_hotel"), rs.getString("pictures_hotel"));
+                Hotel hotel = new Hotel(rs.getInt("id_hotel"), rs.getString("name_hotel"), rs.getString("address_hotel"), rs.getString("classification_hotel"), rs.getString("mob_cons_hotel"), rs.getString("pictures_hotel"),rs.getInt("id_city"));
                 return hotel;
             }
         } catch (SQLException e) {
@@ -221,7 +222,7 @@ public class Dao implements InterfaceUser, InterfaceHotel, InterfaceRoom {
             // Se recorre el conjunto de resultados
             while (rs.next()) {
                 // Se crea un nuevo objeto Hotel con los datos de la fila actual
-                Hotel hotelEntry = new Hotel(rs.getInt("id_hotel"), rs.getString("name_hotel"), rs.getString("address_hotel"), rs.getString("classification_hotel"), rs.getString("mob_cons_hotel"), rs.getString("pictures_hotel"));
+                Hotel hotelEntry = new Hotel(rs.getInt("id_hotel"), rs.getString("name_hotel"), rs.getString("address_hotel"), rs.getString("classification_hotel"), rs.getString("mob_cons_hotel"), rs.getString("pictures_hotel"), rs.getInt("id_city"));
                 // Se añade el objeto Hotel a la lista
                 listHotels.add(hotelEntry);
             }
@@ -232,6 +233,29 @@ public class Dao implements InterfaceUser, InterfaceHotel, InterfaceRoom {
         }
         // Se devuelve la lista de hoteles
         return listHotels;
+    }
+
+    public ArrayList<City> fullComboCity() {
+        ArrayList<City> listCities = new ArrayList<>();
+        // Se prepara la consulta SQL para seleccionar todos los datos de la tabla hotels
+        String selectSQL = "SELECT * FROM cities";
+        try (PreparedStatement pstmt = connection.prepareStatement(selectSQL)) {
+            // Se ejecuta la consulta y se obtiene el conjunto de resultados
+            ResultSet rs = pstmt.executeQuery();
+            // Se recorre el conjunto de resultados
+            while (rs.next()) {
+                // Se crea un nuevo objeto Hotel con los datos de la fila actual
+                City citi = new City(rs.getInt("id_city"), rs.getString("name_city"));
+// Se añade el objeto Hotel a la lista
+                listCities.add(citi);
+            }
+        } catch (SQLException e) {
+            // Si ocurre un error, se imprime un mensaje de error y se muestra la pila de errores
+            System.out.println("Ocurrió un error al realizar la consulta en la base de datos");
+            e.printStackTrace();
+        }
+        // Se devuelve la lista de hoteles
+        return listCities;
     }
 
     public void deleteHotel(int id) {
@@ -476,7 +500,7 @@ public class Dao implements InterfaceUser, InterfaceHotel, InterfaceRoom {
         Map<String, Object> result = new HashMap<>();
 
         // Preparamos la consulta SQL para seleccionar datos de la tabla 'usuario'
-        String selectSQL = "SELECT * FROM hotels";
+        String selectSQL = "SELECT * FROM hotels ";
 
         // Intentamos preparar y ejecutar la consulta SQL
         try (PreparedStatement pstmt = connection.prepareStatement(selectSQL)) {
