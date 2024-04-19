@@ -13,22 +13,18 @@ public class Hotel {
     //hotel ame  example: games room, jacuzzi etc.
     private String modCons;
     private String pictures;
+    private int idCity;
 
-    public Hotel(int id, String nameHotel, String adress, String classification, String modCons, String pictures) {
+    public Hotel(int id, String nameHotel, String adress, String classification, String modCons, String pictures, int idCity) {
         this.id = id;
         this.nameHotel = nameHotel;
         this.adress = adress;
         this.classification = classification;
         this.modCons = modCons;
         this.pictures = pictures;
+        this.idCity = idCity;
     }
 
-    @Override
-    public String toString() {
-        return  "NAME: "+this.nameHotel +"  "+"Identificacion: "+this.id;
-    }
-
-     
     public int getId() {
         return id;
     }
@@ -77,4 +73,12 @@ public class Hotel {
         this.pictures = pictures;
     }
 
+    public int getIdCity() {
+        return idCity;
+    }
+
+    public void setIdCity(int idCity) {
+        this.idCity = idCity;
+    }
+    
 }
