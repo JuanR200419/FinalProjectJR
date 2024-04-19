@@ -1,0 +1,4 @@
+CREATE TABLE rooms (
+id_city INT AUTO_INCREMENT PRIMARY KEY UNIQUE,
+name_city VARCHAR (120)
+)
