@@ -30,7 +30,7 @@ public class AdministrationView extends javax.swing.JFrame {
      */
     public AdministrationView() {
         initComponents();
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(this);
         control = new UserController();
         fillTableHotels();
         fillTableRooms();
@@ -65,10 +65,10 @@ public class AdministrationView extends javax.swing.JFrame {
         jSeparator26 = new javax.swing.JSeparator();
         cbxTypeRoom = new javax.swing.JComboBox<>();
         cbxStadeRoom = new javax.swing.JComboBox<>();
-        txtHotelName = new javax.swing.JTextField();
-        jSeparator27 = new javax.swing.JSeparator();
         lblnameHotel = new javax.swing.JLabel();
         cbHotel = new javax.swing.JComboBox<>();
+        cbxNumberGuests = new javax.swing.JComboBox();
+        lblAddressHotel2 = new javax.swing.JLabel();
         PanelDentroGestion3 = new javax.swing.JPanel();
         btnDeleteRoom = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -120,8 +120,6 @@ public class AdministrationView extends javax.swing.JFrame {
         jSeparator18 = new javax.swing.JSeparator();
         txtAddressHotel = new javax.swing.JTextField();
         lblAddressHotel = new javax.swing.JLabel();
-        txtClassificationHotel = new javax.swing.JTextField();
-        jSeparator19 = new javax.swing.JSeparator();
         lblClassificationHotel = new javax.swing.JLabel();
         txtModConsHotel = new javax.swing.JTextField();
         jSeparator20 = new javax.swing.JSeparator();
@@ -131,6 +129,7 @@ public class AdministrationView extends javax.swing.JFrame {
         lblPictures = new javax.swing.JLabel();
         lblPictures1 = new javax.swing.JLabel();
         cbCIties = new javax.swing.JComboBox<>();
+        cbxclasification = new javax.swing.JComboBox<>();
         PanelDentroGestion5 = new javax.swing.JPanel();
         btnDeleteHotel = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
@@ -215,15 +214,6 @@ public class AdministrationView extends javax.swing.JFrame {
             }
         });
 
-        txtHotelName.setBackground(new java.awt.Color(0, 0, 102));
-        txtHotelName.setFont(new java.awt.Font("Lohit Devanagari", 0, 18)); // NOI18N
-        txtHotelName.setForeground(new java.awt.Color(73, 181, 172));
-        txtHotelName.setBorder(null);
-        txtHotelName.setCaretColor(new java.awt.Color(73, 181, 172));
-
-        jSeparator27.setBackground(new java.awt.Color(0, 153, 255));
-        jSeparator27.setForeground(new java.awt.Color(0, 153, 255));
-
         lblnameHotel.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
         lblnameHotel.setForeground(new java.awt.Color(255, 255, 255));
         lblnameHotel.setText("HOTEL");
@@ -236,6 +226,14 @@ public class AdministrationView extends javax.swing.JFrame {
             }
         });
 
+        cbxNumberGuests.setBackground(new java.awt.Color(0, 0, 102));
+        cbxNumberGuests.setFont(new java.awt.Font("Lohit Devanagari", 0, 18)); // NOI18N
+        cbxNumberGuests.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5" }));
+
+        lblAddressHotel2.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        lblAddressHotel2.setForeground(new java.awt.Color(255, 255, 255));
+        lblAddressHotel2.setText("NÚMERO HUESPEDES");
+
         javax.swing.GroupLayout PanelDentroGestion2Layout = new javax.swing.GroupLayout(PanelDentroGestion2);
         PanelDentroGestion2.setLayout(PanelDentroGestion2Layout);
         PanelDentroGestion2Layout.setHorizontalGroup(
@@ -243,25 +241,26 @@ public class AdministrationView extends javax.swing.JFrame {
             .addGroup(PanelDentroGestion2Layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addGroup(PanelDentroGestion2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator27, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblnameHotel)
+                    .addComponent(cbHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(PanelDentroGestion2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(txtHotelName, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(PanelDentroGestion2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblAddressHotel2)
+                            .addComponent(cbxNumberGuests, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(PanelDentroGestion2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblModCons1)
-                            .addComponent(jSeparator26, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
-                            .addComponent(txtModConsRoom, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
-                            .addComponent(jSeparator25, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
+                            .addComponent(jSeparator26, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                            .addComponent(txtModConsRoom, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                            .addComponent(jSeparator25, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
                             .addComponent(lblPriceNight)
-                            .addComponent(txtPriceNight, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
+                            .addComponent(txtPriceNight, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
                             .addComponent(lblNameHotel1)
-                            .addComponent(txtNumberRoom, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
-                            .addComponent(jSeparator22, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
+                            .addComponent(txtNumberRoom, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                            .addComponent(jSeparator22, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
                             .addComponent(lblAddressHotel1)
                             .addComponent(lblClassificationHotel1)
-                            .addComponent(cbxTypeRoom, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cbxStadeRoom, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(cbHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cbxTypeRoom, 0, 290, Short.MAX_VALUE)
+                            .addComponent(cbxStadeRoom, 0, 290, Short.MAX_VALUE))))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
         PanelDentroGestion2Layout.setVerticalGroup(
@@ -271,22 +270,20 @@ public class AdministrationView extends javax.swing.JFrame {
                 .addComponent(lblNameHotel1)
                 .addGap(5, 5, 5)
                 .addComponent(txtNumberRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jSeparator22, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator22, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblAddressHotel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbxTypeRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbxTypeRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblClassificationHotel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbxStadeRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbxStadeRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(7, 7, 7)
                 .addComponent(lblnameHotel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbHotel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(jSeparator27, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblModCons1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -297,11 +294,13 @@ public class AdministrationView extends javax.swing.JFrame {
                 .addComponent(lblPriceNight)
                 .addGap(5, 5, 5)
                 .addComponent(txtPriceNight, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jSeparator26, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(83, 83, 83)
-                .addComponent(txtHotelName, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(140, 140, 140))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblAddressHotel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cbxNumberGuests, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(203, 203, 203))
         );
 
         PanelDentroGestion3.setBackground(new java.awt.Color(0, 0, 102));
@@ -683,26 +682,26 @@ public class AdministrationView extends javax.swing.JFrame {
                 .addGroup(PanelDentroGestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblUsername)
                     .addComponent(lblPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPasswordUser, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPhoneNumberUser, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPasswordUser, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPhoneNumberUser, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblEmail)
-                    .addComponent(txtEmailUser, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEmailUser, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblName)
-                    .addComponent(txtNameUser, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNameUser, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblEdad)
-                    .addComponent(txtAgeUser, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAgeUser, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblAddress)
-                    .addComponent(txtAddressUser, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAddressUser, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblPhoneNumber))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         PanelDentroGestionLayout.setVerticalGroup(
             PanelDentroGestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -814,20 +813,6 @@ public class AdministrationView extends javax.swing.JFrame {
         lblAddressHotel.setForeground(new java.awt.Color(255, 255, 255));
         lblAddressHotel.setText("DIRECCIÓN");
 
-        txtClassificationHotel.setBackground(new java.awt.Color(0, 0, 102));
-        txtClassificationHotel.setFont(new java.awt.Font("Lohit Devanagari", 0, 18)); // NOI18N
-        txtClassificationHotel.setForeground(new java.awt.Color(73, 181, 172));
-        txtClassificationHotel.setBorder(null);
-        txtClassificationHotel.setCaretColor(new java.awt.Color(73, 181, 172));
-        txtClassificationHotel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtClassificationHotelActionPerformed(evt);
-            }
-        });
-
-        jSeparator19.setBackground(new java.awt.Color(0, 153, 255));
-        jSeparator19.setForeground(new java.awt.Color(0, 153, 255));
-
         lblClassificationHotel.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
         lblClassificationHotel.setForeground(new java.awt.Color(255, 255, 255));
         lblClassificationHotel.setText("CLASIFICACIÓN");
@@ -870,37 +855,34 @@ public class AdministrationView extends javax.swing.JFrame {
             }
         });
 
+        cbxclasification.setBackground(new java.awt.Color(0, 0, 102));
+        cbxclasification.setFont(new java.awt.Font("Lohit Devanagari", 0, 24)); // NOI18N
+        cbxclasification.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "seleccione", "*", "**", "***", "****", "*****" }));
+
         javax.swing.GroupLayout PanelDentroGestion4Layout = new javax.swing.GroupLayout(PanelDentroGestion4);
         PanelDentroGestion4.setLayout(PanelDentroGestion4Layout);
         PanelDentroGestion4Layout.setHorizontalGroup(
             PanelDentroGestion4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelDentroGestion4Layout.createSequentialGroup()
                 .addGap(37, 37, 37)
-                .addGroup(PanelDentroGestion4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbCIties, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblModCons)
-                    .addComponent(jSeparator21, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtModConsHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator20, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPicturesHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNameHotel)
-                    .addComponent(txtNameHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator17, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblAddressHotel)
-                    .addComponent(txtAddressHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator18, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblClassificationHotel)
-                    .addComponent(txtClassificationHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator19, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(PanelDentroGestion4Layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(lblPictures)))
-                .addContainerGap(32, Short.MAX_VALUE))
-            .addGroup(PanelDentroGestion4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(PanelDentroGestion4Layout.createSequentialGroup()
-                    .addGap(47, 47, 47)
+                .addGroup(PanelDentroGestion4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(cbxclasification, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblPictures1)
-                    .addContainerGap(224, Short.MAX_VALUE)))
+                    .addComponent(lblPictures)
+                    .addComponent(cbCIties, 0, 290, Short.MAX_VALUE)
+                    .addComponent(lblModCons)
+                    .addComponent(jSeparator21, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                    .addComponent(txtModConsHotel, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                    .addComponent(jSeparator20, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                    .addComponent(txtPicturesHotel, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                    .addComponent(lblNameHotel)
+                    .addComponent(txtNameHotel, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                    .addComponent(jSeparator17, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                    .addComponent(lblAddressHotel)
+                    .addComponent(txtAddressHotel, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                    .addComponent(jSeparator18, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                    .addComponent(lblClassificationHotel))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         PanelDentroGestion4Layout.setVerticalGroup(
             PanelDentroGestion4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -919,30 +901,25 @@ public class AdministrationView extends javax.swing.JFrame {
                 .addComponent(jSeparator18, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(lblClassificationHotel)
-                .addGap(5, 5, 5)
-                .addComponent(txtClassificationHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jSeparator19, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cbxclasification, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
                 .addComponent(lblModCons)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(txtModConsHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator20, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblPictures1)
+                .addGap(4, 4, 4)
                 .addComponent(txtPicturesHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator21, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblPictures)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbCIties, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(248, 248, 248))
-            .addGroup(PanelDentroGestion4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(PanelDentroGestion4Layout.createSequentialGroup()
-                    .addGap(366, 366, 366)
-                    .addComponent(lblPictures1)
-                    .addContainerGap(377, Short.MAX_VALUE)))
+                .addComponent(cbCIties, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(245, 245, 245))
         );
 
         PanelDentroGestion5.setBackground(new java.awt.Color(0, 0, 102));
@@ -1086,8 +1063,8 @@ public class AdministrationView extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelAdminHotelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(PanelAdminHotelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(PanelDentroGestion5, javax.swing.GroupLayout.DEFAULT_SIZE, 753, Short.MAX_VALUE)
-                    .addComponent(PanelDentroGestion4, javax.swing.GroupLayout.PREFERRED_SIZE, 753, Short.MAX_VALUE))
+                    .addComponent(PanelDentroGestion5, javax.swing.GroupLayout.DEFAULT_SIZE, 756, Short.MAX_VALUE)
+                    .addComponent(PanelDentroGestion4, javax.swing.GroupLayout.DEFAULT_SIZE, 756, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -1274,11 +1251,12 @@ public class AdministrationView extends javax.swing.JFrame {
         int number_rooom = -1;
         double priceNigth = -1;
         String amenitiesDetails = txtModConsRoom.getText();
-        if (txtNumberRoom.getText().isEmpty() || txtHotelName.getText().isEmpty() || amenitiesDetails == null || txtPriceNight.getText().isEmpty() || txtHotelName.getText().isEmpty()) {
+        
+        if (txtNumberRoom.getText().isEmpty() || amenitiesDetails == null || txtPriceNight.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "llene todos los campos");
             return;
         } else {
-            Hotel hotel = control.searchHotelbyName(txtHotelName.getText());
+            Hotel hotel = (Hotel) cbHotel.getSelectedItem();
             int id_hotel = hotel.getId();
             if (verifyIndexItems(cbxStadeRoom.getSelectedIndex())) {
                 id_stade_room = cbxStadeRoom.getSelectedIndex();
@@ -1304,8 +1282,8 @@ public class AdministrationView extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Ingrese solo numeros para el precio de la noche");
                 return;
             }
-
-            Room room = new Room(0, id_stade_room, id_type_room, id_hotel, number_rooom, priceNigth, amenitiesDetails);
+            int numberGuests = Integer.parseInt(cbxNumberGuests.getSelectedItem().toString());
+            Room room = new Room(0, id_stade_room, numberGuests, id_type_room, id_hotel, number_rooom, priceNigth, amenitiesDetails);
             control.insertRoom(room);
             fillTableRooms();
         }
@@ -1318,7 +1296,7 @@ public class AdministrationView extends javax.swing.JFrame {
         int number_rooom = -1;
         double priceNigth = -1;
         String amenitiesDetails = txtModConsRoom.getText();
-        if (txtNumberRoom.getText().isEmpty() || txtHotelName.getText().isEmpty() || amenitiesDetails == null || txtPriceNight.getText().isEmpty()) {
+        if (txtNumberRoom.getText().isEmpty() || amenitiesDetails == null || txtPriceNight.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "llene todos los campos");
             return;
         } else {
@@ -1351,10 +1329,11 @@ public class AdministrationView extends javax.swing.JFrame {
             if (selectedRow != -1) {
                 Object selectedValue = tbl_rooms.getValueAt(selectedRow, 0);
                 if (selectedValue != null) {
-                    Hotel hotel = control.searchHotelbyName(txtHotelName.getText());
+                    Hotel hotel = (Hotel) cbHotel.getSelectedItem();
                     int id_hotel = hotel.getId();
                     int id = Integer.parseInt(selectedValue.toString());
-                    Room room = new Room(id, id_stade_room, id_type_room, id_hotel, number_rooom, priceNigth, amenitiesDetails);
+                    int numberGuests = Integer.parseInt(cbxNumberGuests.getSelectedItem().toString());
+                    Room room = new Room(id, id_stade_room, numberGuests ,id_type_room, id_hotel, number_rooom, priceNigth, amenitiesDetails);
                     control.updateRoom(room);
                     fillTableRooms();
                 } else {
@@ -1366,7 +1345,6 @@ public class AdministrationView extends javax.swing.JFrame {
                 return;
             }
         }
-
     }//GEN-LAST:event_btnUpdateRoomActionPerformed
 
     private void btnDeleteHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteHotelActionPerformed
@@ -1392,7 +1370,7 @@ public class AdministrationView extends javax.swing.JFrame {
         int id_hotel = 0;
         String nameHotel = null;
         String addressHotel = txtAddressHotel.getText();
-        String classification = txtClassificationHotel.getText();
+        String classification = (String) cbxclasification.getSelectedItem();
         String mob_cons = txtModConsHotel.getText();
         String images = txtPicturesHotel.getText();
         City citi = (City) cbCIties.getSelectedItem();
@@ -1419,7 +1397,7 @@ public class AdministrationView extends javax.swing.JFrame {
         int id_hotel = 0;
         String nameHotel = null;
         String addressHotel = txtAddressHotel.getText();
-        String classification = txtClassificationHotel.getText();
+        String classification = (String) cbxclasification.getSelectedItem();
         String mob_cons = txtModConsHotel.getText();
         String images = txtPicturesHotel.getText();
         City citi  = (City) cbCIties.getSelectedItem();
@@ -1455,10 +1433,6 @@ public class AdministrationView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAddressHotelKeyTyped
 
-    private void txtClassificationHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClassificationHotelActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtClassificationHotelActionPerformed
-
     private void cbxStadeRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxStadeRoomActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbxStadeRoomActionPerformed
@@ -1486,7 +1460,7 @@ public class AdministrationView extends javax.swing.JFrame {
         }
         Room room = control.searchRoom(id_room);
         txtNumberRoom.setText(String.valueOf(room.getNumber_rooom()));
-        txtHotelName.setText(control.searchHotel(room.getId_hotel()).getNameHotel());
+        cbHotel.setSelectedItem(control.searchHotel(room.getId_hotel()).getNameHotel());
         txtModConsRoom.setText(room.getAmenitiesDetails());
         txtPriceNight.setText(String.valueOf(room.getPriceNigth()));
         cbxStadeRoom.setSelectedIndex(room.getId_stade_room());
@@ -1540,7 +1514,7 @@ public class AdministrationView extends javax.swing.JFrame {
         Hotel hotel = control.searchHotel(id_hotel);
         txtNameHotel.setText(hotel.getNameHotel());
         txtAddressHotel.setText(hotel.getAdress());
-        txtClassificationHotel.setText(hotel.getClassification());
+        cbxclasification.setSelectedItem(hotel.getClassification());
         txtModConsHotel.setText(hotel.getModCons());
         txtPicturesHotel.setText(hotel.getPictures());
         cbHotel.setSelectedItem(hotel);
@@ -1794,8 +1768,10 @@ public class AdministrationView extends javax.swing.JFrame {
     private javax.swing.JButton btnUpdateUser;
     private javax.swing.JComboBox<City> cbCIties;
     private javax.swing.JComboBox<Hotel> cbHotel;
+    private javax.swing.JComboBox cbxNumberGuests;
     private javax.swing.JComboBox<String> cbxStadeRoom;
     private javax.swing.JComboBox<String> cbxTypeRoom;
+    private javax.swing.JComboBox<String> cbxclasification;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -1810,14 +1786,12 @@ public class AdministrationView extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator17;
     private javax.swing.JSeparator jSeparator18;
-    private javax.swing.JSeparator jSeparator19;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator20;
     private javax.swing.JSeparator jSeparator21;
     private javax.swing.JSeparator jSeparator22;
     private javax.swing.JSeparator jSeparator25;
     private javax.swing.JSeparator jSeparator26;
-    private javax.swing.JSeparator jSeparator27;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
@@ -1826,6 +1800,7 @@ public class AdministrationView extends javax.swing.JFrame {
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblAddressHotel;
     private javax.swing.JLabel lblAddressHotel1;
+    private javax.swing.JLabel lblAddressHotel2;
     private javax.swing.JLabel lblClassificationHotel;
     private javax.swing.JLabel lblClassificationHotel1;
     private javax.swing.JLabel lblEdad;
@@ -1848,9 +1823,7 @@ public class AdministrationView extends javax.swing.JFrame {
     private javax.swing.JTextField txtAddressHotel;
     private javax.swing.JTextField txtAddressUser;
     private javax.swing.JTextField txtAgeUser;
-    private javax.swing.JTextField txtClassificationHotel;
     private javax.swing.JTextField txtEmailUser;
-    private javax.swing.JTextField txtHotelName;
     private javax.swing.JTextField txtModConsHotel;
     private javax.swing.JTextField txtModConsRoom;
     private javax.swing.JTextField txtNameHotel;

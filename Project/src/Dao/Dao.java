@@ -314,7 +314,7 @@ public class Dao implements InterfaceUser, InterfaceHotel, InterfaceRoom {
 
             // We iterate all the results
             if (rs.next()) {
-                Room room = new Room(rs.getInt("id_rooom"), rs.getInt("id_stade_room"), rs.getInt("id_type_room"), rs.getInt("id_hotel"), rs.getInt("number_rooom"), rs.getInt("price_nigth"), rs.getString("room_amenities"));
+                Room room = new Room(rs.getInt("id_rooom"), rs.getInt("id_stade_room"), rs.getInt("number_guests"),rs.getInt("id_type_room"), rs.getInt("id_hotel"), rs.getInt("number_rooom"), rs.getInt("price_nigth"), rs.getString("room_amenities"));
                 return room;
             }
         } catch (SQLException e) {
@@ -326,7 +326,7 @@ public class Dao implements InterfaceUser, InterfaceHotel, InterfaceRoom {
 
     public void insertRoom(Room room) {
         // We prepare the consultation SQL for insert data
-        String insertSQL = "INSERT INTO rooms( id_stade_room, id_type_room, id_hotel, number_rooom, price_nigth, room_amenities) VALUES (?,?,?,?,?,?)";
+        String insertSQL = "INSERT INTO rooms( id_stade_room, id_type_room, id_hotel, number_rooom, price_nigth, room_amenities, number_guests) VALUES (?,?,?,?,?,?,?)";
         try (PreparedStatement pstmt = connection.prepareStatement(insertSQL)) {
             pstmt.setInt(1, room.getId_stade_room());
             pstmt.setInt(2, room.getId_type_room());
@@ -334,6 +334,7 @@ public class Dao implements InterfaceUser, InterfaceHotel, InterfaceRoom {
             pstmt.setInt(4, room.getNumber_rooom());
             pstmt.setDouble(5, room.getPriceNigth());
             pstmt.setString(6, room.getAmenitiesDetails());
+            pstmt.setInt(7, room.getNumberGuests());
             //We execute the query
             int rowsAffected = pstmt.executeUpdate();
 
@@ -366,25 +367,27 @@ public class Dao implements InterfaceUser, InterfaceHotel, InterfaceRoom {
     }
 
     public void updateRoom(Room room) {
-        // We prepare the consultation SQL for select data
-        String updateSQL = "UPDATE rooms SET id_stade_room=?, id_type_room=?, id_hotel=?, number_rooom=?, price_nigth=?, room_amenities=? WHERE id_rooom=?";
-        try (PreparedStatement pstmt = connection.prepareStatement(updateSQL)) {
-            pstmt.setInt(1, room.getId_stade_room());
-            pstmt.setInt(2, room.getId_type_room());
-            pstmt.setInt(3, room.getId_hotel());
-            pstmt.setInt(4, room.getNumber_rooom());
-            pstmt.setDouble(5, room.getPriceNigth());
-            pstmt.setString(6, room.getAmenitiesDetails());
-            pstmt.setInt(7, room.getId_room());
+    // We prepare the consultation SQL for select data
+    String updateSQL = "UPDATE rooms SET id_stade_room=?, id_type_room=?, id_hotel=?, number_rooom=?, price_nigth=?, room_amenities=?, number_guests=? WHERE id_rooom=?";
+    try (PreparedStatement pstmt = connection.prepareStatement(updateSQL)) {
+        pstmt.setInt(1, room.getId_stade_room());
+        pstmt.setInt(2, room.getId_type_room());
+        pstmt.setInt(3, room.getId_hotel());
+        pstmt.setInt(4, room.getNumber_rooom());
+        pstmt.setDouble(5, room.getPriceNigth());
+        pstmt.setString(6, room.getAmenitiesDetails());
+        pstmt.setInt(7, room.getNumberGuests());
+        pstmt.setInt(8, room.getId_room());
 
-            pstmt.executeUpdate();
+        pstmt.executeUpdate();
 
-            JOptionPane.showMessageDialog(null, "Se ha actualizado");
-        } catch (SQLException e) {
-            System.out.println("Ocurrió un error al realizar la actualización en la base de datos");
-            e.printStackTrace();
-        }
+        JOptionPane.showMessageDialog(null, "Se ha actualizado");
+    } catch (SQLException e) {
+        System.out.println("Ocurrió un error al realizar la actualización en la base de datos");
+        e.printStackTrace();
     }
+}
+
 
 // JSON FOR TABLES 
     public Map<String, Object> selectUsers() {
