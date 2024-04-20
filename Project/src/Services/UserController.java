@@ -61,6 +61,7 @@ public class UserController {
     }
 
     public void insertHotel(Hotel hotel) {
+    
         dao.insertHotel(hotel);
     }
 

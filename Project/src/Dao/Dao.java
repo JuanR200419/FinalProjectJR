@@ -156,7 +156,7 @@ public class Dao implements InterfaceUser, InterfaceHotel, InterfaceRoom {
 
             // We iterate all the results
             if (rs.next()) {
-                Hotel hotel = new Hotel(id, rs.getString("name_hotel"), rs.getString("address_hotel"), rs.getString("classification_hotel"), rs.getString("mob_cons_hotel"), rs.getString("pictures_hotel"),rs.getInt("id_city"));
+                Hotel hotel = new Hotel(id, rs.getString("name_hotel"), rs.getString("address_hotel"), rs.getString("classification_hotel"), rs.getString("mob_cons_hotel"), rs.getString("pictures_hotel"), rs.getInt("id_city"));
                 return hotel;
             }
         } catch (SQLException e) {
@@ -176,7 +176,7 @@ public class Dao implements InterfaceUser, InterfaceHotel, InterfaceRoom {
 
             // We iterate all the results
             if (rs.next()) {
-                Hotel hotel = new Hotel(rs.getInt("id_hotel"), rs.getString("name_hotel"), rs.getString("address_hotel"), rs.getString("classification_hotel"), rs.getString("mob_cons_hotel"), rs.getString("pictures_hotel"),rs.getInt("id_city"));
+                Hotel hotel = new Hotel(rs.getInt("id_hotel"), rs.getString("name_hotel"), rs.getString("address_hotel"), rs.getString("classification_hotel"), rs.getString("mob_cons_hotel"), rs.getString("pictures_hotel"), rs.getInt("id_city"));
                 return hotel;
             }
         } catch (SQLException e) {
@@ -187,14 +187,17 @@ public class Dao implements InterfaceUser, InterfaceHotel, InterfaceRoom {
     }
 
     public void insertHotel(Hotel hotel) {
+        System.out.println("holass");
         // We prepare the consultation SQL for insert data
-        String insertSQL = "INSERT INTO hotels (name_hotel,address_hotel,classification_hotel , mob_cons_hotel,pictures_hotel) VALUES (?,?,?,?,?)";
+        String insertSQL = "INSERT INTO hotels (name_hotel, id_city, address_hotel,classification_hotel, mob_cons_hotel, pictures_hotel) VALUES (?,?,?,?,?,?)";
         try (PreparedStatement pstmt = connection.prepareStatement(insertSQL)) {
             pstmt.setString(1, hotel.getNameHotel());
-            pstmt.setString(2, hotel.getAdress());
-            pstmt.setString(3, hotel.getClassification());
-            pstmt.setString(4, hotel.getModCons());
-            pstmt.setString(5, hotel.getPictures());
+            pstmt.setInt(2, hotel.getIdCity());
+            pstmt.setString(3, hotel.getAdress());
+            pstmt.setString(4, hotel.getClassification());
+            pstmt.setString(5, hotel.getModCons());
+            pstmt.setString(6, hotel.getPictures());
+
             //We execute the query
             int rowsAffected = pstmt.executeUpdate();
 
@@ -500,7 +503,7 @@ public class Dao implements InterfaceUser, InterfaceHotel, InterfaceRoom {
         Map<String, Object> result = new HashMap<>();
 
         // Preparamos la consulta SQL para seleccionar datos de la tabla 'usuario'
-        String selectSQL = "SELECT * FROM hotels ";
+        String selectSQL = "SELECT * FROM hotels  ";
 
         // Intentamos preparar y ejecutar la consulta SQL
         try (PreparedStatement pstmt = connection.prepareStatement(selectSQL)) {

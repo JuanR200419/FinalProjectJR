@@ -332,7 +332,7 @@ public class UserRegisterView extends javax.swing.JFrame {
             if (verifyAge(txtAge.getText())) {
                 age = Integer.parseInt(txtAge.getText());
             } else {
-                JOptionPane.showMessageDialog(null, "No puede ingresar letras en la casilla de edad");
+                JOptionPane.showMessageDialog(null, "No puede ingresar letras o numeros negativos en la casilla de edad");
                 return;
             }
             if (verify_email(txtEmail.getText())) {

@@ -35,6 +35,10 @@ public class RoomUserView extends javax.swing.JPanel {
         tbl_rooms = new javax.swing.JTable();
         btnBack = new javax.swing.JButton();
         btn_hotel1 = new javax.swing.JButton();
+        txtDateEntry = new javax.swing.JFormattedTextField();
+        lblDateEntry1 = new javax.swing.JLabel();
+        lblDateExit = new javax.swing.JLabel();
+        txtDateExit = new javax.swing.JFormattedTextField();
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 102));
 
@@ -103,33 +107,96 @@ public class RoomUserView extends javax.swing.JPanel {
             }
         });
 
+        txtDateEntry.setBackground(new java.awt.Color(204, 204, 255));
+        txtDateEntry.setForeground(new java.awt.Color(0, 0, 0));
+        try {
+            txtDateEntry.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtDateEntry.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                txtDateEntryInputMethodTextChanged(evt);
+            }
+        });
+
+        lblDateEntry1.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        lblDateEntry1.setForeground(new java.awt.Color(255, 255, 255));
+        lblDateEntry1.setText("Fecha Entrada:");
+
+        lblDateExit.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        lblDateExit.setForeground(new java.awt.Color(255, 255, 255));
+        lblDateExit.setText("Fecha Salida:");
+
+        txtDateExit.setBackground(new java.awt.Color(204, 204, 255));
+        txtDateExit.setForeground(new java.awt.Color(0, 0, 0));
+        try {
+            txtDateExit.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtDateExit.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                txtDateExitInputMethodTextChanged(evt);
+            }
+        });
+        txtDateExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDateExitActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1008, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(59, 59, 59)
                 .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btn_hotel1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(54, 54, 54))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1008, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblDateEntry1)
+                    .addComponent(txtDateEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblDateExit)
+                    .addComponent(txtDateExit, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(346, 346, 346))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65)
+                .addGap(27, 27, 27)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblDateEntry1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtDateEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblDateExit)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtDateExit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_hotel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35))
+                .addGap(62, 62, 62))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -156,7 +223,20 @@ public class RoomUserView extends javax.swing.JPanel {
 
     private void btn_hotel1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hotel1ActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_btn_hotel1ActionPerformed
+
+    private void txtDateEntryInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtDateEntryInputMethodTextChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDateEntryInputMethodTextChanged
+
+    private void txtDateExitInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtDateExitInputMethodTextChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDateExitInputMethodTextChanged
+
+    private void txtDateExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDateExitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDateExitActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -167,6 +247,10 @@ public class RoomUserView extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblDateEntry1;
+    private javax.swing.JLabel lblDateExit;
     private javax.swing.JTable tbl_rooms;
+    private javax.swing.JFormattedTextField txtDateEntry;
+    private javax.swing.JFormattedTextField txtDateExit;
     // End of variables declaration//GEN-END:variables
 }

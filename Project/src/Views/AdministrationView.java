@@ -1395,15 +1395,16 @@ public class AdministrationView extends javax.swing.JFrame {
         String classification = txtClassificationHotel.getText();
         String mob_cons = txtModConsHotel.getText();
         String images = txtPicturesHotel.getText();
-        City citi = (City)cbCIties.getSelectedItem();
+        City citi = (City) cbCIties.getSelectedItem();
+        
         if (txtNameHotel.getText().isEmpty() || addressHotel.isEmpty() || classification.isEmpty() || mob_cons.isEmpty() || images.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Debe completar todos los campos obligatorios");
-            return;
         } else {
             if (verifyCaracter_spaces(txtNameHotel.getText())) {
                 nameHotel = txtNameHotel.getText();
                 System.out.println(citi.getId_city());
-                Hotel hotel = new Hotel(id_hotel, nameHotel, addressHotel, classification, mob_cons, images,citi.getId_city());
+               
+                Hotel hotel = new Hotel(id_hotel, nameHotel, addressHotel, classification, mob_cons, images, citi.getId_city());
                 control.insertHotel(hotel);
                 fillTableHotels();
                 fullCombo();

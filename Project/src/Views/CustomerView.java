@@ -70,7 +70,6 @@ public class CustomerView extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_hoteles = new javax.swing.JTable();
         btnBack = new javax.swing.JButton();
-        btn_hotel = new javax.swing.JButton();
         txtDateExit = new javax.swing.JFormattedTextField();
         btn_search_rooms = new javax.swing.JButton();
         lblCity = new javax.swing.JLabel();
@@ -143,17 +142,6 @@ public class CustomerView extends javax.swing.JFrame {
             }
         });
 
-        btn_hotel.setBackground(new java.awt.Color(0, 153, 255));
-        btn_hotel.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
-        btn_hotel.setForeground(new java.awt.Color(255, 255, 255));
-        btn_hotel.setText("BUSCAR HOTEL");
-        btn_hotel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btn_hotel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_hotelActionPerformed(evt);
-            }
-        });
-
         txtDateExit.setBackground(new java.awt.Color(204, 204, 255));
         txtDateExit.setForeground(new java.awt.Color(0, 0, 0));
         try {
@@ -161,6 +149,13 @@ public class CustomerView extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtDateExit.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                txtDateExitInputMethodTextChanged(evt);
+            }
+        });
         txtDateExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDateExitActionPerformed(evt);
@@ -189,10 +184,22 @@ public class CustomerView extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtDateEntry.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                txtDateEntryInputMethodTextChanged(evt);
+            }
+        });
 
         cbxCity.setBackground(new java.awt.Color(204, 204, 255));
         cbxCity.setForeground(new java.awt.Color(0, 0, 0));
         cbxCity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione" }));
+        cbxCity.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbxCityItemStateChanged(evt);
+            }
+        });
 
         lblDateExit.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
         lblDateExit.setForeground(new java.awt.Color(255, 255, 255));
@@ -205,6 +212,11 @@ public class CustomerView extends javax.swing.JFrame {
         cbxGuests.setBackground(new java.awt.Color(204, 204, 255));
         cbxGuests.setForeground(new java.awt.Color(0, 0, 0));
         cbxGuests.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "1", "2", "3", "4", "5" }));
+        cbxGuests.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbxGuestsItemStateChanged(evt);
+            }
+        });
 
         lblGuests.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
         lblGuests.setForeground(new java.awt.Color(255, 255, 255));
@@ -213,6 +225,11 @@ public class CustomerView extends javax.swing.JFrame {
         cbxTypeRoom.setBackground(new java.awt.Color(204, 204, 255));
         cbxTypeRoom.setForeground(new java.awt.Color(0, 0, 0));
         cbxTypeRoom.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione" }));
+        cbxTypeRoom.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbxTypeRoomItemStateChanged(evt);
+            }
+        });
 
         lblTypeRoom.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
         lblTypeRoom.setForeground(new java.awt.Color(255, 255, 255));
@@ -234,8 +251,6 @@ public class CustomerView extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblCity)
                     .addComponent(cbxCity, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45)
-                .addComponent(btn_hotel, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
@@ -256,9 +271,7 @@ public class CustomerView extends javax.swing.JFrame {
                             .addComponent(cbxTypeRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(26, 26, 26)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblDateEntry1)
-                                .addGap(41, 41, 41))
+                            .addComponent(lblDateEntry1)
                             .addComponent(txtDateEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(29, 29, 29)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -270,18 +283,13 @@ public class CustomerView extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblCity)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cbxCity, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(btn_hotel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lblCity)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cbxCity, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
@@ -340,11 +348,6 @@ public class CustomerView extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 
-    private void btn_hotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hotelActionPerformed
-        System.out.println(tbl_hoteles.getValueAt(tbl_hoteles.getSelectedRow(), 0));
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_hotelActionPerformed
-
     private void btn_search_roomsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_search_roomsActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_search_roomsActionPerformed
@@ -352,6 +355,26 @@ public class CustomerView extends javax.swing.JFrame {
     private void txtDateExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDateExitActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDateExitActionPerformed
+
+    private void cbxCityItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxCityItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxCityItemStateChanged
+
+    private void cbxGuestsItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxGuestsItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxGuestsItemStateChanged
+
+    private void cbxTypeRoomItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxTypeRoomItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxTypeRoomItemStateChanged
+
+    private void txtDateEntryInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtDateEntryInputMethodTextChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDateEntryInputMethodTextChanged
+
+    private void txtDateExitInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtDateExitInputMethodTextChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDateExitInputMethodTextChanged
 
     /**
      * @param args the command line arguments
@@ -390,7 +413,6 @@ public class CustomerView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btn_hotel;
     private javax.swing.JButton btn_search_rooms;
     private javax.swing.JComboBox<String> cbxCity;
     private javax.swing.JComboBox<String> cbxGuests;

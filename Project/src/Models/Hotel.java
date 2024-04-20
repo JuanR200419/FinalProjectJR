@@ -25,6 +25,11 @@ public class Hotel {
         this.idCity = idCity;
     }
 
+    @Override
+    public String toString() {
+        return   "Nombre: "+this.nameHotel+" ID: "+this.id;
+    }
+ 
     public int getId() {
         return id;
     }
