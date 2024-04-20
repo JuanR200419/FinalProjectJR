@@ -7,6 +7,7 @@ package Views;
 import Services.UserController;
 import java.util.List;
 import java.util.Map;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -51,7 +52,7 @@ public class CustomerView extends javax.swing.JFrame {
         }
 
         // Establecemos el modelo en la tabla. Esto actualiza la tabla para mostrar los datos del modelo.
-        tbl_hoteles.setModel(model);
+        tbl_hotels.setModel(model);
     }
 
     /**
@@ -68,7 +69,7 @@ public class CustomerView extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbl_hoteles = new javax.swing.JTable();
+        tbl_hotels = new javax.swing.JTable();
         btnBack = new javax.swing.JButton();
         txtDateExit = new javax.swing.JFormattedTextField();
         btn_search_rooms = new javax.swing.JButton();
@@ -118,7 +119,7 @@ public class CustomerView extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        tbl_hoteles.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_hotels.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -129,7 +130,7 @@ public class CustomerView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tbl_hoteles);
+        jScrollPane1.setViewportView(tbl_hotels);
 
         btnBack.setBackground(new java.awt.Color(0, 153, 153));
         btnBack.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
@@ -349,7 +350,28 @@ public class CustomerView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btn_search_roomsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_search_roomsActionPerformed
-        // TODO add your handling code here:
+        
+           // TODO add your handling code here:
+        int id_hotel = 0;
+        int selectedRow = tbl_hotels.getSelectedRow();
+        if (selectedRow != -1) {
+            Object selectedValue = tbl_hotels.getValueAt(selectedRow, 0);
+            if (selectedValue != null) {
+                id_hotel = Integer.parseInt(selectedValue.toString());
+                RoomUserView user = new RoomUserView(id_hotel);
+                user.setVisible(true);
+                user.setLocationRelativeTo(null);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Debe seleccionar el hotel en la lista que desea buscar");
+                return;
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar el hotel en la lista que desea buscar");
+            return;
+        }
+        
+        
     }//GEN-LAST:event_btn_search_roomsActionPerformed
 
     private void txtDateExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDateExitActionPerformed
@@ -428,7 +450,7 @@ public class CustomerView extends javax.swing.JFrame {
     private javax.swing.JLabel lblDateExit;
     private javax.swing.JLabel lblGuests;
     private javax.swing.JLabel lblTypeRoom;
-    private javax.swing.JTable tbl_hoteles;
+    private javax.swing.JTable tbl_hotels;
     private javax.swing.JFormattedTextField txtDateEntry;
     private javax.swing.JFormattedTextField txtDateExit;
     // End of variables declaration//GEN-END:variables

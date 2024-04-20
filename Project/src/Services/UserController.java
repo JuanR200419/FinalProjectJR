@@ -108,4 +108,9 @@ public class UserController {
      public ArrayList<City> fullComboCity() {
      return dao.fullComboCity();
      }
+     
+      public Map<String, Object> selectHotelsInRooms(int id) {
+      return dao.selectHotelsInRooms(id);
+      }
+     
 }

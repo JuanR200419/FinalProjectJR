@@ -607,6 +607,65 @@ public class Dao implements InterfaceUser, InterfaceHotel, InterfaceRoom {
         // Retornamos el mapa de resultados
         return result;
     }
+    
+    // llenar tabla de rooms 
+    
+      public Map<String, Object> selectHotelsInRooms(int id) {
+        // Inicializamos el mapa de resultados. Este mapa almacenará los nombres de las columnas, el número de columnas y los datos de la tabla.
+        
+        Map<String, Object> result = new HashMap<>();
+        // Preparamos la consulta SQL para seleccionar datos de la tabla 'usuario'
+         String selectSQL = "SELECT * FROM rooms WHERE id_hotel = "+String.valueOf(id);
 
+        // Intentamos preparar y ejecutar la consulta SQL
+        try (PreparedStatement pstmt = connection.prepareStatement(selectSQL)) {
+            // Ejecutamos la consulta y obtenemos los resultados en un ResultSet
+            ResultSet rs = pstmt.executeQuery();
+
+            // Obtenemos los metadatos del ResultSet. Los metadatos contienen información sobre la estructura de los resultados, como el número de columnas y los nombres de las columnas.
+            ResultSetMetaData rsmd = rs.getMetaData();
+
+            // Obtenemos el número de columnas de los metadatos
+            int numColumns = rsmd.getColumnCount();
+
+            // Creamos una lista para almacenar los nombres de las columnas
+            List<String> columnNames = new ArrayList<>();
+            for (int i = 1; i <= numColumns; i++) {
+                // Obtenemos el nombre de cada columna de los metadatos y lo agregamos a la lista
+                columnNames.add(rsmd.getColumnName(i));
+            }
+
+            // Creamos una lista para almacenar los datos de la tabla
+            List<List<Object>> tableData = new ArrayList<>();
+            while (rs.next()) {
+                // Creamos una lista para almacenar los datos de la fila actual
+                List<Object> rowData = new ArrayList<>();
+                for (int i = 1; i <= numColumns; i++) {
+                    // Obtenemos el dato de cada columna de la fila actual y lo agregamos a la lista
+                    rowData.add(rs.getObject(i));
+                }
+                // Agregamos la lista de datos de la fila a la lista de datos de la tabla
+                tableData.add(rowData);
+            }
+
+            // Agregamos el número de columnas, los nombres de las columnas y los datos de la tabla al mapa de resultados
+            result.put("numColumns", numColumns);
+            result.put("columnNames", columnNames);
+            result.put("tableData", tableData);
+        } catch (SQLException e) {
+            // Si ocurre un error al realizar la selección en la base de datos, imprimimos un mensaje de error y la traza de la pila del error
+            System.out.println("Ocurrió un error al realizar la selección en la base de datos");
+            e.printStackTrace();
+        }
+
+        // Imprimimos el mapa de resultados para depuración
+        System.out.println(result);
+
+        // Retornamos el mapa de resultados
+        return result;
+    }
+    
+    
+    
     //-----------------------------------------------------------------
 }
