@@ -4,21 +4,28 @@
  */
 package Views;
 
+import Models.Reservation;
+import Models.Room;
+import Models.User;
 import Services.UserController;
+import Services.controllerReservation;
 import java.util.List;
 import java.util.Map;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class RoomUserView extends javax.swing.JFrame {
-
+    User user;
     int id_hotel;
+    controllerReservation controlDos;
     UserController control;
-
-    public RoomUserView(int id_hotel) {
+    public RoomUserView(int id_hotel,User user) {
         initComponents();
+        this.user  = user;
         this.id_hotel = id_hotel;
+        this.controlDos = new controllerReservation();
         this.control = new UserController();
-        fillTableRooms();
+        fillTableRooms(id_hotel);
     }
 
     /**
@@ -237,12 +244,34 @@ public class RoomUserView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
+     CustomerView log = new CustomerView(user);
+     log.setVisible(true);
+     log.setLocationRelativeTo(this);
+     this.dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btn_hotel1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hotel1ActionPerformed
-        // TODO add your handling code here:
-
+              // TODO add your handling code here:
+        int id_room = 0;
+        int selectedRow = tbl_rooms.getSelectedRow();
+        if (selectedRow != -1) {
+            Object selectedValue = tbl_rooms.getValueAt(selectedRow, 0);
+            if (selectedValue != null) {
+                id_room = Integer.parseInt(selectedValue.toString());
+                
+            } else {
+                JOptionPane.showMessageDialog(null, "Debe seleccionar la habitación en la lista que desea Reservar");
+                return;
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar la habitación en la reserva  que desea hacer");
+            return;
+        }
+          Room room = control.searchRoom(id_room);
+          String fechaEntrada = txtDateEntry.getText();
+          String fechaSalida = txtDateExit.getText();
+         Reservation reser = new Reservation(0, user.getId(), room.getId_room(), fechaEntrada, fechaSalida,  3, room.getPriceNigth());
+          controlDos.insertReservation(reser);
     }//GEN-LAST:event_btn_hotel1ActionPerformed
 
     private void txtDateEntryInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtDateEntryInputMethodTextChanged
@@ -257,7 +286,7 @@ public class RoomUserView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDateExitActionPerformed
 
-    public void fillTableRooms() {
+    public void fillTableRooms(int id_hotel) {
         // Llamamos al método select del controlador de usuario. Este método devuelve un mapa con los nombres de las columnas, el número de columnas y los datos de la tabla.
         Map<String, Object> result = control.selectHotelsInRooms(id_hotel);
 
@@ -271,14 +300,14 @@ public class RoomUserView extends javax.swing.JFrame {
         DefaultTableModel model = new DefaultTableModel();
 
         // Recorremos la lista de nombres de columnas
-        for (int i = 1; i < columnNames.size(); i++) {
+        for (int i = 0; i < columnNames.size(); i++) {
             String columnName = columnNames.get(i);
             // Agregamos cada nombre de columna al modelo de la tabla. Esto crea las columnas en la tabla.
             model.addColumn(columnName);
         }
 
 // Recorremos la lista de datos de la tabla
-        for (int i = 1; i < tableData.size(); i++) {
+        for (int i = 0; i < tableData.size(); i++) {
             List<Object> rowData = tableData.get(i);
             // Agregamos cada fila de datos al modelo de la tabla. Esto agrega los datos a las columnas correspondientes en la tabla.
             model.addRow(rowData.toArray());

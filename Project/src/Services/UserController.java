@@ -38,7 +38,11 @@ public class UserController {
     public int selectLogin(String email, String password) {
         return dao.selectLogin(email, password);
     }
-
+    
+        public User retornUser(String email, String password) {
+        return dao.retornUser(email, password);
+        }
+    
     public User searchAdmin(int id) {
         return dao.searchUser(id);
     }

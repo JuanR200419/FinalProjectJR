@@ -11,26 +11,26 @@ package Models;
 public class Reservation {
 
     private int id;
-    private User user;
-    private Hotel hotel;
+    private int user_id;
     //hotelroom
-    private Room room;
+    private int room_id;
     private String entryDate;
     private String exitDate;
     //It have 3 states (confirm,ed canceled, pending)
-    private String state;
+    private int state;
     private double totalPrice;
 
-    public Reservation(int id, User user, Hotel hotel, Room room, String entryDate, String exitDate, String state, double totalPrice) {
+    public Reservation(int id, int user_id, int room_id, String entryDate, String exitDate, int state, double totalPrice) {
         this.id = id;
-        this.user = user;
-        this.hotel = hotel;
-        this.room = room;
+        this.user_id = user_id;
+        this.room_id = room_id;
         this.entryDate = entryDate;
         this.exitDate = exitDate;
         this.state = state;
         this.totalPrice = totalPrice;
     }
+
+   
 
     public int getId() {
         return id;
@@ -40,29 +40,24 @@ public class Reservation {
         this.id = id;
     }
 
-    public User getUser() {
-        return user;
+    public int getUser_id() {
+        return user_id;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 
-    public Hotel getHotel() {
-        return hotel;
+    public int getRoom_id() {
+        return room_id;
     }
 
-    public void setHotel(Hotel hotel) {
-        this.hotel = hotel;
+    public void setRoom_id(int room_id) {
+        this.room_id = room_id;
     }
-
-    public Room getRoom() {
-        return room;
-    }
-
-    public void setRoom(Room room) {
-        this.room = room;
-    }
+    
+    
+  
 
     public String getEntryDate() {
         return entryDate;
@@ -80,11 +75,11 @@ public class Reservation {
         this.exitDate = exitDate;
     }
 
-    public String getState() {
+    public int getState() {
         return state;
     }
 
-    public void setState(String state) {
+    public void setState(int state) {
         this.state = state;
     }
 

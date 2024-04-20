@@ -49,6 +49,7 @@ public class Dao implements InterfaceUser, InterfaceHotel, InterfaceRoom {
 
             // We iterate all the results
             if (rs.next()) {
+                
                 return resultado = rs.getInt("user_rol");
             }
         } catch (SQLException e) {
@@ -57,7 +58,31 @@ public class Dao implements InterfaceUser, InterfaceHotel, InterfaceRoom {
         }
         return -1;
     }
+    
+    // retorno de usuario 
+    
+       // CRUD FOR USERS 
+    public User retornUser(String email, String password) {
+        // We prepare the consultation SQL for select data
+        String selectSQL = "SELECT * FROM users Where email=? AND password_user=?";
+        try (PreparedStatement pstmt = connection.prepareStatement(selectSQL)) {
+         pstmt.setString(2, password);
+            pstmt.setString(1, email);
+            ResultSet rs = pstmt.executeQuery();
 
+            // We iterate all the results
+            if (rs.next()) {
+                User user = new User(rs.getInt("id_user"), rs.getString("full_name"), rs.getInt("age"), rs.getString("username"), rs.getString("password_user"), rs.getString("email"), rs.getString("phone_number"), rs.getInt("user_rol"), rs.getString("address"));
+                return user;
+            }
+        } catch (SQLException e) {
+            System.out.println("Ocurrió un error al realizar la selección en la base de datos");
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    
     // CRUD FOR USERS 
     public User searchUser(int id) {
         // We prepare the consultation SQL for select data

@@ -4,6 +4,7 @@
  */
 package Views;
 
+import Models.User;
 import Services.UserController;
 
 /**
@@ -179,7 +180,8 @@ UserController control;
             admin.setLocationRelativeTo(this);
             this.dispose();
         }else if(login == 2){
-            CustomerView customer = new CustomerView();
+            User user = control.retornUser(email, password);
+            CustomerView customer = new CustomerView(user);
             customer.setVisible(true);
             customer.setLocationRelativeTo(this);
             this.dispose();
