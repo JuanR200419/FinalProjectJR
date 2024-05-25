@@ -146,6 +146,16 @@ public class UserRegisterView extends javax.swing.JFrame {
         txtName.setForeground(new java.awt.Color(73, 181, 172));
         txtName.setBorder(null);
         txtName.setCaretColor(new java.awt.Color(73, 181, 172));
+        txtName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNameActionPerformed(evt);
+            }
+        });
+        txtName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNameKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 270, 40));
 
         jSeparator1.setBackground(new java.awt.Color(0, 153, 255));
@@ -210,6 +220,11 @@ public class UserRegisterView extends javax.swing.JFrame {
         txtPhoneNumber.setForeground(new java.awt.Color(73, 181, 172));
         txtPhoneNumber.setBorder(null);
         txtPhoneNumber.setCaretColor(new java.awt.Color(73, 181, 172));
+        txtPhoneNumber.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPhoneNumberKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtPhoneNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 270, 40));
 
         lblPhoneNumber.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
@@ -242,6 +257,11 @@ public class UserRegisterView extends javax.swing.JFrame {
         txtEmail.setForeground(new java.awt.Color(73, 181, 172));
         txtEmail.setBorder(null);
         txtEmail.setCaretColor(new java.awt.Color(73, 181, 172));
+        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtEmailKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, 270, 40));
 
         lblEmail.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
@@ -357,12 +377,49 @@ public class UserRegisterView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void txtAgeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAgeKeyTyped
-               // TODO add your handling code here:
+        char c = evt.getKeyChar();
+    
+        if (!Character.isDigit(c)) {
+            evt.consume();
+        }
     }//GEN-LAST:event_txtAgeKeyTyped
 
     private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPasswordActionPerformed
+
+    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNameActionPerformed
+
+    private void txtNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+    
+        if (Character.isDigit(c)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNameKeyTyped
+
+    private void txtPhoneNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPhoneNumberKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+    
+        if (!Character.isDigit(c)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtPhoneNumberKeyTyped
+
+    private void txtEmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+    
+        String validCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@._-";
+
+        if (validCharacters.indexOf(c) == -1) {
+            evt.consume();  // consume el evento si el carácter no es válido
+        }
+    }//GEN-LAST:event_txtEmailKeyTyped
 
     /**
      * @param args the command line arguments
