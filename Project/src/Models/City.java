@@ -22,7 +22,7 @@ public class City {
     return this.nameCity;
     }
 
-    
+    //soueignire
     
     public int getId_city() {
         return id_city;
