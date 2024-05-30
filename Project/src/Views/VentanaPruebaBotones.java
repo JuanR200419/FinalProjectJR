@@ -1,5 +1,6 @@
 package Views;
 import Models.Hotel;
+import Models.Room;
 import Services.HotelsController;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -23,13 +24,14 @@ import javax.swing.border.CompoundBorder;
 
 public class VentanaPruebaBotones extends javax.swing.JFrame {
 HotelsController control;
-  
-    public VentanaPruebaBotones() {
+   ArrayList<Room>roomList;
+    public VentanaPruebaBotones(int id_hotel) {
         initComponents();
         this.control = new HotelsController();
-        ArrayList<Hotel>hotelList  = control.fillTargetComboHotel();
+        this.roomList  = control.fillTargetComboHotel(id_hotel);
+        
 // Obtén el número de registros de la base de datos
-        int numRegistros = hotelList.size();
+        int numRegistros = roomList.size();
 
         // Crea un JPanel para contener las tarjetas
         JPanel cardsPanel = new JPanel();
@@ -51,7 +53,7 @@ HotelsController control;
             card.add(title, BorderLayout.NORTH);
 
             // Crea un JLabel para el contenido de la tarjeta y añádelo al JPanel
-            JLabel content = new JLabel(String.valueOf(hotelList.get(i).getIdCity()) + (i + 1));
+            JLabel content = new JLabel(String.valueOf(roomList.get(i).getAmenitiesDetails()) + (i + 1));
             card.add(content, BorderLayout.CENTER);
 
             // Crea un JTextField para el campo de texto adicional y añádelo al JPanel
@@ -73,7 +75,7 @@ HotelsController control;
                 public void mouseClicked(MouseEvent e) {
                     // Este código se ejecutará cuando se haga clic en el JPanel
                     System.out.println("Se hizo clic en la tarjeta " + (index + 1));
-
+                    roomList.get(index+1);
                 }
 
                 @Override
@@ -149,37 +151,7 @@ HotelsController control;
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaPruebaBotones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaPruebaBotones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaPruebaBotones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaPruebaBotones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VentanaPruebaBotones().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelPerron;

@@ -7,6 +7,7 @@ package Services;
 import Dao.Dao;
 import Dao.DatoHotels;
 import Models.Hotel;
+import Models.Room;
 import Singleton.DataBaseSingleton;
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -23,8 +24,14 @@ public class HotelsController {
     this.dao = new DatoHotels();
     }
     
-      public ArrayList<Hotel> fillTargetComboHotel() {
-      return dao.fillTargetComboHotel();
+      public ArrayList<Room> fillTargetComboHotel( int id_hotel) {
+      return dao.fillTargetRoom(id_hotel);
       }
+      
+      
+     
+    
+      
+      
     
 }

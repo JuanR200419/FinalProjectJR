@@ -359,8 +359,9 @@ public class CustomerView extends javax.swing.JFrame {
             if (selectedValue != null) {
                 id_hotel = Integer.parseInt(selectedValue.toString());
                 RoomUserView user = new RoomUserView(id_hotel,this.user);
-                user.setVisible(true);
-                user.setLocationRelativeTo(null);
+                VentanaPruebaBotones n = new VentanaPruebaBotones(id_hotel);
+                n.setVisible(true);
+                n.setLocationRelativeTo(this);
                 this.dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "Debe seleccionar el hotel en la lista que desea buscar");

@@ -108,34 +108,4 @@ public class ReportController {
     }
 
 }
-//      PdfPTable tabla = new PdfPTable(3);
-//        // id del usuario
-//        tabla.addCell("USUARIO");
-//        tabla.addCell(String.valueOf(user.getId()));
-//        // nombre del usuario
-//        tabla.addCell(user.getName());
-//        tabla.addCell("EMAIL");
-//        //email
-//        tabla.addCell(user.getEmail());
-//        //detalles de cuenta
-//        tabla.addCell("DETALLES");
-//        tabla.addCell(user.getCountDetails());
-//        // edad del usuario 
-//        tabla.addCell(String.valueOf(user.getAge()));
-//        tabla.addCell("HOTEL");
-//        // hotel reservado      
-//        tabla.addCell(hotel.getNameHotel());
-//        tabla.addCell("CLASIFICACION");
-//// clasificacion 
-//        tabla.addCell(hotel.getClassification());
-//        // no se que esto 
-//        tabla.addCell(hotel.getModCons());
-//        tabla.addCell("RESERVA");
-//        tabla.addCell("DIA DE ENTRADA");
-//        tabla.addCell(reser.getEntryDate());
-//        tabla.addCell("DIA DE SALIDA");
-//        tabla.addCell(reser.getExitDate());
-//        tabla.addCell("Precio a pagar");
-//        tabla.addCell(String.valueOf(reser.getTotalPrice()));
-//        
-//        documento.add(tabla);
+
