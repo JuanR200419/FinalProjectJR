@@ -20,22 +20,22 @@ public class DataBaseSingleton {
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
 
     // name database
-    private static final String DATABASE = "dataBase";
+    private static final String DATABASE = "bh1jyy4ygnvbhq0oivvb";
 
     // Host
-    private static final String HOSTNAME = "localhost";
+    private static final String HOSTNAME = "bh1jyy4ygnvbhq0oivvb-mysql.services.clever-cloud.com";
 
     // Port
     private static final String PORT = "3306";
-
-    // Rute of our datebase (we desactive the use of SSL with "?useSSL=false")
-    private static final String DATABASE_URL = "jdbc:mysql://" + HOSTNAME + ":" + PORT + "/" + DATABASE + "?useSSL=false";
     
     // username
-    private static final String USER = "root";
+    private static final String USER = "uporoka8x90s8php";
 
     // password user
-    private static final String PASSWORD = "123";
+    private static final String PASSWORD = "cRluvgDtfV8cJJSQXOnr";
+    
+    // Rute of our datebase (we desactive the use of SSL with "?useSSL=false")
+    private static final String DATABASE_URL = "jdbc:mysql://uporoka8x90s8php:cRluvgDtfV8cJJSQXOnr@bh1jyy4ygnvbhq0oivvb-mysql.services.clever-cloud.com:3306/bh1jyy4ygnvbhq0oivvb";
     
     private DataBaseSingleton() {
         try {

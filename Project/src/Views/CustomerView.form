@@ -58,12 +58,10 @@
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="-2" pref="160" max="-2" attributes="0"/>
-                  <Component id="jSeparator2" min="-2" pref="50" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="133" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="343" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="lblCity" min="-2" max="-2" attributes="0"/>
-                      <Component id="cbxCity" min="-2" pref="160" max="-2" attributes="0"/>
+                      <Component id="cbxCities" min="-2" pref="160" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -108,14 +106,9 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="lblCity" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="cbxCity" min="-2" pref="40" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
+                  <Component id="lblCity" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="cbxCities" min="-2" pref="40" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
@@ -323,7 +316,7 @@
             <EventHandler event="inputMethodTextChanged" listener="java.awt.event.InputMethodListener" parameters="java.awt.event.InputMethodEvent" handler="txtDateEntryInputMethodTextChanged"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JComboBox" name="cbxCity">
+        <Component class="javax.swing.JComboBox" name="cbxCities">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="cc" red="cc" type="rgb"/>
@@ -331,17 +324,13 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="1">
-                <StringItem index="0" value="Seleccione"/>
-              </StringArray>
-            </Property>
           </Properties>
           <Events>
-            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cbxCityItemStateChanged"/>
+            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cbxCitiesItemStateChanged"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbxCitiesActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;City&gt;"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="lblDateExit">
@@ -354,8 +343,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Fecha Salida:"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JSeparator" name="jSeparator2">
         </Component>
         <Component class="javax.swing.JLabel" name="lblDateEntry1">
           <Properties>

@@ -693,7 +693,101 @@ public class Dao implements InterfaceUser, InterfaceHotel, InterfaceRoom {
         return result;
     }
     
-    
+    public ArrayList<Room> filterRoom(int id_hotel, String entry_date, String exit_date, int num_guests, int id_type_room) {
+        ArrayList<Room> listRooms = new ArrayList<>();
+        String selectSQL = "SELECT * FROM rooms "
+                + "LEFT JOIN reservations AS r "
+                + "ON rooms.id_rooom = r.id_rooom "
+                + "AND (r.entry_date < ? AND r.exit_date > ?) "
+                + "WHERE r.id_reservation IS NULL "
+                + "AND rooms.id_hotel = ? "
+                + "AND rooms.number_guests >= ? "
+                + "AND id_type_room = ?";
+        try (PreparedStatement pstmt = connection.prepareStatement(selectSQL)) {
+            pstmt.setString(1, exit_date);
+            pstmt.setString(2, entry_date); 
+            pstmt.setInt(3, id_hotel); 
+            pstmt.setInt(4, num_guests); 
+            pstmt.setInt(5, id_type_room);
+
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                Room roomEntry = new Room(
+                        rs.getInt("id_rooom"),
+                        rs.getInt("id_stade_room"),
+                        rs.getInt("id_type_room"),
+                        rs.getInt("id_hotel"),
+                        rs.getInt("number_guests"),
+                        rs.getInt("number_rooom"),
+                        rs.getDouble("price_nigth"),
+                        rs.getString("room_amenities")
+                );
+                listRooms.add(roomEntry);
+            }
+        } catch (SQLException e) {
+            System.out.println("Ocurrió un error al realizar la consulta en la base de datos");
+            e.printStackTrace();
+        }
+        return listRooms;
+    }
+      
+      
+      public Map<String, Object> selectHotels_X_City(int id_city) {
+        // Inicializamos el mapa de resultados. Este mapa almacenará los nombres de las columnas, el número de columnas y los datos de la tabla.
+        Map<String, Object> result = new HashMap<>();
+
+        // Preparamos la consulta SQL para seleccionar datos de la tabla 'usuario'
+        String selectSQL = "SELECT * FROM hotels WHERE id_city = ?";
+
+        // Intentamos preparar y ejecutar la consulta SQL
+        try (PreparedStatement pstmt = connection.prepareStatement(selectSQL)) {
+            // Ejecutamos la consulta y obtenemos los resultados en un ResultSet
+            pstmt.setInt(1, id_city);
+            ResultSet rs = pstmt.executeQuery();
+
+            // Obtenemos los metadatos del ResultSet. Los metadatos contienen información sobre la estructura de los resultados, como el número de columnas y los nombres de las columnas.
+            ResultSetMetaData rsmd = rs.getMetaData();
+
+            // Obtenemos el número de columnas de los metadatos
+            int numColumns = rsmd.getColumnCount();
+
+            // Creamos una lista para almacenar los nombres de las columnas
+            List<String> columnNames = new ArrayList<>();
+            for (int i = 1; i <= numColumns; i++) {
+                // Obtenemos el nombre de cada columna de los metadatos y lo agregamos a la lista
+                columnNames.add(rsmd.getColumnName(i));
+            }
+
+            // Creamos una lista para almacenar los datos de la tabla
+            List<List<Object>> tableData = new ArrayList<>();
+            while (rs.next()) {
+                // Creamos una lista para almacenar los datos de la fila actual
+                List<Object> rowData = new ArrayList<>();
+                for (int i = 1; i <= numColumns; i++) {
+                    // Obtenemos el dato de cada columna de la fila actual y lo agregamos a la lista
+                    rowData.add(rs.getObject(i));
+                }
+                // Agregamos la lista de datos de la fila a la lista de datos de la tabla
+                tableData.add(rowData);
+            }
+
+            // Agregamos el número de columnas, los nombres de las columnas y los datos de la tabla al mapa de resultados
+            result.put("numColumns", numColumns);
+            result.put("columnNames", columnNames);
+            result.put("tableData", tableData);
+        } catch (SQLException e) {
+            // Si ocurre un error al realizar la selección en la base de datos, imprimimos un mensaje de error y la traza de la pila del error
+            System.out.println("Ocurrió un error al realizar la selección en la base de datos");
+            e.printStackTrace();
+        }
+
+        // Imprimimos el mapa de resultados para depuración
+        System.out.println(result);
+
+        // Retornamos el mapa de resultados
+        return result;
+    }
+      
     
     //-----------------------------------------------------------------
 }

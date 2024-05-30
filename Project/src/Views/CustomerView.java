@@ -4,8 +4,11 @@
  */
 package Views;
 
+import Models.City;
 import Models.User;
 import Services.UserController;
+import Views.RoomUserView;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -25,6 +28,7 @@ public class CustomerView extends javax.swing.JFrame {
         control = new UserController();
         this.user = user;
         fill_table();
+        fullCombo();
     }
     public void fill_table() {
         // Llamamos al método select del controlador de usuario. Este método devuelve un mapa con los nombres de las columnas, el número de columnas y los datos de la tabla.
@@ -75,9 +79,8 @@ public class CustomerView extends javax.swing.JFrame {
         btn_search_rooms = new javax.swing.JButton();
         lblCity = new javax.swing.JLabel();
         txtDateEntry = new javax.swing.JFormattedTextField();
-        cbxCity = new javax.swing.JComboBox<>();
+        cbxCities = new javax.swing.JComboBox<>();
         lblDateExit = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
         lblDateEntry1 = new javax.swing.JLabel();
         cbxGuests = new javax.swing.JComboBox<>();
         lblGuests = new javax.swing.JLabel();
@@ -193,12 +196,16 @@ public class CustomerView extends javax.swing.JFrame {
             }
         });
 
-        cbxCity.setBackground(new java.awt.Color(204, 204, 255));
-        cbxCity.setForeground(new java.awt.Color(0, 0, 0));
-        cbxCity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione" }));
-        cbxCity.addItemListener(new java.awt.event.ItemListener() {
+        cbxCities.setBackground(new java.awt.Color(204, 204, 255));
+        cbxCities.setForeground(new java.awt.Color(0, 0, 0));
+        cbxCities.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cbxCityItemStateChanged(evt);
+                cbxCitiesItemStateChanged(evt);
+            }
+        });
+        cbxCities.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxCitiesActionPerformed(evt);
             }
         });
 
@@ -246,12 +253,10 @@ public class CustomerView extends javax.swing.JFrame {
                 .addComponent(jScrollPane1)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(160, 160, 160)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(133, 133, 133)
+                .addGap(343, 343, 343)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblCity)
-                    .addComponent(cbxCity, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbxCities, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
@@ -285,12 +290,9 @@ public class CustomerView extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblCity)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cbxCity, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(lblCity)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxCities, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
@@ -348,29 +350,45 @@ public class CustomerView extends javax.swing.JFrame {
         ven.setLocationRelativeTo(this);
         this.dispose();
     }//GEN-LAST:event_btnBackActionPerformed
-
+    
+    private void fullCombo() {
+        cbxCities.removeAllItems();
+        ArrayList<City> listaCIty = control.fullComboCity();
+        cbxCities.addItem(null);
+        for (int i = 0; i < listaCIty.size(); i++) {
+            cbxCities.addItem(listaCIty.get(i));
+        }
+    }
+    
+    
+    
+    
     private void btn_search_roomsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_search_roomsActionPerformed
         
-           // TODO add your handling code here:
+  // TODO add your handling code here:
         int id_hotel = 0;
+        String dateEntry = txtDateEntry.getText().replace("/", "-");
+        String dateExit = txtDateExit.getText().replace("/", "-");
+        int numGuests = cbxGuests.getSelectedIndex()+1;
+        int typeRoom = cbxTypeRoom.getSelectedIndex();
         int selectedRow = tbl_hotels.getSelectedRow();
         if (selectedRow != -1) {
             Object selectedValue = tbl_hotels.getValueAt(selectedRow, 0);
             if (selectedValue != null) {
                 id_hotel = Integer.parseInt(selectedValue.toString());
-                RoomUserView user = new RoomUserView(id_hotel,this.user);
-                VentanaPruebaBotones n = new VentanaPruebaBotones(id_hotel);
-                n.setVisible(true);
-                n.setLocationRelativeTo(this);
-                this.dispose();
+
             } else {
-                JOptionPane.showMessageDialog(null, "Debe seleccionar el hotel en la lista que desea buscar");
-                return;
+                JOptionPane.showMessageDialog(null, "Debe seleccionar el hotel en la lista que desea actualizar");
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Debe seleccionar el hotel en la lista que desea buscar");
-            return;
+            JOptionPane.showMessageDialog(null, "Debe seleccionar el hotel en la lista que desea actualizar");
         }
+//        RoomUserView ven = new RoomUserView(control.filterRoom(id_hotel, dateEntry, dateExit, numGuests, typeRoom));
+        RoomUser ven = new RoomUser(id_hotel);
+        ven.setVisible(true);
+        this.dispose();
+        
+    
         
         
     }//GEN-LAST:event_btn_search_roomsActionPerformed
@@ -378,10 +396,37 @@ public class CustomerView extends javax.swing.JFrame {
     private void txtDateExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDateExitActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDateExitActionPerformed
+    public void fill_table_x_city(int id_city) {
+        // Llamamos al método select del controlador de usuario. Este método devuelve un mapa con los nombres de las columnas, el número de columnas y los datos de la tabla.
+        Map<String, Object> result = control.selectHotels_X_City(id_city);
 
-    private void cbxCityItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxCityItemStateChanged
+        // Obtenemos los nombres de las columnas del mapa de resultados. Los nombres de las columnas se devuelven como una lista de cadenas.
+        List<String> columnNames = (List<String>) result.get("columnNames");
+
+        // Obtenemos los datos de la tabla del mapa de resultados. Los datos de la tabla se devuelven como una lista de listas de objetos. Cada lista interna representa una fila de la tabla y contiene los datos de esa fila.
+        List<List<Object>> tableData = (List<List<Object>>) result.get("tableData");
+
+        // Creamos un nuevo modelo de tabla. Un modelo de tabla es un objeto que gestiona los datos de una tabla.
+        DefaultTableModel model = new DefaultTableModel();
+
+        // Recorremos la lista de nombres de columnas
+        for (String columnName : columnNames) {
+            // Agregamos cada nombre de columna al modelo de la tabla. Esto crea las columnas en la tabla.
+            model.addColumn(columnName);
+        }
+
+        // Recorremos la lista de datos de la tabla
+        for (List<Object> rowData : tableData) {
+            // Agregamos cada fila de datos al modelo de la tabla. Esto agrega los datos a las columnas correspondientes en la tabla.
+            model.addRow(rowData.toArray());
+        }
+
+        // Establecemos el modelo en la tabla. Esto actualiza la tabla para mostrar los datos del modelo.
+        tbl_hotels.setModel(model);
+    }
+    private void cbxCitiesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxCitiesItemStateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbxCityItemStateChanged
+    }//GEN-LAST:event_cbxCitiesItemStateChanged
 
     private void cbxGuestsItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxGuestsItemStateChanged
         // TODO add your handling code here:
@@ -399,12 +444,22 @@ public class CustomerView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDateExitInputMethodTextChanged
 
+    private void cbxCitiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxCitiesActionPerformed
+        City citi = (City) cbxCities.getSelectedItem();
+        if (citi != null){
+            int id_city = citi.getId_city();
+            fill_table_x_city(id_city);
+        }else {
+            fill_table();
+        }
+    }//GEN-LAST:event_cbxCitiesActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btn_search_rooms;
-    private javax.swing.JComboBox<String> cbxCity;
+    private javax.swing.JComboBox<City> cbxCities;
     private javax.swing.JComboBox<String> cbxGuests;
     private javax.swing.JComboBox<String> cbxTypeRoom;
     private javax.swing.JLabel jLabel2;
@@ -412,7 +467,6 @@ public class CustomerView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lblCity;
     private javax.swing.JLabel lblDateEntry1;
     private javax.swing.JLabel lblDateExit;

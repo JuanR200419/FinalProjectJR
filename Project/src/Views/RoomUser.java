@@ -22,17 +22,20 @@ import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 
 
-public class VentanaPruebaBotones extends javax.swing.JFrame {
+public class RoomUser extends javax.swing.JFrame {
 HotelsController control;
    ArrayList<Room>roomList;
-    public VentanaPruebaBotones(int id_hotel) {
+   int id_hotel;
+    public RoomUser(int id_hotel) {
         initComponents();
+        this.id_hotel = id_hotel;
+        System.out.println(id_hotel);
         this.control = new HotelsController();
         this.roomList  = control.fillTargetComboHotel(id_hotel);
-        
+          
 // Obtén el número de registros de la base de datos
         int numRegistros = roomList.size();
-
+        
         // Crea un JPanel para contener las tarjetas
         JPanel cardsPanel = new JPanel();
         cardsPanel.setLayout(new GridLayout(numRegistros / 3 + 1, 3, 10, 10));
@@ -74,8 +77,10 @@ HotelsController control;
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     // Este código se ejecutará cuando se haga clic en el JPanel
-                    System.out.println("Se hizo clic en la tarjeta " + (index + 1));
-                    roomList.get(index+1);
+                    System.out.println("Se hizo clic en la tarjeta " + (index ));
+                    System.out.println(String.valueOf(roomList.get(index)));
+                    
+                    
                 }
 
                 @Override

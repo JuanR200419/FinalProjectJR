@@ -117,4 +117,14 @@ public class UserController {
       return dao.selectHotelsInRooms(id);
       }
      
+       public Map<String, Object> selectHotels_X_City(int id_city) {
+        return dao.selectHotels_X_City(id_city);
+    }
+    
+    public ArrayList<Room> filterRoom(int id_hotel, String entry_date, String exit_date, int num_guests, int id_type_room) {
+        return dao.filterRoom(id_hotel, entry_date, exit_date, num_guests, id_type_room);
+    }
+      
+      
+      
 }
