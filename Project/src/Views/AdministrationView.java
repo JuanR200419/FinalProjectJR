@@ -163,6 +163,16 @@ public class AdministrationView extends javax.swing.JFrame {
         txtNumberRoom.setForeground(new java.awt.Color(73, 181, 172));
         txtNumberRoom.setBorder(null);
         txtNumberRoom.setCaretColor(new java.awt.Color(73, 181, 172));
+        txtNumberRoom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNumberRoomActionPerformed(evt);
+            }
+        });
+        txtNumberRoom.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNumberRoomKeyTyped(evt);
+            }
+        });
 
         jSeparator22.setBackground(new java.awt.Color(0, 153, 255));
         jSeparator22.setForeground(new java.awt.Color(0, 153, 255));
@@ -197,6 +207,11 @@ public class AdministrationView extends javax.swing.JFrame {
         txtPriceNight.setForeground(new java.awt.Color(73, 181, 172));
         txtPriceNight.setBorder(null);
         txtPriceNight.setCaretColor(new java.awt.Color(73, 181, 172));
+        txtPriceNight.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPriceNightKeyTyped(evt);
+            }
+        });
 
         jSeparator26.setBackground(new java.awt.Color(0, 153, 255));
         jSeparator26.setForeground(new java.awt.Color(0, 153, 255));
@@ -1613,6 +1628,28 @@ public class AdministrationView extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_txtEmailUserKeyTyped
+
+    private void txtNumberRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumberRoomActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNumberRoomActionPerformed
+
+    private void txtNumberRoomKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumberRoomKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+    
+        if (!Character.isDigit(c)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNumberRoomKeyTyped
+
+    private void txtPriceNightKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPriceNightKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+    
+        if (!Character.isDigit(c)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtPriceNightKeyTyped
 
     public boolean verify_email(String email) {
         String value = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";

@@ -102,10 +102,20 @@ public class UserController {
     public Map<String, Object> selectRooms() {
         return dao.selectRooms();
     }
+
     public ArrayList<Hotel> fullComboHotel() {
-    return dao.fullComboHotel( );
+        return dao.fullComboHotel();
     }
-     public ArrayList<City> fullComboCity() {
-     return dao.fullComboCity();
-     }
+
+    public ArrayList<City> fullComboCity() {
+        return dao.fullComboCity();
+    }
+    // query filter
+    public Map<String, Object> selectHotels_X_City(int id_city) {
+        return dao.selectHotels_X_City(id_city);
+    }
+    
+    public ArrayList<Room> filterRoom(int id_hotel, String entry_date, String exit_date, int num_guests, int id_type_room) {
+        return dao.filterRoom(id_hotel, entry_date, exit_date, num_guests, id_type_room);
+    }
 }
