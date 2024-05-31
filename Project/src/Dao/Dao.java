@@ -692,23 +692,33 @@ public class Dao implements InterfaceUser, InterfaceHotel, InterfaceRoom {
         // Retornamos el mapa de resultados
         return result;
     }
-    
+
     public ArrayList<Room> filterRoom(int id_hotel, String entry_date, String exit_date, int num_guests, int id_type_room) {
         ArrayList<Room> listRooms = new ArrayList<>();
-        String selectSQL = "SELECT * FROM rooms "
+        String selectSQL = "SELECT rooms.* FROM rooms "
+                + "JOIN hotels ON rooms.id_hotel = hotels.id_hotel "
+                + "JOIN types_room ON rooms.id_type_room = types_room.id_type_room "
                 + "LEFT JOIN reservations AS r "
                 + "ON rooms.id_rooom = r.id_rooom "
-                + "AND (r.entry_date < ? AND r.exit_date > ?) "
-                + "WHERE r.id_reservation IS NULL "
-                + "AND rooms.id_hotel = ? "
+                + "AND ((? BETWEEN r.entry_date AND r.exit_date) "
+                + "OR (? BETWEEN r.entry_date AND r.exit_date) "
+                + "OR (r.entry_date BETWEEN ? AND ?) "
+                + "OR (r.exit_date BETWEEN ? AND ?)) "
+                + "WHERE rooms.id_hotel = ? "
                 + "AND rooms.number_guests >= ? "
-                + "AND id_type_room = ?";
+                + "AND rooms.id_type_room = ? "
+                + "AND (r.id_reservation IS NULL OR r.id_stade_reservation != 'Confirmed')";
+
         try (PreparedStatement pstmt = connection.prepareStatement(selectSQL)) {
-            pstmt.setString(1, exit_date);
-            pstmt.setString(2, entry_date); 
-            pstmt.setInt(3, id_hotel); 
-            pstmt.setInt(4, num_guests); 
-            pstmt.setInt(5, id_type_room);
+            pstmt.setString(1, entry_date);
+            pstmt.setString(2, exit_date);
+            pstmt.setString(3, entry_date);
+            pstmt.setString(4, exit_date);
+            pstmt.setString(5, entry_date);
+            pstmt.setString(6, exit_date);
+            pstmt.setInt(7, id_hotel);
+            pstmt.setInt(8, num_guests);
+            pstmt.setInt(9, id_type_room);
 
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
@@ -730,9 +740,8 @@ public class Dao implements InterfaceUser, InterfaceHotel, InterfaceRoom {
         }
         return listRooms;
     }
-      
-      
-      public Map<String, Object> selectHotels_X_City(int id_city) {
+
+    public Map<String, Object> selectHotels_X_City(int id_city) {
         // Inicializamos el mapa de resultados. Este mapa almacenará los nombres de las columnas, el número de columnas y los datos de la tabla.
         Map<String, Object> result = new HashMap<>();
 
@@ -787,7 +796,7 @@ public class Dao implements InterfaceUser, InterfaceHotel, InterfaceRoom {
         // Retornamos el mapa de resultados
         return result;
     }
-      
-    
+
+
     //-----------------------------------------------------------------
 }

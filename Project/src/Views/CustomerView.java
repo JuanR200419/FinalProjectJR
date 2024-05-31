@@ -5,9 +5,11 @@
 package Views;
 
 import Models.City;
+import Models.Room;
 import Models.User;
 import Services.UserController;
 import Views.RoomUserView;
+import com.sun.source.tree.BreakTree;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -149,7 +151,7 @@ public class CustomerView extends javax.swing.JFrame {
         txtDateExit.setBackground(new java.awt.Color(204, 204, 255));
         txtDateExit.setForeground(new java.awt.Color(0, 0, 0));
         try {
-            txtDateExit.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            txtDateExit.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####/##/##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -184,7 +186,7 @@ public class CustomerView extends javax.swing.JFrame {
         txtDateEntry.setBackground(new java.awt.Color(204, 204, 255));
         txtDateEntry.setForeground(new java.awt.Color(0, 0, 0));
         try {
-            txtDateEntry.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            txtDateEntry.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####/##/##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -225,6 +227,11 @@ public class CustomerView extends javax.swing.JFrame {
                 cbxGuestsItemStateChanged(evt);
             }
         });
+        cbxGuests.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxGuestsActionPerformed(evt);
+            }
+        });
 
         lblGuests.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
         lblGuests.setForeground(new java.awt.Color(255, 255, 255));
@@ -232,7 +239,7 @@ public class CustomerView extends javax.swing.JFrame {
 
         cbxTypeRoom.setBackground(new java.awt.Color(204, 204, 255));
         cbxTypeRoom.setForeground(new java.awt.Color(0, 0, 0));
-        cbxTypeRoom.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione" }));
+        cbxTypeRoom.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Individual", "Doble", "Suite" }));
         cbxTypeRoom.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cbxTypeRoomItemStateChanged(evt);
@@ -384,9 +391,17 @@ public class CustomerView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Debe seleccionar el hotel en la lista que desea actualizar");
         }
 //        RoomUserView ven = new RoomUserView(control.filterRoom(id_hotel, dateEntry, dateExit, numGuests, typeRoom));
-        RoomUser ven = new RoomUser(id_hotel);
-        ven.setVisible(true);
-        this.dispose();
+        ArrayList<Room> roomlist = control.filterRoom(id_hotel, dateEntry, dateExit, numGuests, typeRoom);
+        System.out.println(roomlist.get(0).getId_room());
+        if (roomlist == null){
+            JOptionPane.showMessageDialog(null, "No hay cuartos deiponibles");
+            return;
+        }else {
+            RoomUser ven = new RoomUser(roomlist);
+            ven.setVisible(true);
+            this.dispose();
+        }
+        
         
     
         
@@ -453,6 +468,10 @@ public class CustomerView extends javax.swing.JFrame {
             fill_table();
         }
     }//GEN-LAST:event_cbxCitiesActionPerformed
+
+    private void cbxGuestsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxGuestsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxGuestsActionPerformed
 
 
 

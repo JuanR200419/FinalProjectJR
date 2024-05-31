@@ -163,6 +163,11 @@ public class AdministrationView extends javax.swing.JFrame {
         txtNumberRoom.setForeground(new java.awt.Color(73, 181, 172));
         txtNumberRoom.setBorder(null);
         txtNumberRoom.setCaretColor(new java.awt.Color(73, 181, 172));
+        txtNumberRoom.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNumberRoomKeyTyped(evt);
+            }
+        });
 
         jSeparator22.setBackground(new java.awt.Color(0, 153, 255));
         jSeparator22.setForeground(new java.awt.Color(0, 153, 255));
@@ -551,7 +556,8 @@ public class AdministrationView extends javax.swing.JFrame {
                                     .addComponent(btnDeleteUser, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
                                     .addComponent(btnSearchUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnBack1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(btnBack1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)))))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
         PanelDentroGestion1Layout.setVerticalGroup(
@@ -586,6 +592,11 @@ public class AdministrationView extends javax.swing.JFrame {
         txtNameUser.setForeground(new java.awt.Color(73, 181, 172));
         txtNameUser.setBorder(null);
         txtNameUser.setCaretColor(new java.awt.Color(73, 181, 172));
+        txtNameUser.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNameUserKeyTyped(evt);
+            }
+        });
 
         jSeparator1.setBackground(new java.awt.Color(0, 153, 255));
         jSeparator1.setForeground(new java.awt.Color(0, 153, 255));
@@ -626,6 +637,11 @@ public class AdministrationView extends javax.swing.JFrame {
         txtPhoneNumberUser.setForeground(new java.awt.Color(73, 181, 172));
         txtPhoneNumberUser.setBorder(null);
         txtPhoneNumberUser.setCaretColor(new java.awt.Color(73, 181, 172));
+        txtPhoneNumberUser.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPhoneNumberUserKeyTyped(evt);
+            }
+        });
 
         lblPhoneNumber.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
         lblPhoneNumber.setForeground(new java.awt.Color(255, 255, 255));
@@ -652,6 +668,11 @@ public class AdministrationView extends javax.swing.JFrame {
         txtEmailUser.setForeground(new java.awt.Color(73, 181, 172));
         txtEmailUser.setBorder(null);
         txtEmailUser.setCaretColor(new java.awt.Color(73, 181, 172));
+        txtEmailUser.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtEmailUserKeyTyped(evt);
+            }
+        });
 
         lblEmail.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
         lblEmail.setForeground(new java.awt.Color(255, 255, 255));
@@ -789,6 +810,11 @@ public class AdministrationView extends javax.swing.JFrame {
         txtNameHotel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNameHotelActionPerformed(evt);
+            }
+        });
+        txtNameHotel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNameHotelKeyTyped(evt);
             }
         });
 
@@ -1090,6 +1116,11 @@ public class AdministrationView extends javax.swing.JFrame {
 
     private void txtAgeUserKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAgeUserKeyTyped
         // TODO add your handling code here:
+        char c = evt.getKeyChar();
+    
+        if (!Character.isDigit(c)) {
+            evt.consume();
+        }
     }//GEN-LAST:event_txtAgeUserKeyTyped
 
     private void fullCombo() {
@@ -1551,6 +1582,53 @@ public class AdministrationView extends javax.swing.JFrame {
     private void cbCItiesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbCItiesItemStateChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_cbCItiesItemStateChanged
+
+    private void txtNumberRoomKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumberRoomKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+    
+        if (!Character.isDigit(c)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNumberRoomKeyTyped
+
+    private void txtNameUserKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameUserKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+    
+        if (Character.isDigit(c)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNameUserKeyTyped
+
+    private void txtPhoneNumberUserKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPhoneNumberUserKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+    
+        if (!Character.isDigit(c)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtPhoneNumberUserKeyTyped
+
+    private void txtNameHotelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameHotelKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+    
+        if (Character.isDigit(c)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNameHotelKeyTyped
+
+    private void txtEmailUserKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailUserKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+    
+        String validCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@._-";
+
+        if (validCharacters.indexOf(c) == -1) {
+            evt.consume();  // consume el evento si el carácter no es válido
+        }
+    }//GEN-LAST:event_txtEmailUserKeyTyped
 
     public boolean verify_email(String email) {
         String value = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
