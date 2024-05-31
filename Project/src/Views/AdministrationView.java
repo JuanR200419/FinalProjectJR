@@ -78,7 +78,7 @@ public class AdministrationView extends javax.swing.JFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         tbl_rooms = new javax.swing.JTable();
         btnSearchRoom = new javax.swing.JButton();
-        btnBack2 = new javax.swing.JButton();
+        btnBack3 = new javax.swing.JButton();
         PanelGestionarUsuario = new javax.swing.JPanel();
         PanelDentroGestion1 = new javax.swing.JPanel();
         btnDeleteUser = new javax.swing.JButton();
@@ -140,6 +140,7 @@ public class AdministrationView extends javax.swing.JFrame {
         tbl_hotels = new javax.swing.JTable();
         btnSearchHotel = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
+        btnReport = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
@@ -375,14 +376,14 @@ public class AdministrationView extends javax.swing.JFrame {
             }
         });
 
-        btnBack2.setBackground(new java.awt.Color(0, 0, 51));
-        btnBack2.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
-        btnBack2.setForeground(new java.awt.Color(255, 255, 255));
-        btnBack2.setText("ATRAS");
-        btnBack2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnBack2.addActionListener(new java.awt.event.ActionListener() {
+        btnBack3.setBackground(new java.awt.Color(0, 0, 51));
+        btnBack3.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        btnBack3.setForeground(new java.awt.Color(255, 255, 255));
+        btnBack3.setText("ATRAS");
+        btnBack3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnBack3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBack2ActionPerformed(evt);
+                btnBack3ActionPerformed(evt);
             }
         });
 
@@ -398,7 +399,7 @@ public class AdministrationView extends javax.swing.JFrame {
                         .addComponent(jLabel4))
                     .addGroup(PanelDentroGestion3Layout.createSequentialGroup()
                         .addGap(37, 37, 37)
-                        .addGroup(PanelDentroGestion3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(PanelDentroGestion3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 754, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(PanelDentroGestion3Layout.createSequentialGroup()
                                 .addGroup(PanelDentroGestion3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -407,10 +408,13 @@ public class AdministrationView extends javax.swing.JFrame {
                                 .addGap(37, 37, 37)
                                 .addGroup(PanelDentroGestion3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(btnDeleteRoom, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
-                                    .addComponent(btnSearchRoom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnBack2, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(btnSearchRoom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                 .addContainerGap(37, Short.MAX_VALUE))
+            .addGroup(PanelDentroGestion3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDentroGestion3Layout.createSequentialGroup()
+                    .addContainerGap(605, Short.MAX_VALUE)
+                    .addComponent(btnBack3, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(27, 27, 27)))
         );
         PanelDentroGestion3Layout.setVerticalGroup(
             PanelDentroGestion3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -427,9 +431,13 @@ public class AdministrationView extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(PanelDentroGestion3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnUpdateRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSearchRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBack2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnSearchRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(51, Short.MAX_VALUE))
+            .addGroup(PanelDentroGestion3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelDentroGestion3Layout.createSequentialGroup()
+                    .addContainerGap(684, Short.MAX_VALUE)
+                    .addComponent(btnBack3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(41, 41, 41)))
         );
 
         javax.swing.GroupLayout PanelAdminHabitaLayout = new javax.swing.GroupLayout(PanelAdminHabita);
@@ -1026,6 +1034,17 @@ public class AdministrationView extends javax.swing.JFrame {
             }
         });
 
+        btnReport.setBackground(new java.awt.Color(0, 0, 51));
+        btnReport.setFont(new java.awt.Font("Lohit Devanagari", 1, 18)); // NOI18N
+        btnReport.setForeground(new java.awt.Color(255, 255, 255));
+        btnReport.setText("REPORTES");
+        btnReport.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelDentroGestion5Layout = new javax.swing.GroupLayout(PanelDentroGestion5);
         PanelDentroGestion5.setLayout(PanelDentroGestion5Layout);
         PanelDentroGestion5Layout.setHorizontalGroup(
@@ -1048,8 +1067,13 @@ public class AdministrationView extends javax.swing.JFrame {
                                 .addGroup(PanelDentroGestion5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(btnDeleteHotel, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
                                     .addComponent(btnSearchHotel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(121, 121, 121)
-                                .addComponent(btnBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(PanelDentroGestion5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(PanelDentroGestion5Layout.createSequentialGroup()
+                                        .addGap(121, 121, 121)
+                                        .addComponent(btnBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(PanelDentroGestion5Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnReport, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(8, 8, 8)))))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
@@ -1064,7 +1088,8 @@ public class AdministrationView extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(PanelDentroGestion5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegisterHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDeleteHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnDeleteHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnReport, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(PanelDentroGestion5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnUpdateHotel, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
@@ -1567,13 +1592,12 @@ public class AdministrationView extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnBack1ActionPerformed
 
-    private void btnBack2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack2ActionPerformed
-        // TODO add your handling code here:
-        LoginView ven = new LoginView();
-        ven.setVisible(true);
+    private void btnReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportActionPerformed
+        AdminReport ven = new AdminReport();
+         ven.setVisible(true);
         ven.setLocationRelativeTo(this);
         this.dispose();
-    }//GEN-LAST:event_btnBack2ActionPerformed
+    }//GEN-LAST:event_btnReportActionPerformed
 
     private void cbHotelItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbHotelItemStateChanged
 
@@ -1629,6 +1653,10 @@ public class AdministrationView extends javax.swing.JFrame {
             evt.consume();  // consume el evento si el carácter no es válido
         }
     }//GEN-LAST:event_txtEmailUserKeyTyped
+
+    private void btnBack3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBack3ActionPerformed
 
     public boolean verify_email(String email) {
         String value = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
@@ -1831,13 +1859,14 @@ public class AdministrationView extends javax.swing.JFrame {
     private javax.swing.JTabbedPane PanelPrincipal;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnBack1;
-    private javax.swing.JButton btnBack2;
+    private javax.swing.JButton btnBack3;
     private javax.swing.JButton btnDeleteHotel;
     private javax.swing.JButton btnDeleteRoom;
     private javax.swing.JButton btnDeleteUser;
     private javax.swing.JButton btnRegisterHotel;
     private javax.swing.JButton btnRegisterRoom;
     private javax.swing.JButton btnRegisterUser;
+    private javax.swing.JButton btnReport;
     private javax.swing.JButton btnSearchHotel;
     private javax.swing.JButton btnSearchRoom;
     private javax.swing.JButton btnSearchUser;

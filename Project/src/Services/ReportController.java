@@ -106,6 +106,6 @@ public class ReportController {
         cell.setBorder(PdfPCell.BOX); // Agregar borde a la celda
         table.addCell(cell);
     }
-
+    
 }
 

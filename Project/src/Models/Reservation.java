@@ -18,7 +18,7 @@ public class Reservation {
     private String exitDate;
     //It have 3 states (confirm,ed canceled, pending)
     private int state;
-    private double totalPrice;
+    private double totalPrice;  
 
     public Reservation(int id, int user_id, int room_id, String entryDate, String exitDate, int state, double totalPrice) {
         this.id = id;

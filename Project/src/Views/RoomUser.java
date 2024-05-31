@@ -32,7 +32,7 @@ HotelsController control;
         this.user = user;
 
         this.control = new HotelsController();
-        this.roomList  = roomlist;
+             this.roomList  = roomlist;
           
 // Obtén el número de registros de la base de datos
         int numRegistros = roomList.size();
