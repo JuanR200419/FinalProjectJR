@@ -8,7 +8,6 @@ import Models.City;
 import Models.Room;
 import Models.User;
 import Services.UserController;
-import Views.RoomUserView;
 import com.sun.source.tree.BreakTree;
 import java.util.ArrayList;
 import java.util.List;
@@ -391,22 +390,20 @@ public class CustomerView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Debe seleccionar el hotel en la lista que desea actualizar");
         }
 //        RoomUserView ven = new RoomUserView(control.filterRoom(id_hotel, dateEntry, dateExit, numGuests, typeRoom));
-System.out.println("numero de huespedes" + numGuests);
-System.out.println("tipo de habitacion "+ typeRoom);
+        System.out.println("numero de huespedes" + numGuests);
+        System.out.println("tipo de habitacion " + typeRoom);
         System.out.println("hora entrada "+ dateEntry  +" hora salida "+dateExit);
         ArrayList<Room> roomlist = control.filterRoom(id_hotel, dateEntry, dateExit, numGuests, typeRoom);
+        
        
         if (roomlist == null){
             JOptionPane.showMessageDialog(null, "No hay cuartos disponibles");
             return;
         }else {
-            RoomUser ven = new RoomUser(roomlist,user);
+            RoomUser ven = new RoomUser(roomlist,user,dateEntry, dateExit);
             ven.setVisible(true);
             this.dispose();
         }
-        
-        
-    
         
         
     }//GEN-LAST:event_btn_search_roomsActionPerformed

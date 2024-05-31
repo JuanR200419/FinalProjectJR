@@ -30,15 +30,7 @@ public class DaoReservation {
 public void insertReservation(Reservation reser) {
     String entradaFecha = reser.getEntryDate();
     String entradaSalida = reser.getExitDate();
-
-    // Convertir las cadenas de fecha al formato adecuado (YYYY-MM-DD)
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    LocalDate fechaEntrada = LocalDate.parse(entradaFecha, formatter);
-    LocalDate fechaSalida = LocalDate.parse(entradaSalida, formatter);
-
-    String fechaEntradaFormatted = fechaEntrada.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-    String fechaSalidaFormatted = fechaSalida.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-
+    
     boolean very = verifyDate(reser);
     if (very) {
         String insertSQL = "INSERT INTO reservations (id_reservation, id_user, id_room, id_stade_reservation, entry_date, exit_date, total_price) VALUES (?,?,?,?,?,?,?)";
@@ -47,8 +39,8 @@ public void insertReservation(Reservation reser) {
             pstmt.setInt(2, reser.getUser_id());
             pstmt.setInt(3, reser.getRoom_id());
             pstmt.setInt(4, reser.getState());
-            pstmt.setString(5, fechaEntradaFormatted);
-            pstmt.setString(6, fechaSalidaFormatted);
+            pstmt.setString(5, entradaFecha);
+            pstmt.setString(6, entradaSalida);
             pstmt.setDouble(7, reser.getTotalPrice());
 
             // Ejecutamos la consulta
@@ -72,7 +64,7 @@ public void insertReservation(Reservation reser) {
 
 
 private boolean verifyDate(Reservation reser) {
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
     try {
         LocalDate dateEntry = LocalDate.parse(reser.getEntryDate(), formatter);
         LocalDate dateExit = LocalDate.parse(reser.getExitDate(), formatter);

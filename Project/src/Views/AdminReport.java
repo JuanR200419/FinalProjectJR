@@ -133,8 +133,6 @@ ReportAdminController control;
         // Actualiza el JPanel para mostrar los nuevos botones
         PanelPrincipal.revalidate();
         PanelPrincipal.repaint();
-        
-    
     
     }
     
