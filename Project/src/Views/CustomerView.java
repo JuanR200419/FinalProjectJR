@@ -376,7 +376,7 @@ public class CustomerView extends javax.swing.JFrame {
         int id_hotel = 0;
         String dateEntry = txtDateEntry.getText().replace("/", "-");
         String dateExit = txtDateExit.getText().replace("/", "-");
-        int numGuests = cbxGuests.getSelectedIndex()+1;
+        int numGuests = cbxGuests.getSelectedIndex();
         int typeRoom = cbxTypeRoom.getSelectedIndex();
         int selectedRow = tbl_hotels.getSelectedRow();
         if (selectedRow != -1) {
@@ -391,13 +391,16 @@ public class CustomerView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Debe seleccionar el hotel en la lista que desea actualizar");
         }
 //        RoomUserView ven = new RoomUserView(control.filterRoom(id_hotel, dateEntry, dateExit, numGuests, typeRoom));
+System.out.println("numero de huespedes" + numGuests);
+System.out.println("tipo de habitacion "+ typeRoom);
+        System.out.println("hora entrada "+ dateEntry  +" hora salida "+dateExit);
         ArrayList<Room> roomlist = control.filterRoom(id_hotel, dateEntry, dateExit, numGuests, typeRoom);
-        System.out.println(roomlist.get(0).getId_room());
+       
         if (roomlist == null){
-            JOptionPane.showMessageDialog(null, "No hay cuartos deiponibles");
+            JOptionPane.showMessageDialog(null, "No hay cuartos disponibles");
             return;
         }else {
-            RoomUser ven = new RoomUser(roomlist);
+            RoomUser ven = new RoomUser(roomlist,user);
             ven.setVisible(true);
             this.dispose();
         }

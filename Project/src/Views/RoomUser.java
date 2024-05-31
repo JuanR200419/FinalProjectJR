@@ -1,6 +1,7 @@
 package Views;
 import Models.Hotel;
 import Models.Room;
+import Models.User;
 import Services.HotelsController;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -25,11 +26,11 @@ import javax.swing.border.CompoundBorder;
 public class RoomUser extends javax.swing.JFrame {
 HotelsController control;
    ArrayList<Room>roomList;
-   int id_hotel;
-    public RoomUser(ArrayList<Room> roomlist) {
+   User user;
+    public RoomUser(ArrayList<Room> roomlist,User  user) {
         initComponents();
-        this.id_hotel = id_hotel;
-        System.out.println(id_hotel);
+        this.user = user;
+
         this.control = new HotelsController();
         this.roomList  = roomlist;
           
@@ -51,7 +52,7 @@ HotelsController control;
             card.setLayout(new BorderLayout());  // Establece el layout de la tarjeta
 
             // Crea un JLabel para el título de la tarjeta y añádelo al JPanel
-            JLabel title = new JLabel("Hotel " + (i + 1));
+            JLabel title = new JLabel("ROOM " + (i + 1));
             title.setFont(new Font("Arial", Font.BOLD, 14));  // Establece la fuente del título
             card.add(title, BorderLayout.NORTH);
 
@@ -60,7 +61,7 @@ HotelsController control;
             card.add(content, BorderLayout.CENTER);
 
             // Crea un JTextField para el campo de texto adicional y añádelo al JPanel
-            JLabel textField = new JLabel("Texto adicional " + (i + 1));
+            JLabel textField = new JLabel(String.valueOf(roomlist.get(i).getPriceNigth()) + (i + 1));
             card.add(textField, BorderLayout.SOUTH);
 
             // Crea una variable final que contenga el valor de i
@@ -195,7 +196,7 @@ HotelsController control;
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        LoginView log = new LoginView();
+        CustomerView log = new CustomerView(user);
         log.setVisible(true);
         log.setLocationRelativeTo(this);
         this.dispose();
