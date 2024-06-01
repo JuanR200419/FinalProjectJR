@@ -6,6 +6,7 @@ package Dao;
 
 import Models.Hotel;
 import Models.ReportAdmin;
+import Models.ReportUser;
 import Models.Reservation;
 import Models.Room;
 import Singleton.DataBaseSingleton;
@@ -92,5 +93,37 @@ public class DaoReportCreate {
         }
         return null;
     }
+
+    public ArrayList<ReportUser> searchRerverWithUser(int id) {
+    String selectSQL = "SELECT u.full_name, r.number_rooom, reser.total_price, reser.entry_date, reser.exit_date "
+            + "FROM users u "
+            + "INNER JOIN reservations reser ON u.id_user = reser.id_user "
+            + "INNER JOIN rooms r ON reser.id_rooom = r.id_rooom "
+            + "INNER JOIN stades_reservations s ON reser.id_stade_reservation = s.id_stade_reservation "
+            + "WHERE u.id_user = ?";
+    try (PreparedStatement pstmt = connection.prepareStatement(selectSQL)) {
+        pstmt.setInt(1, id);
+        ResultSet rs = pstmt.executeQuery();
+
+        ArrayList<ReportUser> reports = new ArrayList<>();
+
+        while (rs.next()) {
+            String nameUser = rs.getString("full_name");
+            String numRoom = rs.getString("number_rooom");
+            String priceTotal = rs.getString("total_price");
+            String entryDate = rs.getString("entry_date");
+            String exitDate = rs.getString("exit_date");
+
+            ReportUser report = new ReportUser(nameUser, numRoom, priceTotal, entryDate, exitDate);
+            reports.add(report);
+        }
+        return reports;
+
+    } catch (SQLException e) {
+        System.out.println("Ocurrió un error al realizar la selección en la base de datos");
+        e.printStackTrace();
+    }
+    return null;
+}
 
 }
